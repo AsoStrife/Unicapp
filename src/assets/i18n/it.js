@@ -17,7 +17,10 @@ const it =  {
         panelList: {
             home: 'Home',
             login: 'Accedi', 
+            booklet: 'Libretto', 
+            taxes: 'Tasse',
             settings: 'Impostazioni', 
+            about: 'Informazioni', 
             logout: 'Logout'
         },
         settings: {

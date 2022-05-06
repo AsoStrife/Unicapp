@@ -16,26 +16,10 @@
     </f7-page>
 </template>
 
-<style>
-    img {
-        width: auto;
-    }
-    
-    h4, h5 {
-        margin: 0;
-    }
-     h4 {
-         font-size: 20px;
-     }
-
-    .card{
-        padding: 20px 0 20px 0;
-    }
-</style>
+<style></style>
 
 <script>
     import { f7ready, f7 } from 'framework7-vue';
-    import NavbarVue from '../components/Navbar.vue';
     import Navbar from '../components/Navbar.vue';
     import Alert from '../components/Alert.vue';
     import Ratings from '../components/User/Ratings.vue';

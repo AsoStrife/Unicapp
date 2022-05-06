@@ -4,10 +4,13 @@
     <f7-panel id="panel-nested" theme-dark left cover container-el="#panel-page">
         <f7-page>
             <f7-list>
-                <f7-list-item :title="$t('message.panelList.home')" link="/home/" panel-close v-if="isLogged == true"></f7-list-item>
-                <f7-list-item :title="$t('message.panelList.login')" link="/login/" panel-close v-if="isLogged == false"></f7-list-item>
+                <f7-list-item :title="$t('message.panelList.home')" link="/" panel-close></f7-list-item>
+                <f7-list-item :title="$t('message.panelList.login')" link="/login/" panel-close></f7-list-item>
+                <f7-list-item :title="$t('message.panelList.booklet')" link="/booklet/" panel-close></f7-list-item>
+                <f7-list-item :title="$t('message.panelList.taxes')" link="/taxes/" panel-close></f7-list-item>
                 
                 <f7-list-item :title="$t('message.panelList.settings')" link="/settings/" panel-close></f7-list-item>
+                <f7-list-item :title="$t('message.panelList.about')" link="/about/" panel-close></f7-list-item>
                 <f7-list-item :title="$t('message.panelList.logout')" link="/logout/" panel-close v-if="isLogged == true"></f7-list-item>
             </f7-list>
         </f7-page>
