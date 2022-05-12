@@ -12,7 +12,15 @@ let constants = {
                 'name': 'Italiano'
             }
         ]
+    },
+    "localstorage": {
+        "credentials": "credentials",
+        "user": 'user',
+        "careers": 'careers',
+        "selectedCareer": 'selectedCareer',
+        "selectedUniversity": 'selectedUniversity'
     }
+    
 }
 
 export default constants;

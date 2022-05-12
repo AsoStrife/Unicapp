@@ -2,9 +2,9 @@
     <f7-block class="mt-0 mb-0">
         <f7-row>
             <f7-col>
-                <f7-card title="Media Aritmetica" class="mt-0"><p>26.5</p></f7-card>
+                <f7-card :title="$t('message.ratings.mathAvg')" content="26.5" class="mt-0"></f7-card>
             </f7-col>
-            <f7-col><f7-card title="Media Ponderata" class="mt-0"><p>27.5</p></f7-card></f7-col>
+            <f7-col><f7-card :title="$t('message.ratings.weightedAvg')" content="27.5" class="mt-0"></f7-card></f7-col>
         </f7-row>
     </f7-block>
 </template>

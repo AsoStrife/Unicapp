@@ -1,6 +1,6 @@
 <template>
     <f7-card class="mt-0">
-        <f7-card-header :padding="false">Anagrafica</f7-card-header>
+        <f7-card-header :padding="false">{{$t('message.personalData.personalInfo')}}</f7-card-header>
         <f7-card-content :padding="false">
             <f7-list>    
                 <f7-list-item title="me@andreacorriga.com">

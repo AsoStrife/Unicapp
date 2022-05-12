@@ -1,8 +1,8 @@
 <template>
-    <f7-page name="home">
+    <f7-page name="Booklet">
         <Navbar />
 
-        <f7-block-title>Il tuo libretto</f7-block-title>
+        <f7-block-title>{{$t('message.booklet.title')}}</f7-block-title>
         <div class="list">
             <ul>
                 <li v-for="(item, key) in this.exams" :key="key">

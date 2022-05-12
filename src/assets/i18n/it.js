@@ -11,7 +11,7 @@ const it =  {
             passwordPlaceholder: 'La tua password',
             loginButton: 'Accedi',
             loginWrong: 'L\'autenticazione non è andata a buon fine.',
-            university: "Università",
+            university: "Seleziona l'Università",
             searchUniversity: "Cerca la tua Università"
         },
         panelList: {
@@ -29,6 +29,21 @@ const it =  {
         },
         general: {
             close: "Chiudi"
+        }, 
+        careers: {
+            title: "Seleziona la tua carriera", 
+            status: "Status carriera",
+            stuID: "Matricola"
+        },
+        personalData: {
+            personalInfo: "Anagrafica"
+        },
+        ratings: {
+            mathAvg: "Media Aritmetica", 
+            weightedAvg: "Media Ponderata"
+        },
+        booklet: {
+            title: "Il tuo libretto"
         }
     }
 }

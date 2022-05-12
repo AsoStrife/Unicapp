@@ -17,7 +17,7 @@
     </f7-panel>
 
     <!-- Your main view, should have "view-main" class -->
-    <f7-view main class="safe-areas" url="/"></f7-view>
+    <f7-view main class="safe-areas" url="/login/"></f7-view>
 
     </f7-app>
 </template>
@@ -28,23 +28,35 @@
     import { getDevice }  from 'framework7/lite-bundle';
     import capacitorApp from '../js/capacitor-app.js';
     import routes from '../js/routes.js';
-    import store from '../js/store';
 
     export default {
+        data() {
+            return {
+                isLogged: true
+            }
+        },
+        async mounted(){
+            /*
+            this.isLogged = await auth.isLogged()
+
+            f7.on('login', async() => {
+                this.isLogged = await auth.isLogged()
+            })
+
+            f7.on('logout', async() => {
+                this.isLogged = await auth.isLogged()
+            })
+            */
+        },
         setup() {
             const device = getDevice();
             // Framework7 Parameters
             const f7params = {
                 name: 'Unicapp', // App name
                 theme: 'auto', // Automatic theme detection
-
-
                 id: 'com.moapps.unicapp', // App bundle ID
-                // App store
-                store: store,
                 // App routes
                 routes: routes,
-
                 // Input settings
                 input: {
                     scrollIntoViewOnFocus: device.capacitor,

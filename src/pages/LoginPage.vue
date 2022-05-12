@@ -13,8 +13,8 @@
 
                     <f7-list-item :title="$t('message.login.university')" smart-select 
                         :smart-select-params="this.popupSettings">
-                        <select :name="$t('message.login.university')">
-                            <option v-for="(item, key) in this.universities" :key="key" :value="item.name">{{item.description}}</option>
+                        <select :name="selectedUniversity" v-model="selectedUniversity">
+                            <option v-for="(item, key) in this.universities" :key="key" :value="key">{{item.description}}</option>
                         </select>
                     </f7-list-item>
                 </f7-list>
@@ -58,57 +58,59 @@
 </template>
 
 <script>
-    import { f7 } from 'framework7-vue';
-    import Navbar from '../components/Navbar.vue';
-    import constants from '../js/constants';
-    import axios from 'axios';
-    import auth from '../js/auth';
-    import universities from '../js/universities';
+    import { f7 } from 'framework7-vue'
+    import Navbar from '../components/Navbar.vue'
+    import universities from '../js/universities'
+    import api from '../js/api'
+    import store from '../js/store'
 
     export default {
         name: 'Login',
         components: {
             Navbar
         },
+        setup(){
+        },
         data() {
             return {
-                constants: constants,
                 isLoading: false,
                 username: 'a.corriga1',
                 password: 'Unica2019',
+                selectedUniversity: 9, //-1,
                 popupSettings: {
                     openIn: 'popup', 
                     searchbar: true, 
                     searchbarPlaceholder: this.$t('message.login.searchUniversity'), 
                     popupCloseLinkText: this.$t('message.general.close')
                 },
-                universities: universities.filter(x => x.swagger_url != '')
+                universities: universities, //.filter(x => x.swagger_url != ''),
+                isLogged: store.getCredentials == null ? false : true
             }
         },
-        async mounted(){
-            if(! await auth.isLogged())
-                f7.views.main.router.navigate('/')
+        mounted(){
+
         },
         methods: {
-            login() {
+            async login() {
                 self = this
 
                 this.isLoading = true;
+                console.log(this.username)
+                console.log(this.password)
+                console.log(this.selectedUniversity)
+
+                store.setSelectedUniversity(this.selectedUniversity)
+                store.setCredentials(this.username, this.password)
                 
-                axios.post(this.constants.backend.url + this.constants.backend.endpoints.login, {
-                    "identifier": this.email,
-	                "password": this.password
-                })
-                .then(async function (response) {
-                    
+                try{
+                    let response = await api.login(this.username, this.password)
+                    console.log(response)
 
                     self.isLoading = false
-                    f7.views.main.router.navigate('/home/')
-                    f7.emit('login')
-                })
-                .catch(function (error) {
-                    console.error(error)
-
+                    //f7.views.main.router.navigate('/home/')
+                    //f7.emit('login')
+                }
+                catch(e){
                     self.isLoading = false
                     
                     f7.toast.create({
@@ -117,7 +119,10 @@
                         destroyOnClose: true,
                         position: 'bottom',
                     }).open()
-                })
+
+                    console.error(e)
+                    store.clearAll()
+                }
                 
             },
             isEmpty(str) {
