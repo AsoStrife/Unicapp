@@ -1,7 +1,7 @@
 import store from './store'
 import axios from 'axios'
 import universities from './universities'
-
+import $ from "jquery";
 
 
 
@@ -30,7 +30,7 @@ api.getUrl = (api) => {
  * @param {*} passwrod 
  * @returns Login object from Esse3 Api
  */
-api.login = (username, passwrod) => {
+api.login = (username, password) => {
     /*return new Promise( (resolve, reject) => {
         axios.get(api.getUrl("login"), api.auth())
         .then(async function (response) {
@@ -41,21 +41,45 @@ api.login = (username, passwrod) => {
             reject(error)
         })
     })*/
+    //https://a.corriga1:Unica2019@unica.esse3.cineca.it/e3rest/api/login
+    /*
+    fetch('https://unica.esse3.cineca.it/e3rest/api/login', 
+    {
+        method: 'GET',
+        headers: { 
+            //'Content-Type': 'application/json',
+            //'Access-Control-Allow-Credentials': true,
+            //'Access-Control-Allow-Origin': true,
+            //"Authorization": "Basic YS5jb3JyaWdhMTpVbmljYTIwMTk="
+        },
+        //mode: 'no-corscors', 
+        credentials: 'omit',
+        auth: {
+            username: 'a.corriga1',
+            password: 'Unica2019'
+        }
+        //.then(response => response.json())
+    .then(data => console.log(data));
+    }
+    })*/
 
-    var url = "https://unica.esse3.cineca.it/e3rest/api/login";
+    $.ajax({
+        type: 'GET',
+        url: 'https://unica.esse3.cineca.it/e3rest/api/login',
+//        url: 'https://unica.esse3.cineca.it/e3rest/api/libretto-service-v2/libretti/377426/righe',
+        dataType: 'json',
+        //whatever you need
+        beforeSend: function (xhr) {
+            xhr.setRequestHeader('Authorization', 'Basic YS5jb3JyaWdhMTpVbmljYTIwMTk=');
+        },
+        success: function (response) {
+            console.log(response)
+        },
+        error: function (e) {
+            console.log(e)
+        }
+    });
 
-    var xhr = new XMLHttpRequest();
-    xhr.open("GET", url);
-
-    xhr.setRequestHeader("Authorization", "Basic YS5jb3JyaWdhMTpVbmljYTIwMTk=");
-
-    xhr.onreadystatechange = function () {
-    if (xhr.readyState === 4) {
-        console.log(xhr.status);
-        console.log(xhr.responseText);
-    }};
-
-    xhr.send();
 }
 
 /**
