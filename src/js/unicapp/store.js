@@ -1,4 +1,5 @@
 import constants from "./constants"
+import universities from "./universities"
 
 const store = {}
 
@@ -17,12 +18,8 @@ store.getCareers = () => {
     return localStorage.getItem(constants.localstorage.careers) !== null ? JSON.parse(localStorage.getItem(constants.localstorage.careers)) : null
 }
 
-store.getCareer = () => {
-    return state.selectedCareer !== null ? state.careers[state.selectedCareer] : null
-}
-
 store.getSelectedCareer = () => {
-    return localStorage.getItem(constants.localstorage.selectedCareer) !== null ? localStorage.getItem(constants.localstorage.selectedCareer) : null
+    return localStorage.getItem(constants.localstorage.selectedCareer) !== null ?  JSON.parse(localStorage.getItem(constants.localstorage.selectedCareer)) : null
 }
 
 store.getSelectedUniversity = () => {
@@ -44,18 +41,18 @@ store.setUser = (user) => {
     localStorage.setItem(constants.localstorage.user, JSON.stringify(user))
 }
 
+store.setSelectedCareer = (selectedCareer) => {
+    localStorage.setItem(constants.localstorage.selectedCareer, JSON.stringify(selectedCareer))
+}
+
+store.setSelectedUniversity = (selectedUniversity = 0) => {
+    localStorage.setItem(constants.localstorage.selectedUniversity, JSON.stringify(universities[selectedUniversity]))
+}
+
 store.setCareers = (careers) => {
     localStorage.setItem(constants.localstorage.careers, JSON.stringify(careers))
 }
 
-store.setSelectedCareer = (selectedCareer) => {
-    localStorage.setItem(constants.localstorage.selectedCareer, selectedCareer)
-}
-
-store.setSelectedUniversity = (selectedUniversity) => {
-    localStorage.setItem(constants.localstorage.selectedUniversity, JSON.stringify(selectedUniversity))
-}
-    
 //
 // Cleaner
 // 

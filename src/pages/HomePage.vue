@@ -2,14 +2,9 @@
     <f7-page name="home">
         <Navbar />
 
-        <NameProfilePic />
+        <NameProfilePic :propsFirstName="this.firstName" :propsLastName="this.lastName" />
 
         <Ratings />
-
-        <f7-block class="mt-0 mb-0">
-            <Alert text="La situazione tasse è regolare" bg="bg-success" md="done" ios="checkmark_alt"/>
-            <Alert text="Ci sono tasse da pagare" bg="bg-warning" md="warning" ios="xmark"/>
-        </f7-block>
 
         <PersonalData />
 
@@ -19,22 +14,45 @@
 <style></style>
 
 <script>
-    import { f7ready, f7 } from 'framework7-vue';
-    import Navbar from '../components/Navbar.vue';
-    import Alert from '../components/Alert.vue';
-    import Ratings from '../components/User/Ratings.vue';
-    import NameProfilePic from '../components/User/NameProfilePic.vue';
-    import PersonalData from '../components/User/PersonalData.vue';
+    import { f7ready, f7 } from 'framework7-vue'
+    import Navbar from '../components/Navbar.vue'
+    import Alert from '../components/Alert.vue'
+    import Ratings from '../components/User/Ratings.vue'
+    import NameProfilePic from '../components/User/NameProfilePic.vue'
+    import PersonalData from '../components/User/PersonalData.vue'
+    import api from '../js/unicapp/api'
 
     export default {
         name: "Home",
         data() {
-            return {};
+            return {
+                firstName: null,
+                lastName: null,
+                photo: "",
+                bookletVotesAvg: {}
+            };
         },
-        methods: {},
+        methods: {
+
+        },
         mounted() {
-            f7ready(() => {
-            });
+            f7ready( async() => {
+                api.people().then(response => {
+                    console.log(response)
+                    this.firstName = response.nome
+                    this.lastName = response.cognome
+                    console.log(this.firstName)
+                    console.log(this.lastName)
+                    //$emit('CHANGEVALUES')
+
+                    f7.on('ssss', () => {
+                        console.log("cambiati")
+                    })
+                })
+                //this.photo = await api.photo()
+                //this.bookletVotesAvg = await api.bookletVotesAvg()
+                //console.log(this.person)
+            })
         },
         components: { 
             Navbar,

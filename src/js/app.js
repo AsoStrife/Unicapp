@@ -2,7 +2,7 @@
 import { createApp } from 'vue';
 import { createI18n } from 'vue-i18n';
 import i18n from './i18n';
-import constants from './constants'; 
+import constants from './unicapp/constants'; 
 
 // Import Framework7
 import Framework7 from 'framework7/lite-bundle';

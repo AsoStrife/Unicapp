@@ -60,9 +60,10 @@
 <script>
     import { f7 } from 'framework7-vue'
     import Navbar from '../components/Navbar.vue'
-    import universities from '../js/universities'
-    import api from '../js/api'
-    import store from '../js/store'
+    import universities from '../js/unicapp/universities'
+    import api from '../js/unicapp/api'
+    import store from '../js/unicapp/store'
+    import utils from '../js/unicapp/utils'
 
     export default {
         name: 'Login',
@@ -76,7 +77,7 @@
                 isLoading: false,
                 username: 'a.corriga1',
                 password: 'Unica2019',
-                selectedUniversity: 9, //-1,
+                selectedUniversity: 6, //-1,
                 popupSettings: {
                     openIn: 'popup', 
                     searchbar: true, 
@@ -95,27 +96,37 @@
                 self = this
 
                 this.isLoading = true;
-                console.log(this.username)
-                console.log(this.password)
-                console.log(this.selectedUniversity)
 
                 store.setSelectedUniversity(this.selectedUniversity)
                 store.setCredentials(this.username, this.password)
                 
                 try{
                     let response = await api.login(this.username, this.password)
-                    console.log(response)
 
+                    let user = {
+                        id : response.data.user.id, 
+                        idAb: response.data.user.idAb,
+                        persId: response.data.user.persId,
+                        codFis: response.data.user.codFis,
+                        firstName: utils.toProperCase(response.data.user.firstName),
+                        lastName: utils.toProperCase(response.data.user.lastName), 
+                        
+                    }
+
+                    store.setUser(user)
+                    store.setCareers(response.user.trattiCarriera)
+                    
                     self.isLoading = false
-                    //f7.views.main.router.navigate('/home/')
-                    //f7.emit('login')
+
+                    f7.views.main.router.navigate('/careers/')
+                    f7.emit('login')
                 }
                 catch(e){
                     self.isLoading = false
                     
                     f7.toast.create({
                         text: self.$t('message.login.loginWrong'),
-                        closeTimeout: 2000,
+                        closeTimeout: 3000,
                         destroyOnClose: true,
                         position: 'bottom',
                     }).open()

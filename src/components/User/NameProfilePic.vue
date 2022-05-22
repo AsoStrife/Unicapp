@@ -5,8 +5,15 @@
         <f7-card-content>
             <img src="https://andreacorriga.com/img/profile/andrea-corriga-asostrife-profile-image.png" class="img-circle profile-img" />
             
-            <h1>Andrea Corriga AsoStrife</h1>
-            <h2>50/60/12345</h2>
+            <h1> 
+                <span :class="this.firstName == this.defaultValues.firstName ? this.skeleton : ''">
+                    {{this.firstName}} 
+                </span> 
+                <span :class="this.lastName == this.defaultValues.lastName ? this.skeleton : ''">{{this.lastName}}</span>
+            </h1>
+            <h2><span :class="id == this.defaultValues.id ? this.skeleton : ''">{{id}}</span></h2>
+
+            {{this.propsFirstName}}
         </f7-card-content>
     </f7-card>
     
@@ -50,24 +57,57 @@
         background-size: cover;
         background-position: center;
     }
+
+    img {
+        z-index: 1000 !important;
+    }
 </style>
 <script>
     import { f7ready, f7 } from 'framework7-vue';
+    import constants from '../../js/unicapp/constants'
+
     export default {
-        name: "Name", 
+        name: "NameProfilePic", 
         props: {
+            propsFirstName: {
+                default: null
+            },
+            propsLastName: {
+                default: null
+            }
         },
         data() {
             return {
+                skeleton: "", //"skeleton-text skeleton-effect-wave",
+                profilePic: constants.defaultValues.profilePic,
+                firstName: this.propsfirstName ? this.propsfirstName : constants.defaultValues.firstName, 
+                lastName: constants.defaultValues.lastName, 
+                id: constants.defaultValues.id,
+                defaultValues: constants.defaultValues
             }
         },
         methods: {
             
+
         },
         mounted() {
             f7ready(() => {
-                
+                console.log(this.defaultValues.firstName)
+                console.log(this.firstName)
+                console.log(this.firstName == this.defaultValues.firstName)
+                console.log(this.skeleton)
+
+                f7.on('CHANGEVALUES', () => {
+                    console.log("cambiati")
+                })
+
+                this.$emit('ssss')
             })
+
+            
+        },
+        setup() {
+
         }
     }
 </script>

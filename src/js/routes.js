@@ -11,18 +11,24 @@ var routes = [
         path: '/',
         component: HomePage,
     },
+
     {
         path: '/login/',
         component: LoginPage,
     },
     {
-        path: '/booklet/',
-        component: BookletPage,
-    },
-    {
         path: '/careers/',
         component: CareersPage,
     },
+    {
+        path: '/home/', 
+        component: HomePage
+    },
+    {
+        path: '/booklet/',
+        component: BookletPage,
+    },
+    
     {
         path: '/taxes/',
         component: TaxesPage
