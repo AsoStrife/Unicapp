@@ -21,7 +21,8 @@ const it =  {
             taxes: 'Tasse',
             settings: 'Impostazioni', 
             about: 'Informazioni', 
-            logout: 'Logout'
+            logout: 'Logout',
+            careers: "Seleziona carriera"
         },
         settings: {
             title: 'Impostazioni', 
@@ -43,7 +44,12 @@ const it =  {
             weightedAvg: "Media Ponderata"
         },
         booklet: {
-            title: "Il tuo libretto"
+            title: "Il tuo libretto",
+            cfu: "CFU"
+        },
+        taxes: {
+            title: "Le tue tasse",
+            euro: "€"
         }
     }
 }

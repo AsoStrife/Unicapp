@@ -28,15 +28,33 @@ let constants = {
             "careers": "%s1" + "anagrafica-service-v2/carriere/%s2", // stuId
             "people": "%s1" + "anagrafica-service-v2/persone",
             "photo": "%s1" + "anagrafica-service-v2/persone/%s2/foto", // persId
-            "booklet": "%s1" + "libretto-service-v2/libretti/%s2/righe",
-            "bookletVotesAvg": "%s1" + "libretto-service-v2/libretti/%s2/medie" //matId
+            "booklet": "%s1" + "libretto-service-v2/libretti/%s2/righe", //mathId
+            "bookletVotesAvg": "%s1" + "libretto-service-v2/libretti/%s2/medie", //matId
+            "taxes": "%s1" + "tasse-service-v1/addebiti-studente?stuId=%s2" //stuId
         }
     },
     "defaultValues": {
         "firstName": "Mario", 
         "lastName": "Rossi", 
         "id": "00/00/0000", 
-        "profilePic": ""
+        "profilePic": "./default/defaultProfilePic.png",
+        "mathAvg": "0", 
+        "weightedAvg": "0",
+        "email": "default[at]studenti.unica.it", 
+        "mobile": "333 555 777",
+        "address": "Via Roma 50, Cagliari"
+    },
+    "booklet": {
+        "laudeSymbol": "L",
+    },
+    "emoji": {
+        "greenCirle": "&#128994;", 
+        "redCirle": "&#128308;",
+        "orangeCirle": "&#128992;"
+    },
+    "taxes": {
+        "greenLight": "VERDE", 
+        
     }
     
 }

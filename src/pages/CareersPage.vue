@@ -39,8 +39,9 @@
         methods: {
             selectCareer(career) {
                 store.setSelectedCareer(career)
+                
                 f7.views.main.router.navigate('/home/')
-                    f7.emit('selectedCareer')
+                f7.emit('selectedCareer')
             }
         },
         props: {

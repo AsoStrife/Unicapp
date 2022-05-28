@@ -2,7 +2,7 @@
     <f7-page name="home">
         <Navbar />
 
-        <NameProfilePic :propsFirstName="this.firstName" :propsLastName="this.lastName" />
+        <NameProfilePic />
 
         <Ratings />
 
@@ -38,20 +38,16 @@
         mounted() {
             f7ready( async() => {
                 api.people().then(response => {
-                    console.log(response)
-                    this.firstName = response.nome
-                    this.lastName = response.cognome
-                    console.log(this.firstName)
-                    console.log(this.lastName)
-                    //$emit('CHANGEVALUES')
-
-                    f7.on('ssss', () => {
-                        console.log("cambiati")
-                    })
+                    f7.emit('apiPeopleDone', response)
+                   
                 })
-                //this.photo = await api.photo()
-                //this.bookletVotesAvg = await api.bookletVotesAvg()
-                //console.log(this.person)
+                api.photo().then(response => {
+                    f7.emit('apiPhotoDone', response)
+                })
+
+                api.bookletVotesAvg().then(response => {
+                    f7.emit('apiBookletVoteAvgDone', response)
+                })
             })
         },
         components: { 

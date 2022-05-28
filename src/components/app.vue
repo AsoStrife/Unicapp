@@ -4,49 +4,66 @@
     <f7-panel id="panel-nested" theme-dark left cover container-el="#panel-page">
         <f7-page>
             <f7-list>
-                <f7-list-item :title="$t('message.panelList.home')" link="/" panel-close></f7-list-item>
-                <f7-list-item :title="$t('message.panelList.login')" link="/login/" panel-close></f7-list-item>
-                <f7-list-item :title="$t('message.panelList.booklet')" link="/booklet/" panel-close></f7-list-item>
-                <f7-list-item :title="$t('message.panelList.taxes')" link="/taxes/" panel-close></f7-list-item>
+                <f7-list-item :title="$t('message.panelList.login')" link="/login/" panel-close v-if="this.showLogin"></f7-list-item>
+
+                <f7-list-item :title="$t('message.panelList.home')" link="/" panel-close v-if="this.showLoggedMenu"></f7-list-item>
+                <f7-list-item :title="$t('message.panelList.booklet')" link="/booklet/" panel-close v-if="this.showLoggedMenu"></f7-list-item>
+                <f7-list-item :title="$t('message.panelList.taxes')" link="/taxes/" panel-close v-if="this.showLoggedMenu"></f7-list-item>
                 
-                <f7-list-item :title="$t('message.panelList.settings')" link="/settings/" panel-close></f7-list-item>
+                <!--<f7-list-item :title="$t('message.panelList.settings')" link="/settings/" panel-close></f7-list-item>-->
                 <f7-list-item :title="$t('message.panelList.about')" link="/about/" panel-close></f7-list-item>
-                <f7-list-item :title="$t('message.panelList.logout')" link="/logout/" panel-close v-if="isLogged == true"></f7-list-item>
+
+                <f7-list-item :title="$t('message.panelList.careers')" link="/careers/" panel-close v-if="this.showCareers"></f7-list-item>
+                <f7-list-item :title="$t('message.panelList.logout')" link="/logout/" panel-close v-if="this.showLoggedMenu"></f7-list-item>
             </f7-list>
         </f7-page>
     </f7-panel>
 
     <!-- Your main view, should have "view-main" class -->
-    <f7-view main class="safe-areas" url="/home/"></f7-view>
+    <f7-view main class="safe-areas" url="/"></f7-view>
 
     </f7-app>
 </template>
 <script>
-    import { ref, onMounted } from 'vue';
-    import { f7, f7ready } from 'framework7-vue';
+    import { ref, onMounted } from 'vue'
+    import { f7, f7ready } from 'framework7-vue'
 
-    import { getDevice }  from 'framework7/lite-bundle';
-    import capacitorApp from '../js/capacitor-app.js';
-    import routes from '../js/routes.js';
+    import { getDevice }  from 'framework7/lite-bundle'
+    import capacitorApp from '../js/capacitor-app.js'
+    import routes from '../js/routes.js'
+
+    import store from '../js/unicapp/store'
 
     export default {
         data() {
             return {
-                isLogged: true
+                showLogin: (store.getCredentials() == null && store.getSelectedCareer() == null),
+                showCareers: (store.getCredentials() != null),
+                showLoggedMenu: (store.getCredentials() != null && store.getSelectedCareer() != null)
             }
         },
         async mounted(){
-            /*
-            this.isLogged = await auth.isLogged()
+            f7ready(() => {
+                f7.on('login', (data) => {
+                    this.setMenu()
+                })
 
-            f7.on('login', async() => {
-                this.isLogged = await auth.isLogged()
-            })
+                f7.on('selectedCareer', (data) => {
+                    this.setMenu()
+                })
 
-            f7.on('logout', async() => {
-                this.isLogged = await auth.isLogged()
+                f7.on('logout', (data) => {
+                    this.setMenu()
+                })
+                
             })
-            */
+        },
+        methods: {
+            setMenu() {
+                this.showLogin =  (store.getCredentials() == null && store.getSelectedCareer() == null),
+                this.showCareers = (store.getCredentials() != null),
+                this.showLoggedMenu =  (store.getCredentials() != null && store.getSelectedCareer() != null)
+            }
         },
         setup() {
             const device = getDevice();

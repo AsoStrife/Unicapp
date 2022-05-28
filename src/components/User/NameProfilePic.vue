@@ -3,17 +3,24 @@
     <f7-card>
         <f7-card-header></f7-card-header>
         <f7-card-content>
-            <img src="https://andreacorriga.com/img/profile/andrea-corriga-asostrife-profile-image.png" class="img-circle profile-img" />
-            
-            <h1> 
-                <span :class="this.firstName == this.defaultValues.firstName ? this.skeleton : ''">
-                    {{this.firstName}} 
-                </span> 
-                <span :class="this.lastName == this.defaultValues.lastName ? this.skeleton : ''">{{this.lastName}}</span>
-            </h1>
-            <h2><span :class="id == this.defaultValues.id ? this.skeleton : ''">{{id}}</span></h2>
+            <div :class="this.skeletonProfilePic">
+                <img :src="this.profilePic" class="img-circle profile-img" />
+            </div>
 
-            {{this.propsFirstName}}
+            <h1> 
+                <span :class="this.skeletonName" class="mr-1">
+                    {{this.firstName}}
+                </span>
+                
+                <span :class="this.skeletonName">
+                    {{this.lastName}}
+                </span>
+            </h1>
+            <h2>
+                <span :class="this.skeletonId">
+                    {{id}}
+                </span>
+            </h2>
         </f7-card-content>
     </f7-card>
     
@@ -65,25 +72,23 @@
 <script>
     import { f7ready, f7 } from 'framework7-vue';
     import constants from '../../js/unicapp/constants'
+    import utils from '../../js/unicapp/utils'
+    import store from '../../js/unicapp/store'
 
     export default {
-        name: "NameProfilePic", 
-        props: {
-            propsFirstName: {
-                default: null
-            },
-            propsLastName: {
-                default: null
-            }
-        },
+        name: "NameProfilePic",
         data() {
             return {
-                skeleton: "", //"skeleton-text skeleton-effect-wave",
+                skeletonName: "skeleton-text skeleton-effect-wave",
+                skeletonId: "skeleton-text skeleton-effect-wave",
+                skeletonProfilePic: "skeleton-text skeleton-effect-wave",
+
                 profilePic: constants.defaultValues.profilePic,
-                firstName: this.propsfirstName ? this.propsfirstName : constants.defaultValues.firstName, 
+                firstName: constants.defaultValues.firstName, 
                 lastName: constants.defaultValues.lastName, 
                 id: constants.defaultValues.id,
-                defaultValues: constants.defaultValues
+                defaultValues: constants.defaultValues,
+                selectedCareer: store.getSelectedCareer()
             }
         },
         methods: {
@@ -92,18 +97,38 @@
         },
         mounted() {
             f7ready(() => {
-                console.log(this.defaultValues.firstName)
-                console.log(this.firstName)
-                console.log(this.firstName == this.defaultValues.firstName)
-                console.log(this.skeleton)
-
-                f7.on('CHANGEVALUES', () => {
-                    console.log("cambiati")
+                f7.on('apiPeopleDone', (data) => {
+                    this.firstName = utils.toProperCase(data?.nome)
+                    this.lastName = utils.toProperCase(data?.cognome)
                 })
 
-                this.$emit('ssss')
+                f7.on('apiPhotoDone', (data) => {
+                    this.profilePic = data
+                })
+                
+                this.id = this.selectedCareer?.matricola
             })
 
+
+            this.$watch(
+                (vm) => [vm.firstName, vm.lastName, vm.id, vm.profilePic],
+                (val) => {
+                    if(this.firstName != this.defaultValues.firstName && this.lastName != this.defaultValues.lastName)
+                        this.skeletonName = ""
+
+                    if(this.id != this.defaultValues.id)
+                        this.skeletonId = ""
+
+                    if(this.profilePic != this.defaultValues.profilePic)
+                        this.skeletonProfilePic = ""
+                },
+                {
+                    immediate: true,
+                    deep: true,
+                }
+            )
+
+        
             
         },
         setup() {

@@ -68,7 +68,6 @@ api.careers = async() => {
  * @returns People object from Esse3 API
 */
 api.people = async() => {
-    
     return new Promise( (resolve, reject) => {
         axios.get(middlewareUrl, api.headers(api.getUrl("people")))
         .then(async function (response) {
@@ -100,11 +99,15 @@ api.photo = async() => {
     })
 }
 
+/**
+ * 
+ * @returns Booklet Averages votes array
+ */
 api.bookletVotesAvg = async() => {
     const selectedCareer = store.getSelectedCareer()
   
     return new Promise( (resolve, reject) => {
-        axios.get(middlewareUrl, api.headers(api.getUrl("bookletVotesAvg", selectedCareer.matId)))
+        axios.get(middlewareUrl, api.headers(api.getUrl("bookletVotesAvg", selectedCareer?.matId)))
         .then(async function (response) {
             resolve(response.data)
         })
@@ -115,7 +118,39 @@ api.bookletVotesAvg = async() => {
     })
 }
 
+/**
+ * 
+ * @returns List of exams in user booklet
+ */
+api.booklet = async() => {
+    const selectedCareer = store.getSelectedCareer()
 
+    return new Promise( (resolve, reject) => {
+        axios.get(middlewareUrl, api.headers(api.getUrl("booklet", selectedCareer?.matId)))
+        .then(async function (response) {
+            resolve(response.data)
+        })
+        .catch(function (error) {
+            console.error(error)
+            reject(error)
+        })
+    })
+}
+
+api.taxes = async() => {
+    const selectedCareer = store.getSelectedCareer()
+
+    return new Promise( (resolve, reject) => {
+        axios.get(middlewareUrl, api.headers(api.getUrl("taxes", selectedCareer?.stuId)))
+        .then(async function (response) {
+            resolve(response.data)
+        })
+        .catch(function (error) {
+            console.error(error)
+            reject(error)
+        })
+    })
+}
 
 /**
  * 

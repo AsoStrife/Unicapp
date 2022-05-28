@@ -75,8 +75,8 @@
         data() {
             return {
                 isLoading: false,
-                username: 'a.corriga1',
-                password: 'Unica2019',
+                username: '',
+                password: '',
                 selectedUniversity: 6, //-1,
                 popupSettings: {
                     openIn: 'popup', 
@@ -102,17 +102,17 @@
                 
                 try{
                     let response = await api.login(this.username, this.password)
-
+        
                     let user = {
-                        id : response.data.user.id, 
-                        idAb: response.data.user.idAb,
-                        persId: response.data.user.persId,
-                        codFis: response.data.user.codFis,
-                        firstName: utils.toProperCase(response.data.user.firstName),
-                        lastName: utils.toProperCase(response.data.user.lastName), 
+                        id : response.user.id, 
+                        idAb: response.user.idAb,
+                        persId: response.user.persId,
+                        codFis: response.user.codFis,
+                        firstName: utils.toProperCase(response.user.firstName),
+                        lastName: utils.toProperCase(response.user.lastName), 
                         
                     }
-
+                    
                     store.setUser(user)
                     store.setCareers(response.user.trattiCarriera)
                     
