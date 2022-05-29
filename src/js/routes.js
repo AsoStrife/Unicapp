@@ -1,12 +1,18 @@
 import { f7 } from 'framework7-vue'
 
-import HomePage from '../pages/HomePage.vue';
-import LoginPage from '../pages/LoginPage.vue';
-import BookletPage from '../pages/BookletPage.vue';
-import CareersPage from '../pages/CareersPage.vue';
-import TaxesPage from '../pages/TaxesPage.vue';
-import InfoPage from '../pages/InfoPage.vue';
-import SettingsPage from '../pages/SettingsPage.vue';
+import HomePage from '../pages/HomePage.vue'
+
+import LoginPage from '../pages/LoginPage.vue'
+import CareersPage from '../pages/CareersPage.vue'
+
+import BookletPage from '../pages/BookletPage.vue'
+import BookletExamPage from '../pages/BookletExamPage.vue'
+
+import TaxesPage from '../pages/TaxesPage.vue'
+import TaxPage from '../pages/TaxPage.vue'
+
+import InfoPage from '../pages/InfoPage.vue'
+import SettingsPage from '../pages/SettingsPage.vue'
 
 import store from './unicapp/store'
 
@@ -49,12 +55,23 @@ var routes = [
         path: '/booklet/',
         component: BookletPage,
     },
+    {
+        name: 'BookletExam',
+        path: '/booklet_exam/',
+        component: BookletExamPage
+    },
     
     {
         name: 'Taxes',
         path: '/taxes/',
         component: TaxesPage
     },
+    {
+        name: 'Taxes',
+        path: '/tax/',
+        component: TaxPage
+    },
+
     {
         name: 'Info',
         path: '/info/',

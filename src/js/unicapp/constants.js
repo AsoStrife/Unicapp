@@ -42,7 +42,9 @@ let constants = {
         "weightedAvg": "0",
         "email": "default[at]studenti.unica.it", 
         "mobile": "333 555 777",
-        "address": "Via Roma 50, Cagliari"
+        "address": "Via Roma 50, Cagliari",
+        "titleList": "Lorem ipsum dolor sit amet, consectetur adipiscing.",
+        "titleAfter": "12 CFU"
     },
     "booklet": {
         "laudeSymbol": "L",
@@ -54,6 +56,7 @@ let constants = {
     },
     "taxes": {
         "greenLight": "VERDE", 
+        "redLight": "ROSSO", 
         
     }
     

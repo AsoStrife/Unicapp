@@ -4,12 +4,18 @@
         
         <f7-block-title>{{$t('message.taxes.title')}}</f7-block-title>
 
-        <SkeletonListCustom v-if="skeleton" />
+        <f7-list>
+            <f7-list-item link="#" title="Ivan Petrov" after="CEO" v-for="(item, key) in this.taxes" :key="key">
+                <template #media>
+                    <f7-icon icon="demo-list-icon"></f7-icon>
+                </template>
+            </f7-list-item>
+        </f7-list>
 
-        <div class="list">
+        <!--<div class="list skeleton-text skeleton-effect-wave">
             <ul>
                 <li v-for="(item, key) in this.taxes" :key="key">
-                    <a @click="this.f7router.navigate('/tax/', {props: {exam: item}})" class="item-link item-content">
+                    <a href="#" class="item-link item-content">
                         <div class="item-media">
                             <h3 class="text-success" v-html="this.getStatus(item)"></h3>
                         </div>
@@ -20,7 +26,7 @@
                     </a>
                 </li>
             </ul>
-        </div>
+        </div>-->
 
     </f7-page>
 </template>
@@ -30,9 +36,8 @@
 </style>
 
 <script>
-    import { f7ready, f7 } from 'framework7-vue'
-    import Navbar from '../components/Navbar.vue'
-    import SkeletonListCustom from '../components/SkeletonListCustom.vue'
+    import { f7ready, f7 } from 'framework7-vue';
+    import Navbar from '../components/Navbar.vue';
     import api from '../js/unicapp/api'
     import utils from '../js/unicapp/utils'
     import constants from '../js/unicapp/constants'
@@ -42,7 +47,7 @@
         data() {
             return {
                 taxes: [],
-                skeleton: true,
+                skeleton: "skeleton-text skeleton-effect-wave",
             };
         },
         methods: {
@@ -59,13 +64,11 @@
             f7ready(() => {
                 api.taxes().then(response => {
                     this.taxes = response
-                    this.skeleton = false
                 })
             });
         },
         components: { 
-            Navbar,
-            SkeletonListCustom
+            Navbar
         }
     }
 </script>

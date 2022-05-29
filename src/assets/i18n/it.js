@@ -47,6 +47,9 @@ const it =  {
             title: "Il tuo libretto",
             cfu: "CFU"
         },
+        bookletExam: {
+            title: "Esame"
+        },
         taxes: {
             title: "Le tue tasse",
             euro: "€"

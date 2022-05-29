@@ -58,7 +58,6 @@
         mounted() {
             f7ready(() => {
                 f7.on('apiPeopleDone', (data) => {
-                    console.log(data)
                     this.email = data?.email != "" ? data?.email : null
                     this.universityEmail = data?.emailAte != "" ? data?.emailAte : null
                     this.mobile = data?.cellulare != "" ? data?.cellulare : null

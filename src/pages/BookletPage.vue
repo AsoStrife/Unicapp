@@ -3,10 +3,13 @@
         <Navbar />
 
         <f7-block-title>{{$t('message.booklet.title')}}</f7-block-title>
+        
+        <SkeletonListCustom v-if="skeleton" />
+        
         <div class="list">
             <ul>
                 <li v-for="(item, key) in this.exams" :key="key">
-                    <a href="#" class="item-link item-content">
+                    <a @click="this.f7router.navigate('/booklet_exam/', {props: {exam: item}})" class="item-link item-content">
                         <div class="item-media">
                             <h3 class="text-success" v-html="this.getGrade(item)"></h3>
                         </div>
@@ -33,15 +36,20 @@
     import { f7ready, f7 } from 'framework7-vue'
     import Navbar from '../components/Navbar.vue'
     import Alert from '../components/Alert.vue'
+    import SkeletonListCustom from '../components/SkeletonListCustom.vue'
     import api from '../js/unicapp/api'
     import utils from '../js/unicapp/utils'
     import constants from '../js/unicapp/constants'
 
     export default {
         name: "Booklet",
+        props: {
+            f7router: Object,
+        },
         data() {
             return {
-                exams: []
+                exams: [],
+                skeleton: true,
             };
         },
         methods: {
@@ -60,14 +68,15 @@
         mounted() {
             f7ready(() => {
                 api.booklet().then(response => {
-                    console.log(response)
                     this.exams = response
+                    this.skeleton = ''
                 })
             });
         },
         components: { 
             Navbar,
-            Alert
+            Alert,
+            SkeletonListCustom
         }
     }
 </script>
