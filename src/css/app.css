@@ -65,32 +65,19 @@
 .title-text-color{
     color: var(--f7-block-title-text-color);
 }
-.bg-success{
-    background-color: #229941;
-}
 
-.bg-primary{
-    background-color: #0f4783;
-}
-
-.bg-info{
-    background-color: #126396;
-}
-
-.bg-danger {
-    background-color: #b44141 !important;
-}
-
-.bg-warning {
-    background-color: #d29935 !important;
-}
-
+/**
+* Imgs 
+*/
 .img-circle {
     -webkit-border-radius: 150px;
     -moz-border-radius: 150px;
     border-radius: 150px;
 }
 
+/**
+* Font colors
+*/
 .text-success{
     color: #229941;
 }
@@ -108,5 +95,28 @@
 }
 
 .text-warning {
+    color: #d29935 !important;
+}
+
+/**
+* Backgrounds
+*/
+.bg-success{
+    color: #229941;
+}
+
+.bg-primary{
+    color: #0f4783;
+}
+
+.bg-info{
+    color: #126396;
+}
+
+.bg-danger {
+    color: #b44141 !important;
+}
+
+.bg-warning {
     color: #d29935 !important;
 }

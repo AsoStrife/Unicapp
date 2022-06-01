@@ -30,6 +30,7 @@ let constants = {
             "photo": "%s1" + "anagrafica-service-v2/persone/%s2/foto", // persId
             "booklet": "%s1" + "libretto-service-v2/libretti/%s2/righe", //mathId
             "bookletVotesAvg": "%s1" + "libretto-service-v2/libretti/%s2/medie", //matId
+            "bookletStats": "%s1" + "libretto-service-v2/libretti/%s2/stats", //matId
             "taxes": "%s1" + "tasse-service-v1/addebiti-studente?stuId=%s2" //stuId
         }
     },
@@ -40,6 +41,7 @@ let constants = {
         "profilePic": "./default/defaultProfilePic.png",
         "mathAvg": "0", 
         "weightedAvg": "0",
+        "totalCfu": "0", 
         "email": "default[at]studenti.unica.it", 
         "mobile": "333 555 777",
         "address": "Via Roma 50, Cagliari",

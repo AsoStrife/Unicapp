@@ -11,6 +11,7 @@ import BookletExamPage from '../pages/BookletExamPage.vue'
 import TaxesPage from '../pages/TaxesPage.vue'
 import TaxPage from '../pages/TaxPage.vue'
 
+import AverageCalculatorPage from '../pages/AverageCalculatorPage.vue'
 import InfoPage from '../pages/InfoPage.vue'
 import SettingsPage from '../pages/SettingsPage.vue'
 
@@ -70,6 +71,12 @@ var routes = [
         name: 'Taxes',
         path: '/tax/',
         component: TaxPage
+    },
+
+    {
+        name: 'AverageCalculator',
+        path: '/average_calculator/',
+        component: AverageCalculatorPage
     },
 
     {

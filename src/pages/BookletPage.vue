@@ -5,7 +5,7 @@
         <f7-block-title>{{$t('message.booklet.title')}}</f7-block-title>
         
         <SkeletonListCustom v-if="skeleton" />
-        
+
         <div class="list">
             <ul>
                 <li v-for="(item, key) in this.exams" :key="key">
@@ -35,7 +35,6 @@
 <script>
     import { f7ready, f7 } from 'framework7-vue'
     import Navbar from '../components/Navbar.vue'
-    import Alert from '../components/Alert.vue'
     import SkeletonListCustom from '../components/SkeletonListCustom.vue'
     import api from '../js/unicapp/api'
     import utils from '../js/unicapp/utils'
@@ -75,7 +74,6 @@
         },
         components: { 
             Navbar,
-            Alert,
             SkeletonListCustom
         }
     }

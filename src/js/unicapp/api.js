@@ -137,6 +137,29 @@ api.booklet = async() => {
     })
 }
 
+/**
+ * 
+ * @returns Booklet stats
+ */
+api.bookletStats = async() => {
+    const selectedCareer = store.getSelectedCareer()
+  
+    return new Promise( (resolve, reject) => {
+        axios.get(middlewareUrl, api.headers(api.getUrl("bookletStats", selectedCareer?.matId)))
+        .then(async function (response) {
+            resolve(response.data)
+        })
+        .catch(function (error) {
+            console.error(error)
+            reject(error)
+        })
+    })
+}
+
+/**
+ * 
+ * @returns List of taxes
+ */
 api.taxes = async() => {
     const selectedCareer = store.getSelectedCareer()
 

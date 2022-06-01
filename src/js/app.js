@@ -33,6 +33,7 @@ app.use(createI18n({
     messages: i18n
 }));
 
+
 // Register Framework7 Vue components
 registerComponents(app);
 

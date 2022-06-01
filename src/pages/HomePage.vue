@@ -41,13 +41,20 @@
                     f7.emit('apiPeopleDone', response)
                    
                 })
+
                 api.photo().then(response => {
                     f7.emit('apiPhotoDone', response)
                 })
 
-                api.bookletVotesAvg().then(response => {
-                    f7.emit('apiBookletVoteAvgDone', response)
+                let bookletData = await api.bookletVotesAvg()
+                let statsData = await api.bookletStats()
+
+                f7.emit('updateeBookletVoteAvg', {
+                    mathAvg: (bookletData.filter(d => d.base == 30  && d.tipoMediaCod.value == 'A'))[0]?.media, 
+                    weightedAvg: (bookletData.filter(d => d.base == 30  && d.tipoMediaCod.value == 'P'))[0]?.media,
+                    totalCfu: statsData?.umPesoConvalidato
                 })
+
             })
         },
         components: { 

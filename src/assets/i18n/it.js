@@ -22,14 +22,16 @@ const it =  {
             settings: 'Impostazioni', 
             about: 'Informazioni', 
             logout: 'Logout',
-            careers: "Seleziona carriera"
+            careers: "Seleziona carriera",
+            avgCalculator: "Calcolatore Media"
         },
         settings: {
             title: 'Impostazioni', 
             listTitle: 'Seleziona lingua'
         },
         general: {
-            close: "Chiudi"
+            close: "Chiudi",
+            error: "Ops, qualcosa è andato storto"
         }, 
         careers: {
             title: "Seleziona la tua carriera", 
@@ -41,7 +43,8 @@ const it =  {
         },
         ratings: {
             mathAvg: "Media Aritmetica", 
-            weightedAvg: "Media Ponderata"
+            weightedAvg: "Media Ponderata",
+            totalCfu: "Totale CFU"
         },
         booklet: {
             title: "Il tuo libretto",
@@ -53,6 +56,21 @@ const it =  {
         taxes: {
             title: "Le tue tasse",
             euro: "€"
+        },
+        avgCalculator: {
+            title: "Calcolatore media",
+            popupExamName: "Nome esame (facoltativo)", 
+            popupExamGrade: "Voto", 
+            popupExamCFU: "CFU", 
+            popupAddButton: "Aggiungi", 
+            popupTitle: "Aggiungi esame",
+        },
+        examsTableCalculator: {
+            exams: "Esami", 
+            exam: "Esame",
+            grade: "Voto", 
+            cfu: "CFU", 
+            
         }
     }
 }
