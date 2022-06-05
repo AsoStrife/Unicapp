@@ -69,7 +69,8 @@ const it =  {
             exams: "Esami", 
             exam: "Esame",
             grade: "Voto", 
-            cfu: "CFU", 
+            cfu: "CFU",
+            clearExamQuestion: "Sei sicuro di voler cancellare tutti gli esami?"
             
         }
     }

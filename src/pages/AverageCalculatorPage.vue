@@ -9,11 +9,11 @@
             <f7-icon ios="f7:plus" aurora="f7:plus" md="material:add"></f7-icon>
         </f7-fab>
 
-        <Ratings />
+        <Ratings :textColor="textColor" :weightedAvg="initialWeightedAvg" :totalCfu="initialTotalCfu"/>
 
         <AddExamCalculator /> 
 
-        <ExamsTableCalculator />
+        <ExamsTableCalculator/>
 
     </f7-page>
 </template>
@@ -29,15 +29,16 @@
     import ExamsTableCalculator from '../components/ExamsTableCalculator.vue'
     import Ratings from '../components/User/Ratings.vue'
     import api from '../js/unicapp/api'
+    import constants from '../js/unicapp/constants'
 
     export default {
         name: "AverageCalculator",
         data() {
             return {
                 newExams: [], 
-                initialmMathAvg: null, 
-                initialWeightedAvg: null,
-                initialTotalCfu: null
+                initialWeightedAvg: constants.defaultValues.weightedAvg,
+                initialTotalCfu: constants.defaultValues.totalCfu,
+                textColor: ""
             };
         },
         components: {
@@ -58,7 +59,7 @@
                     this.initialWeightedAvg = (bookletData.filter(d => d.base == 30  && d.tipoMediaCod.value == 'P'))[0]?.media
                     this.initialTotalCfu = statsData?.umPesoConvalidato
 
-                    f7.emit('updateeBookletVoteAvg', {
+                    f7.emit('updateBookletVoteAvg', {
                         mathAvg: null, 
                         weightedAvg: this.initialWeightedAvg,
                         totalCfu: this.initialTotalCfu
@@ -72,17 +73,35 @@
                         position: 'bottom',
                     }).open()
                 }
+            },
+            calculateNewAvg() {
+                let newTotalCfu = parseInt(this.initialTotalCfu) + this.newExams.reduce(function (acc, e) { return acc + parseInt(e.examCfu) }, 0)
+                let newExamsWeightedSum = this.newExams.reduce(function (acc, e) { return acc + (parseInt(e.examCfu) * parseInt(e.examGrade)) }, 0)
+                let initialExamWeightedSum = this.initialWeightedAvg * this.initialTotalCfu
+
+                let newWeithedAvg = (initialExamWeightedSum + newExamsWeightedSum) / newTotalCfu
+
+                f7.emit('updateBookletVoteAvg', {
+                    mathAvg: null, 
+                    weightedAvg: newWeithedAvg,
+                    totalCfu: newTotalCfu
+                })
+                
+                this.textColor = newWeithedAvg > this.initialWeightedAvg ? "text-success" : "text-danger"
+                console.log("initial", this.initialWeightedAvg)
+                console.log("new", newWeithedAvg)
             }
         },
         mounted() {
-            f7ready(async () => {
+            var self = this
 
+            f7ready(async () => {
                 await this.loadInitialValues()
 
-                
-
                 f7.on('addExamCalculator', function(data){
-                    console.log(data)
+                    self.newExams.push(data)
+
+                    self.calculateNewAvg()
                 })
             });
         } 

@@ -1,24 +1,16 @@
 <template>
     <f7-block class="mt-0 mb-0">
         <f7-row>
-            <!--<f7-col v-if="mathAvg">
-                <f7-card
-                    :title="$t('message.ratings.mathAvg')" 
-                    :content="mathAvg" 
-                    :class="'mt-0 ' + skeleton"></f7-card>
-            </f7-col>-->
-            <f7-col v-if="weightedAvg">
-                <f7-card
-                    :title="$t('message.ratings.weightedAvg')" 
-                    :content="weightedAvg" 
-                    :class="'mt-0 ' + skeleton">
+            <f7-col v-if="weightedAvg != null">
+                <f7-card :class="skeleton">
+                    <f7-card-header>{{$t('message.ratings.weightedAvg')}}</f7-card-header>
+                    <f7-card-content :class="textColor">{{weightedAvg != '0' ? weightedAvg.toFixed(2) : defaultValues.weightedAvg}}</f7-card-content>
                 </f7-card>
             </f7-col>
-            <f7-col v-if="totalCfu">
-                <f7-card
-                    :title="$t('message.ratings.totalCfu')" 
-                    :content="totalCfu" 
-                    :class="'mt-0 ' + skeleton">
+            <f7-col v-if="totalCfu != null">
+                <f7-card :class="skeleton">
+                    <f7-card-header>{{$t('message.ratings.totalCfu')}}</f7-card-header>
+                    <f7-card-content :class="textColor">{{totalCfu}}</f7-card-content>
                 </f7-card>
             </f7-col>
         </f7-row>
@@ -39,6 +31,7 @@
         margin-top: 0;
     }
 </style>
+
 <script>
     import { f7ready, f7 } from 'framework7-vue'
     import constants from '../../js/unicapp/constants'
@@ -46,45 +39,49 @@
     export default {
         name: "Ratings", 
         props: {
+            textColor: {
+                type: String, 
+                default: ""
+            },
+            weightedAvg: {
+                type: Number, 
+                default: constants.defaultValues.weightedAvg
+            },
+            totalCfu: {
+                type: Number, 
+                default: constants.defaultValues.totalCfu
+            }
+
         },
         data() {
             return {
                 skeleton: "skeleton-text skeleton-effect-wave",
-                mathAvg: constants.defaultValues.mathAvg, 
-                weightedAvg: constants.defaultValues.weightedAvg,
-                totalCfu: constants.defaultValues.totalCfu
+                defaultValues: constants.defaultValues
             }
         },
         methods: {
             
         },
         mounted() {
-            f7ready(() => {
-                f7.on('apiBookletVoteAvgDone', (data) => {
-                    this.mathAvg = (data.filter(d => d.base == 30  && d.tipoMediaCod.value == 'A'))[0]?.media
-                    this.weightedAvg = (data.filter(d => d.base == 30  && d.tipoMediaCod.value == 'P'))[0]?.media
-                })
+            var self = this
 
-                f7.on('updateeBookletVoteAvg', (data) => {
-                    this.mathAvg = data.mathAvg
-                    this.weightedAvg = data.weightedAvg
-                    this.totalCfu = data.totalCfu
-                })
+            f7ready(() => {
                 
             })
 
             this.$watch(
                 (vm) => [vm.mathAvg, vm.weightedAvg],
                 (val) => {
-                    if(this.mathAvg != constants.defaultValues.mathAvg && this.weightedAvg != constants.defaultValues.weightedAvg)
+                    if(this.weightedAvg != constants.defaultValues.weightedAvg){
                         this.skeleton = ""
+                    }
                 },
                 {
                     immediate: true,
                     deep: true,
                 }
             )
-        },
+        }
         
     }
 </script>

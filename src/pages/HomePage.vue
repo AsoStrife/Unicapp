@@ -4,7 +4,7 @@
 
         <NameProfilePic />
 
-        <Ratings />
+        <Ratings :weightedAvg="weightedAvg" :totalCfu="totalCfu" />
 
         <PersonalData />
 
@@ -21,21 +21,21 @@
     import NameProfilePic from '../components/User/NameProfilePic.vue'
     import PersonalData from '../components/User/PersonalData.vue'
     import api from '../js/unicapp/api'
+    import constants from '../js/unicapp/constants'
 
     export default {
         name: "Home",
         data() {
             return {
-                firstName: null,
-                lastName: null,
-                photo: "",
-                bookletVotesAvg: {}
-            };
+                weightedAvg: constants.defaultValues.weightedAvg,
+                totalCfu: constants.defaultValues.totalCfu
+            }
         },
         methods: {
 
         },
         mounted() {
+            var self = this
             f7ready( async() => {
                 api.people().then(response => {
                     f7.emit('apiPeopleDone', response)
@@ -49,11 +49,9 @@
                 let bookletData = await api.bookletVotesAvg()
                 let statsData = await api.bookletStats()
 
-                f7.emit('updateeBookletVoteAvg', {
-                    mathAvg: (bookletData.filter(d => d.base == 30  && d.tipoMediaCod.value == 'A'))[0]?.media, 
-                    weightedAvg: (bookletData.filter(d => d.base == 30  && d.tipoMediaCod.value == 'P'))[0]?.media,
-                    totalCfu: statsData?.umPesoConvalidato
-                })
+                self.weightedAvg = (bookletData.filter(d => d.base == 30  && d.tipoMediaCod.value == 'P'))[0]?.media
+                self.totalCfu = statsData?.umPesoConvalidato
+                
 
             })
         },

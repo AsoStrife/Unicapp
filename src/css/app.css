@@ -102,21 +102,21 @@
 * Backgrounds
 */
 .bg-success{
-    color: #229941;
+    background-color: #229941;
 }
 
 .bg-primary{
-    color: #0f4783;
+    background-color: #0f4783;
 }
 
 .bg-info{
-    color: #126396;
+    background-color: #126396;
 }
 
 .bg-danger {
-    color: #b44141 !important;
+    background-color: #b44141 !important;
 }
 
 .bg-warning {
-    color: #d29935 !important;
+    background-color: #d29935 !important;
 }

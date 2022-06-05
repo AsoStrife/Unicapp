@@ -74,9 +74,9 @@
         },
         data() {
             return {
-                examName: "",
-                examCfu: "",
-                examGrade: ""
+                examName: "Sistemi",
+                examCfu: "6",
+                examGrade: "30"
             }
         },
         methods: {
@@ -89,6 +89,13 @@
                     examCfu: this.examCfu, 
                     examGrade: this.examGrade
                 })
+
+                this.clearValues()
+            },
+            clearValues() {
+                this.examName = ""
+                this.examCfu = ""
+                this.examGrade = ""
             }
         },
         mounted() {
