@@ -9,11 +9,11 @@
             <f7-icon ios="f7:plus" aurora="f7:plus" md="material:add"></f7-icon>
         </f7-fab>
 
-        <Ratings :textColor="textColor" :weightedAvg="initialWeightedAvg" :totalCfu="initialTotalCfu"/>
+        <Ratings :textColor="textColor" :weightedAvg="newWeithedAvg" :totalCfu="newTotalCfu"/>
 
         <AddExamCalculator /> 
 
-        <ExamsTableCalculator/>
+        <ExamsTableCalculator :exams="newExams"/>
 
     </f7-page>
 </template>
@@ -36,6 +36,8 @@
         data() {
             return {
                 newExams: [], 
+                newWeithedAvg: constants.defaultValues.weightedAvg,
+                newTotalCfu: constants.defaultValues.totalCfu,
                 initialWeightedAvg: constants.defaultValues.weightedAvg,
                 initialTotalCfu: constants.defaultValues.totalCfu,
                 textColor: ""
@@ -59,11 +61,9 @@
                     this.initialWeightedAvg = (bookletData.filter(d => d.base == 30  && d.tipoMediaCod.value == 'P'))[0]?.media
                     this.initialTotalCfu = statsData?.umPesoConvalidato
 
-                    f7.emit('updateBookletVoteAvg', {
-                        mathAvg: null, 
-                        weightedAvg: this.initialWeightedAvg,
-                        totalCfu: this.initialTotalCfu
-                    })
+                    this.newWeithedAvg = this.initialWeightedAvg
+                    this.newTotalCfu = this.initialTotalCfu
+                    
                 }
                 catch(e){
                     f7.toast.create({
@@ -75,32 +75,43 @@
                 }
             },
             calculateNewAvg() {
-                let newTotalCfu = parseInt(this.initialTotalCfu) + this.newExams.reduce(function (acc, e) { return acc + parseInt(e.examCfu) }, 0)
+                this.newTotalCfu = parseInt(this.initialTotalCfu) + this.newExams.reduce(function (acc, e) { return acc + parseInt(e.examCfu) }, 0)
                 let newExamsWeightedSum = this.newExams.reduce(function (acc, e) { return acc + (parseInt(e.examCfu) * parseInt(e.examGrade)) }, 0)
                 let initialExamWeightedSum = this.initialWeightedAvg * this.initialTotalCfu
 
-                let newWeithedAvg = (initialExamWeightedSum + newExamsWeightedSum) / newTotalCfu
+                this.newWeithedAvg = (initialExamWeightedSum + newExamsWeightedSum) / this.newTotalCfu
 
                 f7.emit('updateBookletVoteAvg', {
                     mathAvg: null, 
-                    weightedAvg: newWeithedAvg,
-                    totalCfu: newTotalCfu
+                    weightedAvg: this.newWeithedAvg,
+                    totalCfu: this.newTotalCfu
                 })
                 
-                this.textColor = newWeithedAvg > this.initialWeightedAvg ? "text-success" : "text-danger"
                 console.log("initial", this.initialWeightedAvg)
-                console.log("new", newWeithedAvg)
+                console.log("new", this.newWeithedAvg)
+
+                this.textColor = this.newWeithedAvg > this.initialWeightedAvg ? "text-success" : (this.newWeithedAvg < this.initialWeightedAvg ? "text-danger" : "")
             }
         },
         mounted() {
             var self = this
+
 
             f7ready(async () => {
                 await this.loadInitialValues()
 
                 f7.on('addExamCalculator', function(data){
                     self.newExams.push(data)
+                    self.calculateNewAvg()
+                })
 
+                f7.on('deleteExamFromCalulator', function(data) {
+                    self.newExams.splice(data, 1)
+                    self.calculateNewAvg()
+                })
+
+                f7.on('deleteAllExamFromCalulator', function() {
+                    self.newExams = []
                     self.calculateNewAvg()
                 })
             });

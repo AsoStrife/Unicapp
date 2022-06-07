@@ -4,7 +4,7 @@
         <div class="card-header">
             <div class="data-table-title">{{$t('message.examsTableCalculator.exams')}}</div>
             <div class="data-table-actions">
-                <a class="link icon-only" @click="clearTableDialog">
+                <a class="link icon-only" @click="deleteExams">
                     <i class="icon f7-icons if-not-md">trash</i>
                     <i class="icon material-icons md-only">delete</i>
                 </a>
@@ -22,7 +22,7 @@
                 </thead>
                 <tbody>
                     
-                    <tr v-for="exam in exams" :key="exam">
+                    <tr v-for="(exam, index)  in exams" :key="index" @click="deleteExam(index)">
                         <td class="label-cell">{{exam.examName}}</td>
                         <td class="numeric-cell">{{exam.examGrade}}</td>
                         <td class="numeric-cell">{{exam.examCfu}}</td>
@@ -46,35 +46,47 @@
     import constants from '../js/unicapp/constants'
 
     export default {
-        name: "ExamsTableCalculator", 
+        name: "ExamsTableCalculator",
+        props: {
+            exams: {
+                default: [], 
+                type: Array
+            }
+        },
         data() {
             return {
-                exams: []
+
             }
         },
         methods: {
-            clearTableDialog() {
+            deleteExams() {
+                f7.dialog.confirm(
+                    this.$t('message.examsTableCalculator.clearAllExamsQuestion'), function () {
+                    f7.emit('deleteAllExamFromCalulator')
+                })
+            },
+            deleteExam(index){
                 f7.dialog.confirm(
                     this.$t('message.examsTableCalculator.clearExamQuestion'), function () {
-                    this.exams = []
-                });
-            },
+                    f7.emit('deleteExamFromCalulator', index)
+                })
+            }
         },
         mounted() {
             var self = this
 
             f7ready(() => {
                 
+                /*
                 f7.on('addExamCalculator', function(data){
+                    self.exams.push(data)
 
                     f7.dataTable.destroy("#data-table-exams-calculator")
-                    
-                    self.exams.push(data)
 
                     f7.dataTable.create({
                         el: "#data-table-exams-calculator"
                      })
-                })
+                })*/
             })
 
         },
