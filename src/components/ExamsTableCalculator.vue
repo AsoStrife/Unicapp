@@ -15,17 +15,17 @@
             <table>
                 <thead>
                     <tr>
-                        <th class="label-cell">{{$t('message.examsTableCalculator.exam')}}</th>
-                        <th class="numeric-cell">{{$t('message.examsTableCalculator.grade')}}</th>
-                        <th class="numeric-cell">{{$t('message.examsTableCalculator.cfu')}}</th>
+                        <th class="label-cell" :data-collapsible-title="$t('message.examsTableCalculator.exam')"></th>
+                        <th class="numeric-cell" :data-collapsible-title="$t('message.examsTableCalculator.grade')"></th>
+                        <th class="numeric-cell" :data-collapsible-title="$t('message.examsTableCalculator.cfu')"></th>
                     </tr>
                 </thead>
                 <tbody>
                     
                     <tr v-for="(exam, index)  in exams" :key="index" @click="deleteExam(index)">
-                        <td class="label-cell">{{exam.examName}}</td>
-                        <td class="numeric-cell">{{exam.examGrade}}</td>
-                        <td class="numeric-cell">{{exam.examCfu}}</td>
+                        <td class="label-cell" :data-collapsible-title="$t('message.examsTableCalculator.exam')">{{exam.examName}}</td>
+                        <td class="numeric-cell" :data-collapsible-title="$t('message.examsTableCalculator.grade')">{{exam.examGrade}}</td>
+                        <td class="numeric-cell" :data-collapsible-title="$t('message.examsTableCalculator.cfu')">{{exam.examCfu}}</td>
                     </tr>
 
                 </tbody>
