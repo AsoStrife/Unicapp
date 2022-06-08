@@ -5,7 +5,7 @@
         
         <f7-block-title>{{$t('message.avgCalculator.title')}}</f7-block-title>
 
-        <f7-fab position="right-bottom" @click="openPopup">
+        <f7-fab position="right-bottom" @click="openPopup" v-if="isFabVisible">
             <f7-icon ios="f7:plus" aurora="f7:plus" md="material:add"></f7-icon>
         </f7-fab>
 
@@ -40,7 +40,8 @@
                 newTotalCfu: constants.defaultValues.totalCfu,
                 initialWeightedAvg: constants.defaultValues.weightedAvg,
                 initialTotalCfu: constants.defaultValues.totalCfu,
-                textColor: ""
+                textColor: "",
+                isFabVisible: false
             };
         },
         components: {
@@ -63,7 +64,7 @@
 
                     this.newWeithedAvg = this.initialWeightedAvg
                     this.newTotalCfu = this.initialTotalCfu
-                    
+                    this.isFabVisible = true
                 }
                 catch(e){
                     f7.toast.create({
