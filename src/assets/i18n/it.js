@@ -29,7 +29,12 @@ const it =  {
             logout: 'Logout',
             careers: "Seleziona carriera",
             avgCalculator: "Calcolatore Media",
-            tests: "Appelli"
+            tests: "Appelli",
+            yourProfile: "Il tuo profilo Universitario",
+            handle: "Gestisci"
+        },
+        panelHeader: {
+            stuID: "Matricola"
         },
         settings: {
             title: 'Impostazioni', 

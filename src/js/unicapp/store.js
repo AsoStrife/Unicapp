@@ -26,6 +26,10 @@ store.getSelectedUniversity = () => {
     return localStorage.getItem(constants.localstorage.selectedUniversity) !== null ? JSON.parse(localStorage.getItem(constants.localstorage.selectedUniversity)) : null
 }
 
+store.getProfilePic = () => {
+    return localStorage.getItem(constants.localstorage.profilePic) !== null ? localStorage.getItem(constants.localstorage.profilePic) : null
+}
+
 //
 // Settter
 // 
@@ -53,6 +57,10 @@ store.setCareers = (careers) => {
     localStorage.setItem(constants.localstorage.careers, JSON.stringify(careers))
 }
 
+store.setProfilePic = (careers) => {
+    localStorage.setItem(constants.localstorage.profilePic, careers)
+}
+
 //
 // Cleaner
 // 
@@ -76,12 +84,17 @@ store.clearUniversity = () => {
     localStorage.setItem(constants.localstorage.selectedUniversity, null)
 }
 
+store.clearProfilePic = () => {
+    localStorage.setItem(constants.localstorage.profilePic, null)
+}
+
 store.clearAll = () => {
     store.clearCredentials()
     store.clearUser()
     store.clearCareers()
     store.clearSelectedCareer()
     store.clearUniversity()
+    store.clearProfilePic()
 }
 
 

@@ -52,9 +52,8 @@
         },
         methods: {
             getStatus(exam){
-                return exam.statoDes == 'Prenotazioni Aperte' ? constants.emoji.greenCirle : constants.emoji.redCirle;
+                return exam.statoDes == constants.tests.bookable ? constants.emoji.greenCirle : constants.emoji.redCirle;
             }
-            
         },
         mounted() {
             f7ready(() => {

@@ -2,15 +2,11 @@
     <f7-page name="BookletExam">
         <Navbar />
 
-        <f7-block-title>{{$t('message.bookletExam.title')}}</f7-block-title>
-        
+        <TitleDetailPage :bg="this.getBg(this.exam)" :text="this.exam.adDes" />
 
     </f7-page>
 </template>
 
-<style>
-    
-</style>
 
 <script>
     import { f7ready, f7 } from 'framework7-vue'
@@ -19,6 +15,7 @@
     import api from '../js/unicapp/api'
     import utils from '../js/unicapp/utils'
     import constants from '../js/unicapp/constants'
+    import TitleDetailPage from '../components/TitleDetailPage.vue'
 
     export default {
         name: "BookletExam",
@@ -28,6 +25,9 @@
             }
         },
         data() {
+            return {
+                
+            }
         },
         methods: {
             getGrade(exam){
@@ -39,6 +39,12 @@
                     return exam.esito.tipoGiudCod
 
                 return constants.emoji.redCirle
+            },
+            getBg(exam){
+                if(exam?.esito?.voto != null || exam?.esito?.tipoGiudCod != "")
+                    return 'success'
+                    
+                return 'danger'
             }
             
         },
@@ -49,7 +55,7 @@
         },
         components: { 
             Navbar,
-            Alert
+            TitleDetailPage
         }
     }
 </script>

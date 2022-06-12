@@ -18,7 +18,8 @@ let constants = {
         "user": 'user',
         "careers": 'careers',
         "selectedCareer": 'selectedCareer',
-        "selectedUniversity": 'selectedUniversity'
+        "selectedUniversity": 'selectedUniversity',
+        "profilePic": "profilePic"
     },
     "api": {
         "middlewareUrl": "http://127.0.0.1:8000/",
@@ -61,6 +62,9 @@ let constants = {
         "greenLight": "VERDE", 
         "redLight": "ROSSO", 
         
+    },
+    "tests": {
+        "bookable": "Prenotazioni Aperte"
     }
     
 }

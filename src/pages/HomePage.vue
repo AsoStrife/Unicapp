@@ -22,6 +22,7 @@
     import PersonalData from '../components/User/PersonalData.vue'
     import api from '../js/unicapp/api'
     import constants from '../js/unicapp/constants'
+    import store from '../js/unicapp/store'
 
     export default {
         name: "Home",
@@ -43,6 +44,7 @@
                 })
 
                 api.photo().then(response => {
+                    store.setProfilePic(response)
                     f7.emit('apiPhotoDone', response)
                 })
 

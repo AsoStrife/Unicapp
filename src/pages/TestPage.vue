@@ -2,22 +2,16 @@
     <f7-page name="BookletExam">
         <Navbar />
 
-        <f7-block-title>{{$t('message.test.title')}}</f7-block-title>
+        <TitleDetailPage :bg="this.getBg(this.exam)" :text="this.exam.adDes" />
         
 
     </f7-page>
 </template>
 
-<style>
-    
-</style>
-
 <script>
     import { f7ready, f7 } from 'framework7-vue'
     import Navbar from '../components/Navbar.vue'
-    import Alert from '../components/Alert.vue'
-    import api from '../js/unicapp/api'
-    import utils from '../js/unicapp/utils'
+    import TitleDetailPage from '../components/TitleDetailPage.vue'
     import constants from '../js/unicapp/constants'
 
     export default {
@@ -28,9 +22,14 @@
             }
         },
         data() {
+            return {
+
+            }
         },
         methods: {
-            
+            getBg(exam){
+                return exam.statoDes == constants.tests.bookable ? 'success' : 'danger'
+            }
             
         },
         mounted() {
@@ -39,7 +38,7 @@
         },
         components: { 
             Navbar,
-            Alert
+            TitleDetailPage
         }
     }
 </script>

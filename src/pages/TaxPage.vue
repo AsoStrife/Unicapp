@@ -2,43 +2,26 @@
     <f7-page name="Taxes">
         <Navbar />
         
-        <f7-block-title>{{$t('message.taxes.title')}}</f7-block-title>
-
-        <!--<div class="list skeleton-text skeleton-effect-wave">
-            <ul>
-                <li v-for="(item, key) in this.taxes" :key="key">
-                    <a href="#" class="item-link item-content">
-                        <div class="item-media">
-                            <h3 class="text-success" v-html="this.getStatus(item)"></h3>
-                        </div>
-                        <div class="item-inner">
-                            <div class="item-title">{{item.tassaDes}} {{item.combDes}}</div>
-                            <div class="item-after">{{item.importoVoce}} {{$t('message.taxes.euro')}}</div>
-                        </div>
-                    </a>
-                </li>
-            </ul>
-        </div>-->
+        <TitleDetailPage :bg="this.getStatus(this.tax)" :text="this.tax.tassaDes + ' - ' + this.tax.combDes" />
 
     </f7-page>
 </template>
 
-<style>
-
-</style>
-
 <script>
     import { f7ready, f7 } from 'framework7-vue';
     import Navbar from '../components/Navbar.vue';
-    import api from '../js/unicapp/api'
-    import utils from '../js/unicapp/utils'
+    import TitleDetailPage from '../components/TitleDetailPage.vue'
     import constants from '../js/unicapp/constants'
 
     export default {
         name: "Tax",
+        props: {
+            tax: {
+                default: {}
+            }
+        },
         data() {
             return {
-                tax: [],
                 skeleton: "skeleton-text skeleton-effect-wave",
             };
         },
@@ -46,21 +29,19 @@
             getStatus(tax){
                 switch(tax?.semaforo){
                     case constants.taxes.greenLight: 
-                        return constants.emoji.greenCirle
+                        return 'success'
                     case constants.taxes.redLight: 
-                        return constants.emoji.redCirle
+                        return 'danger'
                 }
             }
         },
         mounted() {
             f7ready(() => {
-                api.taxes().then(response => {
-                    this.taxes = response
-                })
             });
         },
         components: { 
-            Navbar
+            Navbar,
+            TitleDetailPage
         }
     }
 </script>

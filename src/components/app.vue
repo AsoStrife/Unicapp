@@ -3,9 +3,13 @@
 
     <f7-panel id="panel-nested" theme-dark left cover container-el="#panel-page">
         <f7-page>
+            
+            <PanelHeader />
+
             <f7-list>
                 <f7-list-item :title="$t('message.panelList.login')" link="/login/" panel-close v-if="this.showLogin"></f7-list-item>
 
+                <f7-list-item divider :title="$t('message.panelList.yourProfile')" v-if="this.showCareers"></f7-list-item>
                 <f7-list-item :title="$t('message.panelList.home')" link="/" panel-close v-if="this.showLoggedMenu"></f7-list-item>
                 <f7-list-item :title="$t('message.panelList.booklet')" link="/booklet/" panel-close v-if="this.showLoggedMenu"></f7-list-item>
                 <f7-list-item :title="$t('message.panelList.taxes')" link="/taxes/" panel-close v-if="this.showLoggedMenu"></f7-list-item>
@@ -14,6 +18,8 @@
                 <f7-list-item :title="$t('message.panelList.avgCalculator')" link="/average_calculator/" panel-close v-if="this.showLoggedMenu"></f7-list-item>
                 
                 <!--<f7-list-item :title="$t('message.panelList.settings')" link="/settings/" panel-close></f7-list-item>-->
+                <f7-list-item divider :title="$t('message.panelList.handle')" v-if="this.showCareers"></f7-list-item>
+
                 <f7-list-item :title="$t('message.panelList.about')" link="/about/" panel-close></f7-list-item>
 
                 <f7-list-item :title="$t('message.panelList.careers')" link="/careers/" panel-close v-if="this.showCareers"></f7-list-item>
@@ -27,6 +33,13 @@
 
     </f7-app>
 </template>
+
+<style scoped>
+    .list {
+        margin-top: 0;
+    }
+</style>
+
 <script>
     import { ref, onMounted } from 'vue'
     import { f7, f7ready } from 'framework7-vue'
@@ -34,6 +47,7 @@
     import { getDevice }  from 'framework7/lite-bundle'
     import capacitorApp from '../js/capacitor-app.js'
     import routes from '../js/routes.js'
+    import PanelHeader from './PanelHeader.vue'
 
     import store from '../js/unicapp/store'
 
@@ -44,6 +58,9 @@
                 showCareers: (store.getCredentials() != null),
                 showLoggedMenu: (store.getCredentials() != null && store.getSelectedCareer() != null)
             }
+        },
+        components: { 
+            PanelHeader
         },
         async mounted(){
             f7ready(() => {
