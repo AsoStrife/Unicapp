@@ -1,6 +1,11 @@
 const it =  {
     message: {
-        
+        general: {
+            close: "Chiudi",
+            error: "Ops, qualcosa è andato storto",
+            euro: "€",
+            dollar: "$"
+        },
         login: {
             title: 'Effettua l\'accesso',
             emailLabel: 'Email', 
@@ -23,15 +28,12 @@ const it =  {
             about: 'Informazioni', 
             logout: 'Logout',
             careers: "Seleziona carriera",
-            avgCalculator: "Calcolatore Media"
+            avgCalculator: "Calcolatore Media",
+            tests: "Appelli"
         },
         settings: {
             title: 'Impostazioni', 
             listTitle: 'Seleziona lingua'
-        },
-        general: {
-            close: "Chiudi",
-            error: "Ops, qualcosa è andato storto"
         }, 
         careers: {
             title: "Seleziona la tua carriera", 
@@ -54,8 +56,10 @@ const it =  {
             title: "Esame"
         },
         taxes: {
-            title: "Le tue tasse",
-            euro: "€"
+            title: "Le tue tasse"
+        },
+        taxe: {
+            title: "Dettaglio tassa"
         },
         avgCalculator: {
             title: "Calcolatore media",
@@ -73,6 +77,12 @@ const it =  {
             clearAllExamsQuestion: "Sei sicuro di voler cancellare tutti gli esami?",
             clearExamQuestion: "Sei sicuro di voler cancellare questo esame?"
             
+        },
+        tests: {
+            title: "Appelli"
+        }, 
+        test: {
+            title: "Appello"
         }
     }
 }

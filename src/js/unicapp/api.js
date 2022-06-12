@@ -177,6 +177,25 @@ api.taxes = async() => {
 
 /**
  * 
+ * @returns Available tests
+ */
+ api.tests = async() => {
+    const selectedCareer = store.getSelectedCareer()
+  
+    return new Promise( (resolve, reject) => {
+        axios.get(middlewareUrl, api.headers(api.getUrl("tests", selectedCareer?.matId)))
+        .then(async function (response) {
+            resolve(response.data)
+        })
+        .catch(function (error) {
+            console.error(error)
+            reject(error)
+        })
+    })
+}
+
+/**
+ * 
  * @param {*} username 
  * @param {*} password 
  * @returns Object for base auth + Api-Url for Middleware Request

@@ -1,21 +1,20 @@
 <template>
-    <f7-page name="Taxes">
+    <f7-page name="Booklet">
         <Navbar />
-        
-        <f7-block-title>{{$t('message.taxes.title')}}</f7-block-title>
 
+        <f7-block-title>{{$t('message.tests.title')}}</f7-block-title>
+        
         <SkeletonListCustom v-if="skeleton" />
 
         <div class="list">
             <ul>
-                <li v-for="(item, key) in this.taxes" :key="key">
-                    <a @click="this.f7router.navigate('/tax/', {props: {tax: item}})" class="item-link item-content">
+                <li v-for="(item, key) in this.exams" :key="key">
+                    <a @click="this.f7router.navigate('/test/', {props: {exam: item}})" class="item-link item-content">
                         <div class="item-media">
                             <h3 class="text-success" v-html="this.getStatus(item)"></h3>
                         </div>
                         <div class="item-inner">
-                            <div class="item-title">{{item.tassaDes}} {{item.combDes}}</div>
-                            <div class="item-after">{{item.importoVoce}} {{$t('message.general.euro')}}</div>
+                            <div class="item-title">{{item.adDes}}</div>
                         </div>
                     </a>
                 </li>
@@ -26,7 +25,10 @@
 </template>
 
 <style>
-
+    h3 {
+        font-size: 30px;
+        
+    }
 </style>
 
 <script>
@@ -38,31 +40,29 @@
     import constants from '../js/unicapp/constants'
 
     export default {
-        name: "Taxes",
+        name: "TestsPage",
         props: {
             f7router: Object,
         },
         data() {
             return {
-                taxes: [],
+                exams: [],
                 skeleton: true,
             };
         },
         methods: {
-            getStatus(tax){
-                switch(tax?.semaforo){
-                    case constants.taxes.greenLight: 
-                        return constants.emoji.greenCirle
-                    case constants.taxes.redLight: 
-                        return constants.emoji.redCirle
-                }
+            getStatus(exam){
+                return exam.statoDes == 'Prenotazioni Aperte' ? constants.emoji.greenCirle : constants.emoji.redCirle;
             }
+            
         },
         mounted() {
             f7ready(() => {
-                api.taxes().then(response => {
-                    this.taxes = response
-                    this.skeleton = false
+                api.tests().then(response => {
+                    this.skeleton = ''
+
+                    // Sort per ordine alfabetico + data appello
+                    this.exams = response.sort((a, b) => a.adDes.localeCompare(b.adDes) && a.dataInizioApp.localeCompare(b.dataInizioApp))
                 })
             });
         },

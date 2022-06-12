@@ -74,9 +74,9 @@
         },
         data() {
             return {
-                examName: "Sistemi",
-                examCfu: "6",
-                examGrade: "30"
+                examName: "",
+                examCfu: "",
+                examGrade: ""
             }
         },
         methods: {

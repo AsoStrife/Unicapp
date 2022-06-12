@@ -4,14 +4,6 @@
         
         <f7-block-title>{{$t('message.taxes.title')}}</f7-block-title>
 
-        <f7-list>
-            <f7-list-item link="#" title="Ivan Petrov" after="CEO" v-for="(item, key) in this.taxes" :key="key">
-                <template #media>
-                    <f7-icon icon="demo-list-icon"></f7-icon>
-                </template>
-            </f7-list-item>
-        </f7-list>
-
         <!--<div class="list skeleton-text skeleton-effect-wave">
             <ul>
                 <li v-for="(item, key) in this.taxes" :key="key">
@@ -43,10 +35,10 @@
     import constants from '../js/unicapp/constants'
 
     export default {
-        name: "Taxes",
+        name: "Tax",
         data() {
             return {
-                taxes: [],
+                tax: [],
                 skeleton: "skeleton-text skeleton-effect-wave",
             };
         },

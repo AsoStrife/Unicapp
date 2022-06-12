@@ -31,7 +31,8 @@ let constants = {
             "booklet": "%s1" + "libretto-service-v2/libretti/%s2/righe", //mathId
             "bookletVotesAvg": "%s1" + "libretto-service-v2/libretti/%s2/medie", //matId
             "bookletStats": "%s1" + "libretto-service-v2/libretti/%s2/stats", //matId
-            "taxes": "%s1" + "tasse-service-v1/addebiti-studente?stuId=%s2" //stuId
+            "taxes": "%s1" + "tasse-service-v1/addebiti-studente?stuId=%s2", //stuId
+            "tests": "%s1" + "libretto-service-v2/libretti/%s2/appelli?q=APPELLI_PRENOTABILI_E_FUTURI", //matId
         }
     },
     "defaultValues": {

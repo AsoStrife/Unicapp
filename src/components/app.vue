@@ -9,6 +9,7 @@
                 <f7-list-item :title="$t('message.panelList.home')" link="/" panel-close v-if="this.showLoggedMenu"></f7-list-item>
                 <f7-list-item :title="$t('message.panelList.booklet')" link="/booklet/" panel-close v-if="this.showLoggedMenu"></f7-list-item>
                 <f7-list-item :title="$t('message.panelList.taxes')" link="/taxes/" panel-close v-if="this.showLoggedMenu"></f7-list-item>
+                <f7-list-item :title="$t('message.panelList.tests')" link="/tests/" panel-close v-if="this.showLoggedMenu"></f7-list-item>
                 
                 <f7-list-item :title="$t('message.panelList.avgCalculator')" link="/average_calculator/" panel-close v-if="this.showLoggedMenu"></f7-list-item>
                 
@@ -22,7 +23,7 @@
     </f7-panel>
 
     <!-- Your main view, should have "view-main" class -->
-    <f7-view main class="safe-areas" url="/average_calculator/"></f7-view>
+    <f7-view main class="safe-areas" url="/tests/"></f7-view>
 
     </f7-app>
 </template>
