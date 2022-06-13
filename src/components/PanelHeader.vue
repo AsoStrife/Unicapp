@@ -1,7 +1,8 @@
 <template>
 
-    <div class="div-header">
-        <img :src="this.profilePic" class="img-circle profile-img" />
+    <div class="div-header" v-if="this.user">
+    
+        <img :src="this.profilePic" class="img-circle profile-img" v-if="this.profilePic ? true : false"/>
     
         <h1>{{this.user?.firstName}} {{this.user?.lastName}}</h1>
 
@@ -66,16 +67,38 @@
         name: "PanelHeader",
         data() {
             return {
-                profilePic: store.getProfilePic(),
+                profilePic:store.getProfilePic(),
                 user: store.getUser(),
                 selectedCareer: store.getSelectedCareer(),
                 selectedUniversity: store.getSelectedUniversity(),
             }
         },
-        methods: {},
+        methods: {
+            setValues() {
+                this.profilePic = store.getProfilePic()
+                this.user = store.getUser()
+                this.selectedCareer = store.getSelectedCareer()
+                this.selectedUniversity = store.getSelectedUniversity()
+            }
+        },
         mounted() {
             f7ready(() => {
-            });
+                f7.on('login', (data) => {
+                    this.setValues()
+                })
+
+                f7.on('selectedCareer', (data) => {
+                    this.setValues()
+                })
+
+                f7.on('photoApiDone', (data) => {
+                    this.setValues()
+                })
+
+                f7.on('logout', (data) => {
+                    this.setValues()
+                })
+            })
         },
         components: { 
 

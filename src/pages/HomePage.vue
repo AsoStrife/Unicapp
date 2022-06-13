@@ -53,11 +53,14 @@
                     this.universityEmail = data?.emailAte != "" ? data?.emailAte : null
                     this.mobile = data?.cellulare != "" ? data?.cellulare : null
                     this.address = this.setAddress(data) != "" ? this.setAddress(data) : null
+
+                    
                 })
 
                 api.photo().then(data => {
                     store.setProfilePic(data)
                     this.profilePic = data
+                    f7.emit('photoApiDone')
                 })
 
                 let bookletData = await api.bookletVotesAvg()

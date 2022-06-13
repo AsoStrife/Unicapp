@@ -27,7 +27,7 @@ store.getSelectedUniversity = () => {
 }
 
 store.getProfilePic = () => {
-    return localStorage.getItem(constants.localstorage.profilePic) !== null ? localStorage.getItem(constants.localstorage.profilePic) : null
+    return localStorage.getItem(constants.localstorage.profilePic) !== 'null' ? localStorage.getItem(constants.localstorage.profilePic) : null
 }
 
 //
@@ -57,8 +57,8 @@ store.setCareers = (careers) => {
     localStorage.setItem(constants.localstorage.careers, JSON.stringify(careers))
 }
 
-store.setProfilePic = (careers) => {
-    localStorage.setItem(constants.localstorage.profilePic, careers)
+store.setProfilePic = (profilePic) => {
+    localStorage.setItem(constants.localstorage.profilePic, profilePic)
 }
 
 //

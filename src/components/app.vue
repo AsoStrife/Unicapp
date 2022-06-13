@@ -23,7 +23,7 @@
                 <f7-list-item :title="$t('message.panelList.about')" link="/about/" panel-close></f7-list-item>
 
                 <f7-list-item :title="$t('message.panelList.careers')" link="/careers/" panel-close v-if="this.showCareers"></f7-list-item>
-                <f7-list-item :title="$t('message.panelList.logout')" link="/logout/" panel-close v-if="this.showLoggedMenu"></f7-list-item>
+                <f7-list-item :title="$t('message.panelList.logout')" link="/logout/" panel-close v-if="this.showCareers"></f7-list-item>
             </f7-list>
         </f7-page>
     </f7-panel>
