@@ -15,14 +15,14 @@
             ios: String,
             md: String,
             aurora: String,
+            showIcon: Boolean
         },
         data() {
             return {
                 class: "alert " + this.bg,
                 iosIcon: "f7:" + this.ios,
                 mdIcon: "material:" + this.md,
-                auroraIcon: "f7:" + this.aurora,
-                showIcon: false
+                auroraIcon: "f7:" + this.aurora
             }
         },
         methods: {
@@ -30,8 +30,7 @@
         },
         mounted() {
             f7ready(() => {
-                if(this.ios != "" || this.aurora != "" || this.md != "")
-                    this.showIcon = true
+                
             })
         }
     }

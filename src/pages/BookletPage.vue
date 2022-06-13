@@ -5,8 +5,12 @@
         <f7-block-title>{{$t('message.booklet.title')}}</f7-block-title>
         
         <SkeletonListCustom v-if="skeleton" />
-
-        <div class="list">
+        
+        <f7-block class="mt-0 mb-0" v-if="this.isEmpty">
+            <Alert :text="$t('message.booklet.noExams')" bg="bg-warning" :showIcon="false"/>
+        </f7-block>
+        
+        <div class="list" v-if="this.exams.length > 0">
             <ul>
                 <li v-for="(item, key) in this.exams" :key="key">
                     <a @click="this.f7router.navigate('/booklet_exam/', {props: {exam: item}})" class="item-link item-content">
@@ -36,8 +40,8 @@
     import { f7ready, f7 } from 'framework7-vue'
     import Navbar from '../components/Navbar.vue'
     import SkeletonListCustom from '../components/SkeletonListCustom.vue'
+    import Alert from '../components/Alert.vue'
     import api from '../js/unicapp/api'
-    import utils from '../js/unicapp/utils'
     import constants from '../js/unicapp/constants'
 
     export default {
@@ -49,6 +53,7 @@
             return {
                 exams: [],
                 skeleton: true,
+                isEmpty: false
             };
         },
         methods: {
@@ -68,13 +73,17 @@
             f7ready(() => {
                 api.booklet().then(response => {
                     this.exams = response
-                    this.skeleton = ''
+                    this.skeleton = false
+
+                    if(this.exams.length == 0)
+                        this.isEmpty = true
                 })
             });
         },
         components: { 
             Navbar,
-            SkeletonListCustom
+            SkeletonListCustom,
+            Alert
         }
     }
 </script>

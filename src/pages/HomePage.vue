@@ -2,11 +2,11 @@
     <f7-page name="home">
         <Navbar />
 
-        <NameProfilePic />
+        <NameProfilePic :firstName="this.firstName" :lastName="this.lastName" :profilePic="this.profilePic"/>
 
-        <Ratings :weightedAvg="weightedAvg" :totalCfu="totalCfu" />
+        <Ratings :weightedAvg="this.weightedAvg" :totalCfu="this.totalCfu" />
 
-        <PersonalData />
+        <PersonalData :email="this.email" :universityEmail="this.universityEmail" :address="this.address" :mobile="this.mobile"/>
 
     </f7-page>
 </template>
@@ -23,29 +23,41 @@
     import api from '../js/unicapp/api'
     import constants from '../js/unicapp/constants'
     import store from '../js/unicapp/store'
+    import utils from '../js/unicapp/utils'
 
     export default {
         name: "Home",
         data() {
             return {
                 weightedAvg: constants.defaultValues.weightedAvg,
-                totalCfu: constants.defaultValues.totalCfu
-            }
-        },
-        methods: {
+                totalCfu: constants.defaultValues.totalCfu,
 
+                firstName: constants.defaultValues.firstName, 
+                lastName: constants.defaultValues.lastName,
+                profilePic: constants.defaultValues.profilePic,
+
+                email: constants.defaultValues.email, 
+                universityEmail: constants.defaultValues.email, 
+                mobile: constants.defaultValues.mobile, 
+                address: constants.defaultValues.address,
+            }
         },
         mounted() {
             var self = this
             f7ready( async() => {
-                api.people().then(response => {
-                    f7.emit('apiPeopleDone', response)
-                   
+                api.people().then(data => {
+                    this.firstName = utils.toProperCase(data?.nome) 
+                    this.lastName = utils.toProperCase(data?.cognome)
+
+                    this.email = data?.email != "" ? data?.email : null
+                    this.universityEmail = data?.emailAte != "" ? data?.emailAte : null
+                    this.mobile = data?.cellulare != "" ? data?.cellulare : null
+                    this.address = this.setAddress(data) != "" ? this.setAddress(data) : null
                 })
 
-                api.photo().then(response => {
-                    store.setProfilePic(response)
-                    f7.emit('apiPhotoDone', response)
+                api.photo().then(data => {
+                    store.setProfilePic(data)
+                    this.profilePic = data
                 })
 
                 let bookletData = await api.bookletVotesAvg()
@@ -56,6 +68,14 @@
                 
 
             })
+        },
+        methods: {
+            setAddress(data){
+                let address = ""
+
+                address = data?.comuResDes + ", " + utils.toProperCase(data?.viaRes) + " " + data?.numCivRes
+                return address
+            }
         },
         components: { 
             Navbar,

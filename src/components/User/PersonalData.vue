@@ -31,46 +31,38 @@
 <script>
     import { f7ready, f7 } from 'framework7-vue'
     import constants from '../../js/unicapp/constants'
-    import utils from '../../js/unicapp/utils'
 
     export default {
         name: "PersonalData", 
         props: {
+            email: {
+                default: constants.defaultValues.email
+            },
+            universityEmail: {
+                default: constants.defaultValues.email
+            }, 
+            mobile: {
+                default: constants.defaultValues.mobile
+            },
+            address: {
+                default: constants.defaultValues.address
+            } 
         },
         data() {
             return {
-                skeleton: "skeleton-text skeleton-effect-wave",
-                email: constants.defaultValues.email, 
-                universityEmail: constants.defaultValues.email, 
-                mobile: constants.defaultValues.mobile, 
-                address: constants.defaultValues.address, 
-
-            }
-        },
-        methods: {
-            setAddress(data){
-                let address = ""
-
-                address = data?.comuResDes + ", " + utils.toProperCase(data?.viaRes) + " " + data?.numCivRes
-                return address
+                skeleton: "skeleton-text skeleton-effect-wave"
             }
         },
         mounted() {
             f7ready(() => {
-                f7.on('apiPeopleDone', (data) => {
-                    this.email = data?.email != "" ? data?.email : null
-                    this.universityEmail = data?.emailAte != "" ? data?.emailAte : null
-                    this.mobile = data?.cellulare != "" ? data?.cellulare : null
-                    this.address = this.setAddress(data) != "" ? this.setAddress(data) : null
-                })
 
                 this.$watch(
                 (vm) => [vm.email, vm.universityEmail, vm.mobile, vm.address],
                 (val) => {
                     if(this.email != constants.defaultValues.email ||
-                         this.universityEmail != constants.defaultValues.email ||
-                         this.mobile != constants.defaultValues.mobile ||
-                         this.address != constants.defaultValues.address)
+                        this.universityEmail != constants.defaultValues.email ||
+                        this.mobile != constants.defaultValues.mobile ||
+                        this.address != constants.defaultValues.address)
                         this.skeleton = ""
                 },
                 {

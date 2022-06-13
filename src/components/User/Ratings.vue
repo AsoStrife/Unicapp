@@ -4,7 +4,7 @@
             <f7-col v-if="weightedAvg != null">
                 <f7-card :class="skeleton">
                     <f7-card-header>{{$t('message.ratings.weightedAvg')}}</f7-card-header>
-                    <f7-card-content :class="textColor">{{weightedAvg != '0' ? weightedAvg.toFixed(2) : defaultValues.weightedAvg}}</f7-card-content>
+                    <f7-card-content :class="textColor">{{weightedAvg != defaultValues.weightedAvg ? weightedAvg.toFixed(2) : defaultValues.weightedAvg}}</f7-card-content>
                 </f7-card>
             </f7-col>
             <f7-col v-if="totalCfu != null">

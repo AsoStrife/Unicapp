@@ -72,23 +72,30 @@
 <script>
     import { f7ready, f7 } from 'framework7-vue';
     import constants from '../../js/unicapp/constants'
-    import utils from '../../js/unicapp/utils'
     import store from '../../js/unicapp/store'
 
     export default {
         name: "NameProfilePic",
+        props: {
+            profilePic: {
+                default: constants.defaultValues.profilePic
+            },
+            firstName: {
+                default: constants.defaultValues.firstName
+            },
+            lastName: {
+                default: constants.defaultValues.lastName
+            }
+        },
         data() {
             return {
                 skeletonName: "skeleton-text skeleton-effect-wave",
                 skeletonId: "skeleton-text skeleton-effect-wave",
                 skeletonProfilePic: "skeleton-text skeleton-effect-wave",
-
-                profilePic: constants.defaultValues.profilePic,
-                firstName: constants.defaultValues.firstName, 
-                lastName: constants.defaultValues.lastName, 
-                id: constants.defaultValues.id,
+                
                 defaultValues: constants.defaultValues,
-                selectedCareer: store.getSelectedCareer()
+                selectedCareer: store.getSelectedCareer(),
+                id: constants.defaultValues.id
             }
         },
         methods: {
@@ -96,16 +103,7 @@
 
         },
         mounted() {
-            f7ready(() => {
-                f7.on('apiPeopleDone', (data) => {
-                    this.firstName = utils.toProperCase(data?.nome)
-                    this.lastName = utils.toProperCase(data?.cognome)
-                })
-
-                f7.on('apiPhotoDone', (data) => {
-                    this.profilePic = data
-                })
-                
+            f7ready(() => {                
                 this.id = this.selectedCareer?.matricola
             })
 
@@ -130,9 +128,6 @@
 
         
             
-        },
-        setup() {
-
         }
     }
 </script>

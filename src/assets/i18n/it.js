@@ -55,7 +55,8 @@ const it =  {
         },
         booklet: {
             title: "Il tuo libretto",
-            cfu: "CFU"
+            cfu: "CFU",
+            noExams: "Non sono presenti esami nel tuo libretto"
         },
         bookletExam: {
             title: "Esame"
