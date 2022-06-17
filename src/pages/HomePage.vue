@@ -11,7 +11,6 @@
     </f7-page>
 </template>
 
-<style></style>
 
 <script>
     import { f7ready, f7 } from 'framework7-vue'

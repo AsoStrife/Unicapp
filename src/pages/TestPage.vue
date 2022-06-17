@@ -1,9 +1,8 @@
 <template>
     <f7-page name="BookletExam">
-        <Navbar />
+        <Navbar :backLink="true"/>
 
         <TitleDetailPage :bg="this.getBg(this.exam)" :text="this.exam.adDes" />
-        
 
     </f7-page>
 </template>

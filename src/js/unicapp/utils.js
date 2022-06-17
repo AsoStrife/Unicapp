@@ -7,6 +7,9 @@ const utils = {}
  * @returns str
  */
 utils.toProperCase = (str) => {
+    if(str == null || str == "")
+        return ""
+        
     return str.replace(
         /\w\S*/g,
         function(txt) {

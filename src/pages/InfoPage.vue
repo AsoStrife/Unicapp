@@ -5,7 +5,7 @@
     </f7-page>
 </template>
 
-<style>
+<style scoped>
 
 </style>
 

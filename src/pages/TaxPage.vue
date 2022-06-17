@@ -1,8 +1,8 @@
 <template>
     <f7-page name="Taxes">
-        <Navbar />
+        <Navbar :backLink="true"/>
         
-        <TitleDetailPage :bg="this.getStatus(this.tax)" :text="this.tax.tassaDes + ' - ' + this.tax.combDes" />
+        <TitleDetailPage :bg="this.getStatus(this.tax)" :text="this.tax.tassaDes" />
 
     </f7-page>
 </template>

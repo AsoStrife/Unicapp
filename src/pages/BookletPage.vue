@@ -15,10 +15,10 @@
                 <li v-for="(item, key) in this.exams" :key="key">
                     <a @click="this.f7router.navigate('/booklet_exam/', {props: {exam: item}})" class="item-link item-content">
                         <div class="item-media">
-                            <h3 class="text-success" v-html="this.getGrade(item)"></h3>
+                            <h3 class="text-success" v-html="this.getGrade(item)"></h3>                          
                         </div>
                         <div class="item-inner">
-                            <div class="item-title">{{item.adDes}}</div>
+                            <div class="item-title">{{this.utils.toProperCase(item.adDes)}}</div>
                             <div class="item-after">{{item.peso}} {{$t('message.booklet.cfu')}}</div>
                         </div>
                     </a>
@@ -29,10 +29,17 @@
     </f7-page>
 </template>
 
-<style>
+<style scoped>
     h3 {
-        font-size: 30px;
+        font-size: 25px !important;
         
+    }
+    
+    .list .item-title {
+        word-wrap: normal;
+        overflow: visible;
+        white-space: normal;
+        font-size: 15px !important;
     }
 </style>
 
@@ -43,6 +50,7 @@
     import Alert from '../components/Alert.vue'
     import api from '../js/unicapp/api'
     import constants from '../js/unicapp/constants'
+    import utils from '../js/unicapp/utils'
 
     export default {
         name: "Booklet",
@@ -53,12 +61,12 @@
             return {
                 exams: [],
                 skeleton: true,
-                isEmpty: false
+                isEmpty: false,
+                utils: utils
             };
         },
         methods: {
             getGrade(exam){
-                
                 if(exam?.esito?.voto != null)
                     return exam.esito.voto + (exam.esito.lodeFlg == 1 ? constants.booklet.laudeSymbol : "")
                 

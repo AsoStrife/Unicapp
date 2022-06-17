@@ -24,10 +24,17 @@
     </f7-page>
 </template>
 
-<style>
+<style scoped>
     h3 {
-        font-size: 30px;
+        font-size: 25px !important;
         
+    }
+    
+    .list .item-title {
+        word-wrap: normal;
+        overflow: visible;
+        white-space: normal;
+        font-size: 15px !important;
     }
 </style>
 

@@ -1,7 +1,7 @@
 <template>
     
     <div :class="this.background">
-        <h1>{{this.text}}</h1>
+        <h1>{{utils.toProperCase(this.text)}}</h1>
     </div>
 
 </template>
@@ -9,7 +9,7 @@
 <style scoped>
     h1 {
         color: #FFF; 
-        font-size:20px;
+        font-size:18px;
         text-align: center;
     }
 
@@ -21,7 +21,9 @@
 </style>
 
 <script>
-    import { f7ready, f7 } from 'framework7-vue';
+    import { f7ready, f7 } from 'framework7-vue'
+    import utils from '../js/unicapp/utils'
+
     export default {
         name: "TitleDetailPage", 
         props: {
@@ -30,7 +32,8 @@
         },
         data() {
             return {
-                background: "bg-" + this.bg
+                background: "bg-" + this.bg,
+                utils: utils
             }
         },
         methods: {

@@ -59,10 +59,15 @@ const it =  {
             noExams: "Non sono presenti esami nel tuo libretto"
         },
         bookletExam: {
-            title: "Esame"
+            title: "Esame",
+            grade: "Voto",
+            cfu: "CFU", 
+            attendingYear: "Anno Frequenza",
+            confirmationDate: "Data Convalida"
         },
         taxes: {
-            title: "Le tue tasse"
+            title: "Le tue tasse",
+            noTaxes: "Non sono presenti tasse nel tuo profilo"
         },
         taxe: {
             title: "Dettaglio tassa"
@@ -85,7 +90,8 @@ const it =  {
             
         },
         tests: {
-            title: "Appelli"
+            title: "Appelli",
+            noTests: "Non sono presenti appelli"
         }, 
         test: {
             title: "Appello"
