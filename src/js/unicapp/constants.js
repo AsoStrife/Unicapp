@@ -6,6 +6,7 @@ let constants = {
         "author": "Webenterprises", 
         "locale": "it", 
         "fallbackLocale": "it",
+        "debug": false,
         "supportedLanguages": [ 
             {
                 'lang': 'it', 
@@ -22,8 +23,10 @@ let constants = {
         "profilePic": "profilePic"
     },
     "api": {
-        "middlewareUrl": "http://127.0.0.1:8000/",
-        "middlewareUrlPhoto": "http://127.0.0.1:8000/photo",
+        "middlewareUrlDebug": "http://127.0.0.1:8000/",
+        "middlewareUrlPhotoDebug": "http://127.0.0.1:8000/photo",
+        "middlewareUrlRemote": "https://unicapp.andreacorriga.com/",
+        "middlewareUrlPhotoRemote": "https://unicapp.andreacorriga.com/photo",
         "esse3": {
             "login": "%s1" + "login",
             "careers": "%s1" + "anagrafica-service-v2/carriere/%s2", // stuId

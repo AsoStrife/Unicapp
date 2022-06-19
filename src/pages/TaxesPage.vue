@@ -6,16 +6,20 @@
 
         <SkeletonListCustom v-if="skeleton" />
 
-        <div class="list">
+        <f7-block class="mt-0 mb-0" v-if="this.isEmpty">
+            <Alert :text="$t('message.taxes.noTaxes')" bg="bg-warning" :showIcon="false"/>
+        </f7-block>
+        
+        <div class="list" v-if="this.taxes.length > 0">
             <ul>
                 <li v-for="(item, key) in this.taxes" :key="key">
                     <a @click="this.f7router.navigate('/tax/', {props: {tax: item}})" class="item-link item-content">
                         <div class="item-media">
-                            <h3 class="text-success" v-html="this.getStatus(item)"></h3>
+                            <h3 class="text-success" v-html="this.utils.tax.getStatus(item)"></h3>
                         </div>
                         <div class="item-inner">
                             <div class="item-title">{{item.tassaDes}} {{item.combDes}}</div>
-                            <div class="item-after">{{item.importoVoce}} {{$t('message.general.euro')}}</div>
+                            <div class="item-after">{{item.importoPag}} {{$t('message.general.euro')}}</div>
                         </div>
                     </a>
                 </li>
@@ -45,7 +49,7 @@
     import SkeletonListCustom from '../components/SkeletonListCustom.vue'
     import api from '../js/unicapp/api'
     import utils from '../js/unicapp/utils'
-    import constants from '../js/unicapp/constants'
+    import Alert from '../components/Alert.vue'
 
     export default {
         name: "Taxes",
@@ -56,29 +60,27 @@
             return {
                 taxes: [],
                 skeleton: true,
+                isEmpty: false,
+                utils: utils
             };
         },
         methods: {
-            getStatus(tax){
-                switch(tax?.semaforo){
-                    case constants.taxes.greenLight: 
-                        return constants.emoji.greenCirle
-                    case constants.taxes.redLight: 
-                        return constants.emoji.redCirle
-                }
-            }
         },
         mounted() {
             f7ready(() => {
                 api.taxes().then(response => {
                     this.taxes = response
                     this.skeleton = false
+
+                    if(this.taxes.length == 0)
+                        this.isEmpty = true
                 })
             });
         },
         components: { 
             Navbar,
-            SkeletonListCustom
+            SkeletonListCustom,
+            Alert
         }
     }
 </script>

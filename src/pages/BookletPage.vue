@@ -15,7 +15,7 @@
                 <li v-for="(item, key) in this.exams" :key="key">
                     <a @click="this.f7router.navigate('/booklet_exam/', {props: {exam: item}})" class="item-link item-content">
                         <div class="item-media">
-                            <h3 class="text-success" v-html="this.getGrade(item)"></h3>                          
+                            <h3 class="text-success" v-html="this.utils.exam.getGrade(item)"></h3>                          
                         </div>
                         <div class="item-inner">
                             <div class="item-title">{{this.utils.toProperCase(item.adDes)}}</div>
@@ -49,7 +49,6 @@
     import SkeletonListCustom from '../components/SkeletonListCustom.vue'
     import Alert from '../components/Alert.vue'
     import api from '../js/unicapp/api'
-    import constants from '../js/unicapp/constants'
     import utils from '../js/unicapp/utils'
 
     export default {
@@ -63,18 +62,9 @@
                 skeleton: true,
                 isEmpty: false,
                 utils: utils
-            };
+            }
         },
         methods: {
-            getGrade(exam){
-                if(exam?.esito?.voto != null)
-                    return exam.esito.voto + (exam.esito.lodeFlg == 1 ? constants.booklet.laudeSymbol : "")
-                
-                if(exam?.esito?.tipoGiudCod != "")
-                    return exam.esito.tipoGiudCod
-
-                return constants.emoji.redCirle
-            }
             
         },
         mounted() {

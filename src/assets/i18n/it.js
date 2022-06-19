@@ -69,8 +69,15 @@ const it =  {
             title: "Le tue tasse",
             noTaxes: "Non sono presenti tasse nel tuo profilo"
         },
-        taxe: {
-            title: "Dettaglio tassa"
+        tax: {
+            title: "Dettaglio tassa",
+            paymentId: "ID pagamento",
+            paymentNotice: "Avviso pagamento", 
+            expiration: "Scadenza",
+            amount: "Importo",
+            paymentDate: "Data pagamento",
+            invoice: "Fattura n°",
+            mav: "MAV"
         },
         avgCalculator: {
             title: "Calcolatore media",

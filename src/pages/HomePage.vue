@@ -62,12 +62,13 @@
                     f7.emit('photoApiDone')
                 })
 
-                let bookletData = await api.bookletVotesAvg()
-                let statsData = await api.bookletStats()
-
-                self.weightedAvg = (bookletData.filter(d => d.base == 30  && d.tipoMediaCod.value == 'P'))[0]?.media
-                self.totalCfu = statsData?.umPesoConvalidato
+                api.bookletVotesAvg().then(bookletData => {
+                    self.weightedAvg = (bookletData.filter(d => d.base == 30  && d.tipoMediaCod.value == 'P'))[0]?.media
+                })
                 
+                api.bookletStats().then(statsData => {
+                    self.totalCfu = statsData?.umPesoConvalidato
+                })
 
             })
         },

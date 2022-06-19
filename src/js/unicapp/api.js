@@ -3,8 +3,8 @@ import axios from 'axios'
 import universities from './universities'
 import constants from './constants'
 
-const middlewareUrl = constants.api.middlewareUrl
-const middlewareUrlPhoto = constants.api.middlewareUrlPhoto
+const middlewareUrl = constants.api.debug ? constants.api.middlewareUrlDebug : constants.api.middlewareUrlRemote
+const middlewareUrlPhoto = constants.api.debug ? constants.api.middlewareUrlPhotoDebug : constants.api.middlewareUrlPhotoRemote
 
 const api = {}
 

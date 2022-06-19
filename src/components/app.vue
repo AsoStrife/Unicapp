@@ -29,7 +29,7 @@
     </f7-panel>
 
     <!-- Your main view, should have "view-main" class -->
-    <f7-view main class="safe-areas" url="/booklet/"></f7-view>
+    <f7-view main class="safe-areas" url="/average_calculator/"></f7-view>
 
     </f7-app>
 </template>

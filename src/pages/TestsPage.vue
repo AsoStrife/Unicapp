@@ -6,12 +6,16 @@
         
         <SkeletonListCustom v-if="skeleton" />
 
-        <div class="list">
+        <f7-block class="mt-0 mb-0" v-if="this.isEmpty">
+            <Alert :text="$t('message.tests.noTests')" bg="bg-warning" :showIcon="false"/>
+        </f7-block>
+
+        <div class="list" v-if="this.exams.length > 0">
             <ul>
                 <li v-for="(item, key) in this.exams" :key="key">
                     <a @click="this.f7router.navigate('/test/', {props: {exam: item}})" class="item-link item-content">
                         <div class="item-media">
-                            <h3 class="text-success" v-html="this.getStatus(item)"></h3>
+                            <h3 class="text-success" v-html="this.utils.exam.getStatus(item)"></h3>
                         </div>
                         <div class="item-inner">
                             <div class="item-title">{{item.adDes}}</div>
@@ -44,7 +48,7 @@
     import SkeletonListCustom from '../components/SkeletonListCustom.vue'
     import api from '../js/unicapp/api'
     import utils from '../js/unicapp/utils'
-    import constants from '../js/unicapp/constants'
+    import Alert from '../components/Alert.vue'
 
     export default {
         name: "TestsPage",
@@ -55,26 +59,33 @@
             return {
                 exams: [],
                 skeleton: true,
+                isEmpty: false,
+                utils: utils
             };
         },
         methods: {
-            getStatus(exam){
-                return exam.statoDes == constants.tests.bookable ? constants.emoji.greenCirle : constants.emoji.redCirle;
-            }
+            
         },
         mounted() {
             f7ready(() => {
                 api.tests().then(response => {
-                    this.skeleton = ''
+                    this.exams = response
+                    this.skeleton = false
 
-                    // Sort per ordine alfabetico + data appello
-                    this.exams = response.sort((a, b) => a.adDes.localeCompare(b.adDes) && a.dataInizioApp.localeCompare(b.dataInizioApp))
+                    if(this.exams.length == 0)
+                        this.isEmpty = true
+                    else
+                        // Sort per ordine alfabetico + data appello
+                        this.exams = response.sort((a, b) => a.adDes.localeCompare(b.adDes) && a.dataInizioApp.localeCompare(b.dataInizioApp))
+                
+                    
                 })
             });
         },
         components: { 
             Navbar,
-            SkeletonListCustom
+            SkeletonListCustom,
+            Alert
         }
     }
 </script>
