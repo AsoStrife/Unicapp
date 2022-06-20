@@ -1,16 +1,30 @@
 <template>
     <f7-block class="mt-0 mb-0">
         <f7-row>
-            <f7-col v-if="weightedAvg != null">
+            <f7-col v-if="initialWeightedAvg != null">
                 <f7-card :class="skeleton">
                     <f7-card-header>{{$t('message.ratings.weightedAvg')}}</f7-card-header>
-                    <f7-card-content :class="textColor">{{weightedAvg != defaultValues.weightedAvg ? weightedAvg.toFixed(2) : defaultValues.weightedAvg}}</f7-card-content>
+                    <f7-card-content>
+                        {{initialWeightedAvg != defaultValues.weightedAvg ? initialWeightedAvg : defaultValues.weightedAvg}}
+                        
+                        <span v-if="newWeightedAvg != defaultValues.weightedAvg && initialWeightedAvg != newWeightedAvg">
+                            >> <span :class="textColor">{{newWeightedAvg != defaultValues.weightedAvg ? newWeightedAvg : defaultValues.weightedAvg}}</span>
+                        </span>
+                        
+                    </f7-card-content>
                 </f7-card>
             </f7-col>
-            <f7-col v-if="totalCfu != null">
+            <f7-col v-if="initialTotalCfu != null">
                 <f7-card :class="skeleton">
                     <f7-card-header>{{$t('message.ratings.totalCfu')}}</f7-card-header>
-                    <f7-card-content :class="textColor">{{totalCfu}}</f7-card-content>
+                    <f7-card-content>
+                        {{initialTotalCfu}} 
+                        
+                        <span v-if="newTotalCfu != defaultValues.totalCfu && initialTotalCfu != newTotalCfu">
+                            >> {{newTotalCfu}}
+                        </span>
+                        
+                    </f7-card-content>
                 </f7-card>
             </f7-col>
         </f7-row>
@@ -43,11 +57,19 @@
                 type: String, 
                 default: ""
             },
-            weightedAvg: {
+            initialWeightedAvg: {
                 type: Number, 
                 default: constants.defaultValues.weightedAvg
             },
-            totalCfu: {
+            initialTotalCfu: {
+                type: Number, 
+                default: constants.defaultValues.totalCfu
+            },
+            newWeightedAvg: {
+                type: Number, 
+                default: constants.defaultValues.weightedAvg
+            },
+            newTotalCfu: {
                 type: Number, 
                 default: constants.defaultValues.totalCfu
             }
@@ -66,13 +88,12 @@
             var self = this
 
             f7ready(() => {
-                
             })
 
             this.$watch(
-                (vm) => [vm.mathAvg, vm.weightedAvg],
+                (vm) => [vm.initialWeightedAvg],
                 (val) => {
-                    if(this.weightedAvg != constants.defaultValues.weightedAvg){
+                    if(this.initialWeightedAvg != constants.defaultValues.weightedAvg){
                         this.skeleton = ""
                     }
                 },

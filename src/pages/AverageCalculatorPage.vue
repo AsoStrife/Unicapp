@@ -9,7 +9,11 @@
             <f7-icon ios="f7:plus" aurora="f7:plus" md="material:add"></f7-icon>
         </f7-fab>
 
-        <Ratings :textColor="textColor" :weightedAvg="newWeithedAvg" :totalCfu="newTotalCfu"/>
+        <Ratings :textColor="textColor" 
+                :initialWeightedAvg="initialWeightedAvg" 
+                :initialTotalCfu="initialTotalCfu"
+                :newWeightedAvg="newWeightedAvg" 
+                :newTotalCfu="newTotalCfu" />
 
         <AddExamCalculator /> 
 
@@ -32,7 +36,7 @@
         data() {
             return {
                 newExams: [], 
-                newWeithedAvg: constants.defaultValues.weightedAvg,
+                newWeightedAvg: constants.defaultValues.weightedAvg,
                 newTotalCfu: constants.defaultValues.totalCfu,
                 initialWeightedAvg: constants.defaultValues.weightedAvg,
                 initialTotalCfu: constants.defaultValues.totalCfu,
@@ -55,10 +59,12 @@
                     let bookletData = await api.bookletVotesAvg()
                     let statsData = await api.bookletStats()
 
-                    this.initialWeightedAvg = (bookletData.filter(d => d.base == 30  && d.tipoMediaCod.value == 'P'))[0]?.media
+                    this.initialWeightedAvg = parseFloat((bookletData.filter(d => d.base == 30  && d.tipoMediaCod.value == 'P'))[0]?.media).toFixed(2)
+                    this.initialWeightedAvg = parseFloat(this.initialWeightedAvg)
+
                     this.initialTotalCfu = statsData?.umPesoConvalidato
 
-                    this.newWeithedAvg = this.initialWeightedAvg
+                    this.newWeightedAvg = this.initialWeightedAvg
                     this.newTotalCfu = this.initialTotalCfu
                     this.isFabVisible = true
                 }
@@ -76,18 +82,10 @@
                 let newExamsWeightedSum = this.newExams.reduce(function (acc, e) { return acc + (parseInt(e.examCfu) * parseInt(e.examGrade)) }, 0)
                 let initialExamWeightedSum = this.initialWeightedAvg * this.initialTotalCfu
 
-                this.newWeithedAvg = (initialExamWeightedSum + newExamsWeightedSum) / this.newTotalCfu
+                this.newWeightedAvg = parseFloat((initialExamWeightedSum + newExamsWeightedSum) / this.newTotalCfu).toFixed(2)
+                this.newWeightedAvg = parseFloat(this.newWeightedAvg)
 
-                f7.emit('updateBookletVoteAvg', {
-                    mathAvg: null, 
-                    weightedAvg: this.newWeithedAvg,
-                    totalCfu: this.newTotalCfu
-                })
-                
-                console.log("initial", this.initialWeightedAvg)
-                console.log("new", this.newWeithedAvg)
-
-                this.textColor = this.newWeithedAvg > this.initialWeightedAvg ? "text-success" : (this.newWeithedAvg < this.initialWeightedAvg ? "text-danger" : "")
+                this.textColor = this.newWeightedAvg > this.initialWeightedAvg ? "text-success" : (this.newWeightedAvg < this.initialWeightedAvg ? "text-danger" : "")
             }
         },
         mounted() {

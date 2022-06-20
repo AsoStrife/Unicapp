@@ -4,7 +4,7 @@
 
         <NameProfilePic :firstName="this.firstName" :lastName="this.lastName" :profilePic="this.profilePic"/>
 
-        <Ratings :weightedAvg="this.weightedAvg" :totalCfu="this.totalCfu" />
+        <Ratings :initialWeightedAvg="this.weightedAvg" :initialTotalCfu="this.totalCfu" />
 
         <PersonalData :email="this.email" :universityEmail="this.universityEmail" :address="this.address" :mobile="this.mobile"/>
 
