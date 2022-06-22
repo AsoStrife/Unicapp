@@ -1,37 +1,10 @@
 # Unicapp
 
-## Framework7 CLI Options
+[TOC]
 
-Framework7 app created with following options:
+Unicapp is an unofficial app for Esse3 Platform for Universities Students.
 
-```
-{
-  "cwd": "C:\\Users\\andre\\Documents\\GitHub\\Unicapp",
-  "type": [
-    "capacitor"
-  ],
-  "name": "Unicapp",
-  "framework": "vue",
-  "template": "blank",
-  "bundler": "vite",
-  "cssPreProcessor": false,
-  "theming": {
-    "customColor": true,
-    "color": "#4776e6",
-    "darkTheme": false,
-    "iconFonts": true,
-    "fillBars": true
-  },
-  "customBuild": false,
-  "pkg": "com.moapps.unicapp",
-  "capacitor": {
-    "platforms": [
-      "ios",
-      "android"
-    ]
-  }
-}
-```
+It works for **Android** and **iOS**.
 
 ## Install Dependencies
 
@@ -99,8 +72,40 @@ Check out [official cordova-res documentation](https://github.com/ionic-team/cor
 * [Framework7 Icons Reference](https://framework7.io/icons/)
 * [Community Forum](https://forum.framework7.io)
 
-## Support Framework7
+## Supported Universities
 
-Love Framework7? Support project by donating or pledging on:
-- Patreon: https://patreon.com/framework7
-- OpenCollective: https://opencollective.com/framework7
+Esse3 platform has been adopted by many Athenaeums, so Unicapp can handle the following Universities:
+
+- Politecnico di Bari
+- Università degli Studi della Basilicata
+- Università degli Studi di Bergamo
+- Università degli Studi di Brescia
+- Università Campus Bio-Medico di Roma
+- Università di Camerino
+- Università degli Studi di Cagliari
+- Università degli Studi di Firenze
+- Università degli Studi Guglielmo Marconi
+- Università degli Studi di Messina
+- Università degli Studi di Milano-Bicocca
+- Università degli Studi dell\'Insubria
+- Università degli Studi di Perugia
+- Università di Pisa
+- Università di Parma
+- Università degli Studi di Pavia
+- Università degli Studi della Repubblica di San Marino
+- Università degli Studi del Sannio
+- Università di Torino
+- Università degli Studi di Trieste
+- Università degli Studi di Udine
+- Università degli Studi di Urbino Carlo Bo
+- Università degli Studi dell\'Aquila
+- Università Ca\' Foscari Venezia
+- Università Politecnica delle Marche
+
+## Contacts
+
+* E-mail : me@andreacorriga.com
+* Website: https://andreacorriga.com
+* Github: https://github.com/AsoStrife
+* Twitter: https://twitter.com/AsoStrife
+* Instagram: http://instagram.com/AsoStrife

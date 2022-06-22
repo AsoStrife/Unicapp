@@ -6,7 +6,7 @@ let constants = {
         "author": "Webenterprises", 
         "locale": "it", 
         "fallbackLocale": "it",
-        "debug": true,
+        "debug": false,
         "supportedLanguages": [ 
             {
                 'lang': 'it', 
