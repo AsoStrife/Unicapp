@@ -25,7 +25,7 @@ const it =  {
             booklet: 'Libretto', 
             taxes: 'Tasse',
             settings: 'Impostazioni', 
-            about: 'Informazioni', 
+            info: 'Informazioni', 
             logout: 'Logout',
             careers: "Seleziona carriera",
             avgCalculator: "Calcolatore Media",
@@ -102,6 +102,18 @@ const it =  {
         }, 
         test: {
             title: "Appello"
+        },
+        about: {
+            section_1_title: "Cos'è Unicapp",
+            section_1_content: "<p>Unicapp nasce nel 2018 come applicazione alternativa per visualizzare il proprio profilo Esse3 per <b>l'Università degli Studi di Cagliari</b> (UniCA). Raggiunta una certa popolarità nel sud Sardegna (+9.000 utenti unici), nel 2022 si è deciso di supportare quante più Università italiane possibili puntando sempre su due fattori cardine: velocità e semplicità d'uso. </p> <p>Attualmente Unicapp supporta le seguenti università:</p>",
+            
+            
+            section_2_title: "Contattaci",
+            section_2_content: "Per qualsiasi problema tecnico o richiesta di informazioni puoi contattarmi sul mio profilo personale Instagram o direttamente sulle pagine social di Unicapp.",
+            ig_profile: "Profilo Instagram", 
+            fb_profile: "Pagina Facebook",
+            ac: "Andrea Corriga", 
+            ac_grade: "Ph.D & Software Developer"
         }
     }
 }

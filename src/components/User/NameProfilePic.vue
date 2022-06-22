@@ -36,17 +36,15 @@
     }
 
     h1 {
-        color: #8e8e93;
         font-size: 25px;
-        font-weight: normal;
+        font-weight: 300;
         text-align: center;
         line-height: 13px;
     }
 
      h2 {
-        color: #8e8e93;
         font-size: 20px;
-        font-weight: normal;
+        font-weight: 100;
         text-align: center;
         line-height: 13px;
     }
@@ -54,7 +52,7 @@
      .profile-img {
         width: 100px;
         height: 100px;
-        border: 5px solid whitesmoke;
+        border: 3px solid whitesmoke;
         margin-top: -80px;
         display: block;
         z-index: 20;

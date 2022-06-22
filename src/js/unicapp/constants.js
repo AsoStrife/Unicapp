@@ -14,6 +14,12 @@ let constants = {
             }
         ]
     },
+    "urls": {
+        "andreacorriga": "https://andreacorriga.com", 
+        "ig_andreacorriga": "https://instagram.com/AsoStrife",
+        "ig_unicapp": "https://instagram.com/unicapp_official",
+        "fb_unicapp": "https://facebook.com/unicapp.official"
+    },
     "localstorage": {
         "credentials": "credentials",
         "user": 'user',

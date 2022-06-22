@@ -8,7 +8,8 @@
                         {{initialWeightedAvg != defaultValues.weightedAvg ? initialWeightedAvg : defaultValues.weightedAvg}}
                         
                         <span v-if="newWeightedAvg != defaultValues.weightedAvg && initialWeightedAvg != newWeightedAvg">
-                            >> <span :class="textColor">{{newWeightedAvg != defaultValues.weightedAvg ? newWeightedAvg : defaultValues.weightedAvg}}</span>
+                            <span class="slim"> &rarr; </span>
+                            <span :class="textColor">{{newWeightedAvg != defaultValues.weightedAvg ? newWeightedAvg : defaultValues.weightedAvg}}</span>
                         </span>
                         
                     </f7-card-content>
@@ -21,7 +22,7 @@
                         {{initialTotalCfu}} 
                         
                         <span v-if="newTotalCfu != defaultValues.totalCfu && initialTotalCfu != newTotalCfu">
-                            >> {{newTotalCfu}}
+                            <span class="slim"> &rarr; </span> {{newTotalCfu}}
                         </span>
                         
                     </f7-card-content>
@@ -32,17 +33,8 @@
 </template>
 
 <style scoped>
-    .card-header {
-        color: #8e8e93 !important;
-    }
-
-    p {
-        color: #8e8e93;
-        font-size: 25px;
-        font-weight: normal;
-        text-align: center;
-        font-weight: 200;
-        margin-top: 0;
+    .card-content {
+         text-align: center;
     }
 </style>
 
