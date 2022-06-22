@@ -21,6 +21,21 @@ npm install
 * 📱 `build-capacitor-ios` - build app and copy it to iOS capacitor project
 * 📱 `build-capacitor-android` - build app and copy it to Android capacitor project
 
+## Set the app
+
+In `./src/js/unicapp/constants.js` there are the main constants and configurations of the app. 
+
+- **debug**: if true use `middlewareUrlDebug` and `middlewareUrlPhotoDebug` urls for Api.
+- **fallbackLocale**: If some strings are missing, the app will use fallbackLocale as strings. Default value is `en`
+- **supportedLanguages**: contains the supported languages
+- **middlewareUrlRemote** and **middlewareUrlPhotoRemote**: are the middleware api urls
+
+## i18n 
+
+Unicapp supports internationalization natively. 
+Inside the `./src/assets/` folder are the files containing the strings of the app. The folder contains one file for each supported language es `it.js`.
+
+
 ## Vite
 
 There is a [Vite](https://vitejs.dev) bundler setup. It compiles and bundles all "front-end" resources. You should work only with files located in `/src` folder. Vite config located in `vite.config.js`.
@@ -32,9 +47,22 @@ This project created with Capacitor support. And first thing required before sta
 npx cap add ios && npx cap add android
 ```
 
+Folder must have the followings file: 
+
+- Create a `432x432.png` file. Then save it as "icon-background.png". you may decide to make the color transparent or not
+
+- Create another `432x432.png` file and save it as "icon-foreground.png".
+
+```
+  resources/
+  ├── android/
+  │   ├── icon-background.png
+  │   └── icon-foreground.png
+  ├── icon.png
+  └── splash.png
+```
+
 Check out [official Capacitor documentation](https://capacitorjs.com) for more examples and usage examples.
-
-
 
 ## Assets
 
