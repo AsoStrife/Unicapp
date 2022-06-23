@@ -53,16 +53,41 @@
         },
         methods: {
             deleteExams() {
-                f7.dialog.confirm(
-                    this.$t('message.examsTableCalculator.clearAllExamsQuestion'), function () {
-                    f7.emit('deleteAllExamFromCalulator')
-                })
+                f7.dialog.create({
+                    text: this.$t('message.examsTableCalculator.clearAllExamsQuestion'),
+                    buttons: [
+                        {
+                            text: this.$t('message.general.cancel'), 
+                            onClick: function() {
+                            }
+                        },
+                        {
+                            text: this.$t('message.general.confirm'), 
+                            onClick: function() {
+                                f7.emit('deleteAllExamFromCalulator')
+                            }
+                        },
+                    ]
+                }).open()
+
             },
             deleteExam(index){
-                f7.dialog.confirm(
-                    this.$t('message.examsTableCalculator.clearExamQuestion'), function () {
-                    f7.emit('deleteExamFromCalulator', index)
-                })
+                f7.dialog.create({
+                    text: this.$t('message.examsTableCalculator.clearExamQuestion'),
+                    buttons: [
+                        {
+                            text: this.$t('message.general.cancel'), 
+                            onClick: function() {
+                            }
+                        },
+                        {
+                            text: this.$t('message.general.confirm'), 
+                            onClick: function() {
+                                f7.emit('deleteExamFromCalulator', index)
+                            }
+                        },
+                    ]
+                }).open() 
             }
         },
         mounted() {
@@ -70,16 +95,6 @@
 
             f7ready(() => {
                 
-                /*
-                f7.on('addExamCalculator', function(data){
-                    self.exams.push(data)
-
-                    f7.dataTable.destroy("#data-table-exams-calculator")
-
-                    f7.dataTable.create({
-                        el: "#data-table-exams-calculator"
-                     })
-                })*/
             })
 
         },

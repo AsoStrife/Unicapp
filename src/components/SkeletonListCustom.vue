@@ -12,6 +12,39 @@
                     </div>
                 </div>
             </li>
+            <li class="item-content">
+                <div class="item-media">
+                    <div class="skeleton-block skeleton-media"></div>
+                </div>
+                <div class="item-inner">
+                    <div class="item-title-row">
+                        <div class="item-title">{{this.defaultValues.titleList}}</div>
+                        <div class="item-after">{{this.defaultValues.titleAfter}}</div>
+                    </div>
+                </div>
+            </li>
+            <li class="item-content">
+                <div class="item-media">
+                    <div class="skeleton-block skeleton-media"></div>
+                </div>
+                <div class="item-inner">
+                    <div class="item-title-row">
+                        <div class="item-title">{{this.defaultValues.titleList}}</div>
+                        <div class="item-after">{{this.defaultValues.titleAfter}}</div>
+                    </div>
+                </div>
+            </li>
+            <li class="item-content">
+                <div class="item-media">
+                    <div class="skeleton-block skeleton-media"></div>
+                </div>
+                <div class="item-inner">
+                    <div class="item-title-row">
+                        <div class="item-title">{{this.defaultValues.titleList}}</div>
+                        <div class="item-after">{{this.defaultValues.titleAfter}}</div>
+                    </div>
+                </div>
+            </li>
         </ul>
     </div>
 </template>

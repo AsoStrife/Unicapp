@@ -1,6 +1,8 @@
 <template>
-    <f7-page name="Info">
-        <Navbar />
+
+    <Navbar />
+
+    <f7-page name="InfoPage">
 
         <f7-block>
             <h1>{{constants.app.name}}</h1>

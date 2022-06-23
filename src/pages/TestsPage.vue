@@ -1,6 +1,8 @@
 <template>
-    <f7-page name="Booklet">
-        <Navbar />
+
+    <Navbar />
+    
+    <f7-page name="TestsPage">    
 
         <f7-block-title>{{$t('message.tests.title')}}</f7-block-title>
         

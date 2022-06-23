@@ -1,7 +1,9 @@
 <template>
-    <f7-page name="demo">
-        <Navbar />
 
+    <Navbar />
+
+    <f7-page name="DemoPage">
+        
         <NameProfilePic />
 
         <Ratings />

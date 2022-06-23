@@ -1,7 +1,8 @@
 <template>
-    <f7-page name="AverageCalculator">
 
-        <Navbar />
+    <Navbar />
+    
+    <f7-page name="AverageCalculatorPage">    
         
         <f7-block-title>{{$t('message.avgCalculator.title')}}</f7-block-title>
 

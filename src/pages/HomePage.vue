@@ -1,6 +1,8 @@
 <template>
-    <f7-page name="home">
-        <Navbar />
+
+    <Navbar />
+
+    <f7-page name="HomePage">
 
         <NameProfilePic :firstName="this.firstName" :lastName="this.lastName" :profilePic="this.profilePic"/>
 

@@ -1,6 +1,8 @@
 <template>
-    <f7-page name="Empty">
-        <Navbar />
+
+    <Navbar />
+
+    <f7-page name="EmptyPage">
 
     </f7-page>
 </template>

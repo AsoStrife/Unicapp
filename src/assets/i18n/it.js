@@ -4,7 +4,10 @@ const it =  {
             close: "Chiudi",
             error: "Ops, qualcosa è andato storto",
             euro: "€",
-            dollar: "$"
+            dollar: "$",
+            cancel: "Annulla", 
+            confirm: "Conferma", 
+            ok: "Ok"
         },
         login: {
             title: 'Effettua l\'accesso',

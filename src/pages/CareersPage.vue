@@ -1,6 +1,8 @@
 <template>
-    <f7-page name="Careers">
-        <Navbar />
+    
+    <Navbar />
+    
+    <f7-page name="CareersPage">
 
         <f7-block-title>{{$t('message.careers.title')}}:</f7-block-title>
         <f7-list media-list>

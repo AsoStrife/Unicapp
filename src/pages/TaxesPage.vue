@@ -1,6 +1,8 @@
 <template>
-    <f7-page name="Taxes">
-        <Navbar />
+
+    <Navbar />
+
+    <f7-page name="TaxesPage">
         
         <f7-block-title>{{$t('message.taxes.title')}}</f7-block-title>
 

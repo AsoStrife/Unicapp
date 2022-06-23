@@ -1,7 +1,8 @@
 <template>
-    <f7-page name="Booklet">
-        <Navbar />
-
+    
+    <Navbar />
+    
+    <f7-page name="BookletPage">
         <f7-block-title>{{$t('message.booklet.title')}}</f7-block-title>
         
         <SkeletonListCustom v-if="skeleton" />

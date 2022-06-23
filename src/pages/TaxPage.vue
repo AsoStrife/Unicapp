@@ -1,6 +1,8 @@
 <template>
-    <f7-page name="Taxes">
-        <Navbar :backLink="true"/>
+
+    <Navbar :backLink="true"/>
+
+    <f7-page name="TaxePage">   
         
         <TitleDetailPage :bg="this.utils.tax.getStatus(this.tax)" :text="this.tax.tassaDes" />
 

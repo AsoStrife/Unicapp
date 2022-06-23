@@ -1,6 +1,8 @@
 <template>
-    <f7-page name="Settings">
-        <Navbar />
+    
+    <Navbar />
+
+    <f7-page name="SettingsPage">
 
     </f7-page>
 </template>

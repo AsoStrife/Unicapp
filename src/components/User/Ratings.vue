@@ -2,9 +2,9 @@
     <f7-block class="mt-0 mb-0">
         <f7-row>
             <f7-col v-if="initialWeightedAvg != null">
-                <f7-card :class="skeleton">
+                <f7-card>
                     <f7-card-header>{{$t('message.ratings.weightedAvg')}}</f7-card-header>
-                    <f7-card-content>
+                    <f7-card-content :class="skeleton">
                         {{initialWeightedAvg != defaultValues.weightedAvg ? initialWeightedAvg : defaultValues.weightedAvg}}
                         
                         <span v-if="newWeightedAvg != defaultValues.weightedAvg && initialWeightedAvg != newWeightedAvg">
@@ -16,9 +16,9 @@
                 </f7-card>
             </f7-col>
             <f7-col v-if="initialTotalCfu != null">
-                <f7-card :class="skeleton">
+                <f7-card>
                     <f7-card-header>{{$t('message.ratings.totalCfu')}}</f7-card-header>
-                    <f7-card-content>
+                    <f7-card-content :class="skeleton">
                         {{initialTotalCfu}} 
                         
                         <span v-if="newTotalCfu != defaultValues.totalCfu && initialTotalCfu != newTotalCfu">
