@@ -55,17 +55,19 @@
         border: 3px solid whitesmoke;
         margin-top: -80px;
         display: block;
-        z-index: 20;
+        z-index: 1;
+        position: sticky;
         margin-left: auto;
         margin-right: auto;
-        position: relative;
         background-size: cover;
         background-position: center;
     }
 
     img {
-        z-index: 1000 !important;
+        z-index: 10 !important;
     }
+
+    
 </style>
 <script>
     import { f7ready, f7 } from 'framework7-vue';

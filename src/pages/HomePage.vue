@@ -2,7 +2,12 @@
 
     <Navbar />
 
-    <f7-page name="HomePage">
+    <f7-page name="HomePage" ptr @ptr:refresh="refresh">
+        
+        <div class="ptr-preloader">
+            <div class="preloader"></div>
+            <div class="ptr-arrow"></div>
+        </div>
 
         <NameProfilePic :firstName="this.firstName" :lastName="this.lastName" :profilePic="this.profilePic"/>
 
@@ -46,42 +51,49 @@
         mounted() {
             var self = this
             f7ready( async() => {
-                api.people().then(data => {
-                    this.firstName = utils.toProperCase(data?.nome) 
-                    this.lastName = utils.toProperCase(data?.cognome)
-
-                    this.email = data?.email != "" ? data?.email : null
-                    this.universityEmail = data?.emailAte != "" ? data?.emailAte : null
-                    this.mobile = data?.cellulare != "" ? data?.cellulare : null
-                    this.address = this.setAddress(data) != "" ? this.setAddress(data) : null
-
-                    
-                })
-
-                api.photo().then(data => {
-                    store.setProfilePic(data)
-                    this.profilePic = data
-                    f7.emit('photoApiDone')
-                })
-
-                // Nested to avoid UI glitch with skeleton
-                api.bookletVotesAvg().then(bookletData => {
-                    api.bookletStats().then(statsData => {
-                        self.totalCfu = statsData?.umPesoConvalidato
-                        self.weightedAvg = (bookletData.filter(d => d.base == 30  && d.tipoMediaCod.value == 'P'))[0]?.media
-                    })
-                })
-                
-                
-
+                this.loadData()
             })
         },
         methods: {
+            async loadData(){
+                return new Promise( (resolve, reject) => {
+                    api.people().then(data => {
+                        this.firstName = utils.toProperCase(data?.nome) 
+                        this.lastName = utils.toProperCase(data?.cognome)
+
+                        this.email = data?.email != "" ? data?.email : null
+                        this.universityEmail = data?.emailAte != "" ? data?.emailAte : null
+                        this.mobile = data?.cellulare != "" ? data?.cellulare : null
+                        this.address = this.setAddress(data) != "" ? this.setAddress(data) : null
+                    })
+
+                    api.photo().then(data => {
+                        store.setProfilePic(data)
+                        this.profilePic = data
+                        f7.emit('photoApiDone')
+                    })
+
+                    // Nested to avoid UI glitch with skeleton
+                    api.bookletVotesAvg().then(bookletData => {
+                        api.bookletStats().then(statsData => {
+                            this.totalCfu = statsData?.umPesoConvalidato
+                            this.weightedAvg = (bookletData.filter(d => d.base == 30  && d.tipoMediaCod.value == 'P'))[0]?.media
+
+                            resolve(true)
+                        })
+                    })   
+                })
+                
+            },
             setAddress(data){
                 let address = ""
 
                 address = data?.comuResDes + ", " + utils.toProperCase(data?.viaRes) + " " + data?.numCivRes
                 return address
+            },
+            async refresh(done) {
+                await this.loadData()
+                done()
             }
         },
         components: { 

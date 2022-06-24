@@ -2,7 +2,12 @@
 
     <Navbar />
 
-    <f7-page name="TaxesPage">
+    <f7-page name="TaxesPage" ptr @ptr:refresh="refresh">
+
+        <div class="ptr-preloader">
+            <div class="preloader"></div>
+            <div class="ptr-arrow"></div>
+        </div>
         
         <f7-block-title>{{$t('message.taxes.title')}}</f7-block-title>
 
@@ -67,17 +72,30 @@
             };
         },
         methods: {
+            loadData(){
+                return new Promise( (resolve, reject) => {
+                    api.taxes().then(response => {
+                        this.taxes = response
+                        this.skeleton = false
+
+                        if(this.taxes.length == 0)
+                            this.isEmpty = true
+
+                        resolve(true)
+                    })
+                })
+            },
+            async refresh(done) {
+                await this.loadData()
+                done()
+                
+            }
+
         },
         mounted() {
             f7ready(() => {
-                api.taxes().then(response => {
-                    this.taxes = response
-                    this.skeleton = false
-
-                    if(this.taxes.length == 0)
-                        this.isEmpty = true
-                })
-            });
+                this.loadData()
+            })
         },
         components: { 
             Navbar,

@@ -1,7 +1,14 @@
 <template>
     
     <div :class="this.background">
-        <h1>{{utils.toProperCase(this.text)}}</h1>
+        <f7-row>
+            <f7-col>
+                <f7-block>
+                    <h1>{{utils.toProperCase(this.text)}}</h1>
+                </f7-block>
+            </f7-col>
+        </f7-row>
+        
     </div>
 
 </template>
@@ -11,12 +18,6 @@
         color: #FFF; 
         font-size:18px;
         text-align: center;
-    }
-
-    div {
-        width: 100%;
-        margin: 0; 
-        padding: 10px 0 10px 0;
     }
 </style>
 

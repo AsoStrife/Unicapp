@@ -1,6 +1,6 @@
 <template>
 
-    <Navbar backLink="true"/>
+    <Navbar :backLink="true"/>
 
     <f7-page name="BookletExamPage">
 

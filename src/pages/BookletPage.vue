@@ -2,7 +2,13 @@
     
     <Navbar />
     
-    <f7-page name="BookletPage">
+    <f7-page name="BookletPage" ptr @ptr:refresh="refresh">
+
+        <div class="ptr-preloader">
+            <div class="preloader"></div>
+            <div class="ptr-arrow"></div>
+        </div>
+
         <f7-block-title>{{$t('message.booklet.title')}}</f7-block-title>
         
         <SkeletonListCustom v-if="skeleton" />
@@ -66,18 +72,29 @@
             }
         },
         methods: {
-            
+            loadData() {
+                return new Promise( (resolve, reject) => {
+                    api.booklet().then(response => {
+                        this.exams = response
+                        this.skeleton = false
+
+                        if(this.exams.length == 0)
+                            this.isEmpty = true
+
+                        resolve(true)
+                    })
+                })
+                
+            },
+            async refresh(done) {
+                await this.loadData()
+                done()
+            }
         },
         mounted() {
             f7ready(() => {
-                api.booklet().then(response => {
-                    this.exams = response
-                    this.skeleton = false
-
-                    if(this.exams.length == 0)
-                        this.isEmpty = true
-                })
-            });
+                this.loadData()
+            })
         },
         components: { 
             Navbar,

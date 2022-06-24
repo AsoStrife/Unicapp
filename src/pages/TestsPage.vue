@@ -2,7 +2,12 @@
 
     <Navbar />
     
-    <f7-page name="TestsPage">    
+    <f7-page name="TestsPage" ptr @ptr:refresh="refresh">    
+
+        <div class="ptr-preloader">
+            <div class="preloader"></div>
+            <div class="ptr-arrow"></div>
+        </div>
 
         <f7-block-title>{{$t('message.tests.title')}}</f7-block-title>
         
@@ -63,26 +68,34 @@
                 skeleton: true,
                 isEmpty: false,
                 utils: utils
-            };
+            }
         },
         methods: {
-            
+            loadData(){
+                return new Promise( (resolve, reject) => {
+                    api.tests().then(response => {
+                        this.exams = response
+                        this.skeleton = false
+
+                        if(this.exams.length == 0)
+                            this.isEmpty = true
+                        else
+                            // Sort per ordine alfabetico + data appello
+                            this.exams = response.sort((a, b) => a.adDes.localeCompare(b.adDes) && a.dataInizioApp.localeCompare(b.dataInizioApp))
+
+                        resolve(true)
+                    })                    
+                })
+            },
+            async refresh(done) {
+                await this.loadData()
+                done()
+            }
         },
         mounted() {
             f7ready(() => {
-                api.tests().then(response => {
-                    this.exams = response
-                    this.skeleton = false
-
-                    if(this.exams.length == 0)
-                        this.isEmpty = true
-                    else
-                        // Sort per ordine alfabetico + data appello
-                        this.exams = response.sort((a, b) => a.adDes.localeCompare(b.adDes) && a.dataInizioApp.localeCompare(b.dataInizioApp))
-                
-                    
-                })
-            });
+                this.loadData()
+            })
         },
         components: { 
             Navbar,

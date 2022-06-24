@@ -104,7 +104,12 @@ const it =  {
             noTests: "Non sono presenti appelli"
         }, 
         test: {
-            title: "Appello"
+            title: "Appello",
+            registered: "N° iscritti", 
+            dateStartSub: "Data inizio iscrizione",
+            dateEndSub: "Data fine iscrizione",
+            dateExam: "Data esame",
+            chairman: "Presidente"
         },
         about: {
             section_1_title: "Cos'è Unicapp",
