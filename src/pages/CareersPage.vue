@@ -1,20 +1,24 @@
 <template>
     
-    <Navbar />
-    
-    <f7-page name="CareersPage">
-
-        <f7-block-title>{{$t('message.careers.title')}}:</f7-block-title>
-        <f7-list media-list>
-            <f7-list-item v-for="career in careers" :key="career.stuId"
-                link="#"
-                :title="career.cdsDes"
-                :subtitle="$t('message.careers.status') + ': ' + career.staStuDes + ', ' + career.motStastuDes"
-                :text="$t('message.careers.stuID') + ' ' + career.matricola"
-                @click="selectCareer(career)"
-            >
-            </f7-list-item>
-        </f7-list>
+    <f7-page name="CareersPage" :page-content="false">
+        
+        <Navbar />
+        
+        <f7-page-content>
+            <f7-block-title>{{$t('message.careers.title')}}:</f7-block-title>
+        
+            <f7-list media-list>
+                <f7-list-item v-for="career in careers" :key="career.stuId"
+                    link="#"
+                    :title="career.cdsDes"
+                    :subtitle="$t('message.careers.status') + ': ' + career.staStuDes + ', ' + career.motStastuDes"
+                    :text="$t('message.careers.stuID') + ' ' + career.matricola"
+                    @click="selectCareer(career)"
+                >
+                </f7-list-item>
+            </f7-list>
+        </f7-page-content>
+        
     </f7-page>
 </template>
 

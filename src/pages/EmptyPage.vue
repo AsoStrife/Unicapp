@@ -1,9 +1,11 @@
 <template>
 
-    <Navbar />
+    <f7-page name="EmptyPage" :page-content="false">
+        <Navbar />
+        
+        <f7-page-content>
 
-    <f7-page name="EmptyPage">
-
+        </f7-page-content>
     </f7-page>
 </template>
 

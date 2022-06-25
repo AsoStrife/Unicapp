@@ -1,38 +1,36 @@
 <template>
     
-    <Navbar />
-    
-    <f7-page name="BookletPage" ptr @ptr:refresh="refresh">
-
-        <div class="ptr-preloader">
-            <div class="preloader"></div>
-            <div class="ptr-arrow"></div>
-        </div>
-
-        <f7-block-title>{{$t('message.booklet.title')}}</f7-block-title>
+    <f7-page name="BookletPage" :page-content="false">
         
-        <SkeletonListCustom v-if="skeleton" />
-        
-        <f7-block class="mt-0 mb-0" v-if="this.isEmpty">
-            <Alert :text="$t('message.booklet.noExams')" bg="bg-warning" :showIcon="false"/>
-        </f7-block>
-        
-        <div class="list" v-if="this.exams.length > 0">
-            <ul>
-                <li v-for="(item, key) in this.exams" :key="key">
-                    <a @click="this.f7router.navigate('/booklet_exam/', {props: {exam: item}})" class="item-link item-content">
-                        <div class="item-media">
-                            <h3 class="text-success" v-html="this.utils.exam.getGrade(item)"></h3>                          
-                        </div>
-                        <div class="item-inner">
-                            <div class="item-title">{{this.utils.toProperCase(item.adDes)}}</div>
-                            <div class="item-after">{{item.peso}} {{$t('message.booklet.cfu')}}</div>
-                        </div>
-                    </a>
-                </li>
-            </ul>
-        </div>
+        <Navbar />
 
+        <f7-page-content ptr @ptr:refresh="refresh">
+
+            <f7-block-title>{{$t('message.booklet.title')}}</f7-block-title>
+            
+            <SkeletonListCustom v-if="skeleton" />
+            
+            <f7-block class="mt-0 mb-0" v-if="this.isEmpty">
+                <Alert :text="$t('message.booklet.noExams')" bg="bg-warning" :showIcon="false"/>
+            </f7-block>
+            
+            <div class="list" v-if="this.exams.length > 0">
+                <ul>
+                    <li v-for="(item, key) in this.exams" :key="key">
+                        <a @click="this.f7router.navigate('/booklet_exam/', {props: {exam: item}})" class="item-link item-content">
+                            <div class="item-media">
+                                <h3 class="text-success" v-html="this.utils.exam.getGrade(item)"></h3>                          
+                            </div>
+                            <div class="item-inner">
+                                <div class="item-title">{{this.utils.toProperCase(item.adDes)}}</div>
+                                <div class="item-after">{{item.peso}} {{$t('message.booklet.cfu')}}</div>
+                            </div>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+
+        </f7-page-content>  
     </f7-page>
 </template>
 

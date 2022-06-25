@@ -1,10 +1,14 @@
 <template>
-    
-    <Navbar />
 
-    <f7-page name="SettingsPage">
+    <f7-page name="SettingsPage" :page-content="false">
+        <Navbar />
 
+        <f7-page-content>
+
+        </f7-page-content>
+        
     </f7-page>
+    
 </template>
 
 <style scoped>

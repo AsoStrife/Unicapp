@@ -1,20 +1,17 @@
 <template>
 
-    <Navbar />
-
-    <f7-page name="HomePage" ptr @ptr:refresh="refresh">
+    <f7-page name="HomePage" :page-content="false">
         
-        <div class="ptr-preloader">
-            <div class="preloader"></div>
-            <div class="ptr-arrow"></div>
-        </div>
+        <Navbar />
 
-        <NameProfilePic :firstName="this.firstName" :lastName="this.lastName" :profilePic="this.profilePic"/>
+        <f7-page-content ptr @ptr:refresh="refresh">
+            <NameProfilePic :firstName="this.firstName" :lastName="this.lastName" :profilePic="this.profilePic"/>
 
-        <Ratings :initialWeightedAvg="this.weightedAvg" :initialTotalCfu="this.totalCfu" />
+            <Ratings :initialWeightedAvg="this.weightedAvg" :initialTotalCfu="this.totalCfu" />
 
-        <PersonalData :email="this.email" :universityEmail="this.universityEmail" :address="this.address" :mobile="this.mobile"/>
-
+            <PersonalData :email="this.email" :universityEmail="this.universityEmail" :address="this.address" :mobile="this.mobile"/>
+        </f7-page-content>
+        
     </f7-page>
 </template>
 

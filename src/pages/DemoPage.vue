@@ -1,20 +1,24 @@
 <template>
 
-    <Navbar />
+    <f7-page name="DemoPage" :page-content="false">
 
-    <f7-page name="DemoPage">
+        <Navbar />
+
+        <f7-page-content>
+            
+            <NameProfilePic />
+
+            <Ratings />
+
+            <f7-block class="mt-0 mb-0">
+                <Alert text="La situazione tasse è regolare" bg="bg-success" md="done" ios="checkmark_alt"/>
+                <Alert text="Ci sono tasse da pagare" bg="bg-warning" md="warning" ios="xmark"/>
+            </f7-block>
+
+            <PersonalData />
+
+        </f7-page-content>
         
-        <NameProfilePic />
-
-        <Ratings />
-
-        <f7-block class="mt-0 mb-0">
-            <Alert text="La situazione tasse è regolare" bg="bg-success" md="done" ios="checkmark_alt"/>
-            <Alert text="Ci sono tasse da pagare" bg="bg-warning" md="warning" ios="xmark"/>
-        </f7-block>
-
-        <PersonalData />
-
     </f7-page>
 </template>
 

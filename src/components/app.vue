@@ -101,8 +101,10 @@
                 },
                 // Capacitor Statusbar settings
                 statusbar: {
-                    iosOverlaysWebView: true,
+                    iosOverlaysWebView: false,
                     androidOverlaysWebView: false,
+                    androidTextColor: "white", 
+                    androidBackgroundColor: "#3d66c6"
                 },
             };
 

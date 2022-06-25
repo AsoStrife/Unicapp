@@ -1,25 +1,27 @@
 <template>
 
-    <Navbar />
-    
-    <f7-page name="AverageCalculatorPage">    
+    <f7-page name="AverageCalculatorPage" :page-content="false">    
+
+        <Navbar />
+
+        <f7-page-content>
+            <f7-block-title>{{$t('message.avgCalculator.title')}}</f7-block-title>
+
+            <f7-fab position="right-bottom" @click="openPopup" v-if="isFabVisible">
+                <f7-icon ios="f7:plus" aurora="f7:plus" md="material:add"></f7-icon>
+            </f7-fab>
+
+            <Ratings :textColor="textColor" 
+                    :initialWeightedAvg="initialWeightedAvg" 
+                    :initialTotalCfu="initialTotalCfu"
+                    :newWeightedAvg="newWeightedAvg" 
+                    :newTotalCfu="newTotalCfu" />
+
+            <AddExamCalculator /> 
+
+            <ExamsTableCalculator :exams="newExams"/>
+        </f7-page-content>
         
-        <f7-block-title>{{$t('message.avgCalculator.title')}}</f7-block-title>
-
-        <f7-fab position="right-bottom" @click="openPopup" v-if="isFabVisible">
-            <f7-icon ios="f7:plus" aurora="f7:plus" md="material:add"></f7-icon>
-        </f7-fab>
-
-        <Ratings :textColor="textColor" 
-                :initialWeightedAvg="initialWeightedAvg" 
-                :initialTotalCfu="initialTotalCfu"
-                :newWeightedAvg="newWeightedAvg" 
-                :newTotalCfu="newTotalCfu" />
-
-        <AddExamCalculator /> 
-
-        <ExamsTableCalculator :exams="newExams"/>
-
     </f7-page>
 </template>
 

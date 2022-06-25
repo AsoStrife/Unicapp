@@ -11,4 +11,13 @@ tax.getStatus = (t) =>{
     }
 }
 
+tax.getStatusBg = (t) =>{    
+    switch(t?.semaforo){
+        case constants.taxes.greenLight: 
+            return 'success'
+        case constants.taxes.redLight: 
+            return 'danger'
+    }
+}
+
 export default tax

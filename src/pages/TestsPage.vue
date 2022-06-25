@@ -1,42 +1,39 @@
 <template>
-
-    <Navbar />
     
-    <f7-page name="TestsPage" ptr @ptr:refresh="refresh">    
+    <f7-page name="TestsPage" :page-content="false">    
 
-        <div class="ptr-preloader">
-            <div class="preloader"></div>
-            <div class="ptr-arrow"></div>
-        </div>
+        <Navbar />
 
-        <f7-block-title>{{$t('message.tests.title')}}</f7-block-title>
+        <f7-page-content ptr @ptr:refresh="refresh" >
+            <f7-block-title>{{$t('message.tests.title')}}</f7-block-title>
         
-        <SkeletonListCustom v-if="skeleton" />
+            <SkeletonListCustom v-if="skeleton" />
 
-        <f7-block class="mt-0 mb-0" v-if="this.isEmpty">
-            <Alert :text="$t('message.tests.noTests')" bg="bg-warning" :showIcon="false"/>
-        </f7-block>
+            <f7-block class="mt-0 mb-0" v-if="this.isEmpty">
+                <Alert :text="$t('message.tests.noTests')" bg="bg-warning" :showIcon="false"/>
+            </f7-block>
 
-        <div class="list media-list" v-if="this.exams.length > 0">
-            <ul>
-                <li v-for="(item, key) in this.exams" :key="key">
-                    <a @click="this.f7router.navigate('/test/', {props: {exam: item}})" class="item-link item-content">
-                        <div class="item-media">
-                            <h3 class="text-success" v-html="this.utils.exam.getStatus(item)"></h3>
-                        </div>
-                        <div class="item-inner">
-                            <div class="item-title">{{item.adDes}}</div>
-                            <div class="item-text">
-                                {{$t('message.tests.professorName')}}: {{utils.toProperCase(item?.presidenteNome)}}  {{utils.toProperCase(item?.presidenteCognome)}}
-                                <br />
-                                {{$t('message.tests.esamDate')}}: {{this.utils.removeTimeFromString(item?.dataInizioApp)}}
-                                
+            <div class="list media-list" v-if="this.exams.length > 0">
+                <ul>
+                    <li v-for="(item, key) in this.exams" :key="key">
+                        <a @click="this.f7router.navigate('/test/', {props: {exam: item}})" class="item-link item-content">
+                            <div class="item-media">
+                                <h3 class="text-success" v-html="this.utils.exam.getStatus(item)"></h3>
                             </div>
-                        </div>
-                    </a>
-                </li>
-            </ul>
-        </div>
+                            <div class="item-inner">
+                                <div class="item-title">{{item.adDes}}</div>
+                                <div class="item-text">
+                                    {{$t('message.tests.professorName')}}: {{utils.toProperCase(item?.presidenteNome)}}  {{utils.toProperCase(item?.presidenteCognome)}}
+                                    <br />
+                                    {{$t('message.tests.esamDate')}}: {{this.utils.removeTimeFromString(item?.dataInizioApp)}}
+                                    
+                                </div>
+                            </div>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </f7-page-content>
 
     </f7-page>
 </template>

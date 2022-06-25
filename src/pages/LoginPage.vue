@@ -1,8 +1,8 @@
 <template>
 
-    <Navbar :backLink="false" />
-
     <f7-page name="LoginPage" :page-content="false">
+
+        <Navbar />
 
         <f7-page-content>
             

@@ -1,37 +1,34 @@
 <template>
 
-    <Navbar />
+    <f7-page name="TaxesPage" :page-content="false">
 
-    <f7-page name="TaxesPage" ptr @ptr:refresh="refresh">
+        <Navbar />
 
-        <div class="ptr-preloader">
-            <div class="preloader"></div>
-            <div class="ptr-arrow"></div>
-        </div>
-        
-        <f7-block-title>{{$t('message.taxes.title')}}</f7-block-title>
+        <f7-page-content ptr @ptr:refresh="refresh">
+            <f7-block-title>{{$t('message.taxes.title')}}</f7-block-title>
 
-        <SkeletonListCustom v-if="skeleton" />
+            <SkeletonListCustom v-if="skeleton" />
 
-        <f7-block class="mt-0 mb-0" v-if="this.isEmpty">
-            <Alert :text="$t('message.taxes.noTaxes')" bg="bg-warning" :showIcon="false"/>
-        </f7-block>
-        
-        <div class="list" v-if="this.taxes.length > 0">
-            <ul>
-                <li v-for="(item, key) in this.taxes" :key="key">
-                    <a @click="this.f7router.navigate('/tax/', {props: {tax: item}})" class="item-link item-content">
-                        <div class="item-media">
-                            <h3 class="text-success" v-html="this.utils.tax.getStatus(item)"></h3>
-                        </div>
-                        <div class="item-inner">
-                            <div class="item-title">{{item.tassaDes}} {{item.combDes}}</div>
-                            <div class="item-after">{{item.importoPag}} {{$t('message.general.euro')}}</div>
-                        </div>
-                    </a>
-                </li>
-            </ul>
-        </div>
+            <f7-block class="mt-0 mb-0" v-if="this.isEmpty">
+                <Alert :text="$t('message.taxes.noTaxes')" bg="bg-warning" :showIcon="false"/>
+            </f7-block>
+            
+            <div class="list" v-if="this.taxes.length > 0">
+                <ul>
+                    <li v-for="(item, key) in this.taxes" :key="key">
+                        <a @click="this.f7router.navigate('/tax/', {props: {tax: item}})" class="item-link item-content">
+                            <div class="item-media">
+                                <h3 class="text-success" v-html="this.utils.tax.getStatus(item)"></h3>
+                            </div>
+                            <div class="item-inner">
+                                <div class="item-title">{{item.tassaDes}} {{item.combDes}}</div>
+                                <div class="item-after">{{item.importoPag}} {{$t('message.general.euro')}}</div>
+                            </div>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </f7-page-content>
 
     </f7-page>
 </template>
