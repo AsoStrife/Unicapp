@@ -102,7 +102,8 @@ const it =  {
         tests: {
             title: "Appelli",
             noTests: "Non sono presenti appelli",
-            esamDate: "Data appello"
+            esamDate: "Data appello", 
+            professorName: "Docente"
         }, 
         test: {
             title: "Appello",

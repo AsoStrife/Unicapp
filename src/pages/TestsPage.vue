@@ -26,7 +26,12 @@
                         </div>
                         <div class="item-inner">
                             <div class="item-title">{{item.adDes}}</div>
-                            <div class="item-text">{{$t('message.tests.esamDate')}}: {{this.utils.removeTimeFromString(item?.dataInizioApp)}}</div>
+                            <div class="item-text">
+                                {{$t('message.tests.professorName')}}: {{utils.toProperCase(item?.presidenteNome)}}  {{utils.toProperCase(item?.presidenteCognome)}}
+                                <br />
+                                {{$t('message.tests.esamDate')}}: {{this.utils.removeTimeFromString(item?.dataInizioApp)}}
+                                
+                            </div>
                         </div>
                     </a>
                 </li>
