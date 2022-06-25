@@ -4,7 +4,7 @@
 
     <f7-page name="BookletExamPage">
 
-        <TitleDetailPage :bg="this.utils.exam.getBg(this.exam)" :text="this.exam.adDes" />
+        <TitleDetailPage :bg="this.utils.exam.getBgGrade(this.exam)" :text="this.exam.adDes" />
 
         <f7-card>
             <f7-card-content>

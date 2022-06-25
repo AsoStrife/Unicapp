@@ -17,8 +17,15 @@ exam.getGrade = (e) => {
     return constants.emoji.redCirle
 }
 
-exam.getBg = (e) => {
+exam.getBgGrade = (e) => {
     if(e?.esito?.voto != null || e?.esito?.tipoGiudCod != "")
+        return 'success'
+        
+    return 'danger'
+}
+
+exam.getBgBookable = (e) => {
+    if(e?.statoDes == "Prenotazioni Aperte")
         return 'success'
         
     return 'danger'

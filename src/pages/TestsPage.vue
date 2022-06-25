@@ -17,7 +17,7 @@
             <Alert :text="$t('message.tests.noTests')" bg="bg-warning" :showIcon="false"/>
         </f7-block>
 
-        <div class="list" v-if="this.exams.length > 0">
+        <div class="list media-list" v-if="this.exams.length > 0">
             <ul>
                 <li v-for="(item, key) in this.exams" :key="key">
                     <a @click="this.f7router.navigate('/test/', {props: {exam: item}})" class="item-link item-content">
@@ -26,6 +26,7 @@
                         </div>
                         <div class="item-inner">
                             <div class="item-title">{{item.adDes}}</div>
+                            <div class="item-text">{{$t('message.tests.esamDate')}}: {{this.utils.removeTimeFromString(item?.dataInizioApp)}}</div>
                         </div>
                     </a>
                 </li>

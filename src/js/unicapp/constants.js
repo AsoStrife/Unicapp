@@ -43,6 +43,7 @@ let constants = {
             "bookletStats": "%s1" + "libretto-service-v2/libretti/%s2/stats", //matId
             "taxes": "%s1" + "tasse-service-v1/addebiti-studente?stuId=%s2", //stuId
             "tests": "%s1" + "libretto-service-v2/libretti/%s2/appelli?q=APPELLI_PRENOTABILI_E_FUTURI", //matId
+            "isTestBooked": "%s1" + "libretto-service-v2/libretti/%s2/righe/%s3/prenotazioni", //matId, adsceId (controlla che un esame sia prenotato)
         }
     },
     "defaultValues": {

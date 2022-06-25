@@ -14,15 +14,19 @@ const api = {}
  * @param {*} endpoint 
  * @returns str
  */
-api.getUrl = (endpoint, param = "") => {
+api.getUrl = (...params) => {
     store.getSelectedUniversity()
 
     const selectedUniversity = store.getSelectedUniversity()
-    const baseUrl = selectedUniversity?.url
+    const universityApiBaseUrl = selectedUniversity?.url
+
     const urls = constants.api.esse3
-    const url = urls[endpoint]
+    const endpoint = urls[params[0]]
     
-    return param == "" ? api.parse(url, baseUrl) : api.parse(url, baseUrl, param)
+    params.splice(0, 1) // remove first element, the api name 
+    params.unshift(endpoint, universityApiBaseUrl) // add other parameters
+
+    return api.parse.apply(null, params)
 }
 
 /**
@@ -196,6 +200,26 @@ api.taxes = async() => {
 
 /**
  * 
+ * @returns Check if a Test is booked
+ */
+ api.isTestBooked = async(adsceId = "") => {
+    const selectedCareer = store.getSelectedCareer()
+
+    return new Promise( (resolve, reject) => {
+        axios.get(middlewareUrl, api.headers(api.getUrl("isTestBooked", selectedCareer?.matId, adsceId)))
+        .then(async function (response) {
+            resolve(response.data)
+        })
+        .catch(function (error) {
+            console.error(error)
+            reject(error)
+        })
+    })
+}
+
+
+/**
+ * 
  * @param {*} username 
  * @param {*} password 
  * @returns Object for base auth + Api-Url for Middleware Request
@@ -226,7 +250,6 @@ api.headers = (apiUrl) => {
 api.parse = (...args) => {
     const str = args[0]
     const params = args.filter((arg, index) => index !== 0)
-
     if (!str) return ""
     return str.replace(/%s[0-9]+/g, matchedStr => {
         const variableIndex = matchedStr.replace("%s", "") - 1;

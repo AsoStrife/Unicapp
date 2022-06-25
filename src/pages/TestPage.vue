@@ -5,7 +5,7 @@
     <f7-page name="TestPage">
         
 
-        <TitleDetailPage :bg="this.utils.exam.getBg(this.exam)" :text="this.exam.adDes" />
+        <TitleDetailPage :bg="this.utils.exam.getBgBookable(this.exam)" :text="this.exam.adDes" />
 
         <f7-card>
             <f7-card-content>
@@ -53,7 +53,9 @@
     import { f7ready, f7 } from 'framework7-vue'
     import Navbar from '../components/Navbar.vue'
     import TitleDetailPage from '../components/TitleDetailPage.vue'
+    import Alert from '../components/Alert.vue'
     import utils from '../js/unicapp/utils'
+    import api from '../js/unicapp/api'
 
     export default {
         name: "TestPage",
@@ -64,7 +66,8 @@
         },
         data() {
             return {
-                utils: utils
+                utils: utils,
+                isBooked: false
             }
         },
         methods: {
@@ -72,11 +75,18 @@
         },
         mounted() {
             f7ready(() => {
+                /*api.isTestBooked(this.exam?.adsceId).then(response => {
+                    console.log("Exam", this.exam)
+                    console.log("Response", response)
+                    if(response.length > 0)
+                        this.isBooked = true
+                })*/
             })
         },
         components: { 
             Navbar,
-            TitleDetailPage
+            TitleDetailPage,
+            Alert
         }
     }
 </script>
