@@ -18,7 +18,10 @@
         padding: 20px;
         
     }
-
+    .ios .div-header {
+        /* Handle overlay on status bar */
+        padding-top: 70px;
+    }
     h1, h2, h3 {
         color: #FFF;
         margin-bottom: 0;
