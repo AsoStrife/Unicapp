@@ -14,13 +14,13 @@
                         <f7-list-item :title="$t('message.test.chairman')" 
                             :after="utils.toProperCase(exam?.presidenteNome) + ' ' + utils.toProperCase(exam?.presidenteCognome)">
                             <template #media>
-                                <f7-icon md="material:person" ios="f7:calendar"></f7-icon>
+                                <f7-icon md="material:person" ios="f7:person"></f7-icon>
                             </template>
                         </f7-list-item>
 
                         <f7-list-item :title="$t('message.test.registered')" :after="String(exam?.numIscritti)">
                             <template #media>
-                                <f7-icon md="material:group" ios="f7:calendar"></f7-icon>
+                                <f7-icon md="material:group" ios="f7:person_2"></f7-icon>
                             </template>
                         </f7-list-item>
 

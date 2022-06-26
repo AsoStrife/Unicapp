@@ -1,26 +1,37 @@
 <template>
 
     <f7-card>
-        <f7-card-header></f7-card-header>
         <f7-card-content>
-            <div :class="this.skeletonProfilePic">
-                <img :src="this.profilePic" class="img-circle profile-img" />
-            </div>
-
-            <h1> 
-                <span :class="this.skeletonName" class="mr-1">
-                    {{this.firstName}}
-                </span>
+            <f7-row>
                 
-                <span :class="this.skeletonName">
-                    {{this.lastName}}
-                </span>
-            </h1>
-            <h2>
-                <span :class="this.skeletonId">
-                    {{id}}
-                </span>
-            </h2>
+                <f7-col width="30">
+                    <div :class="this.skeletonProfilePic">
+                        <img :src="this.profilePic" class="img-circle profile-img" />
+                    </div>
+                </f7-col>
+
+                <f7-col width="70">
+                    <div class="test">
+                    <h1> 
+                        <span :class="this.skeletonName" class="mr-1">
+                            {{this.firstName}}
+                        </span>
+                        
+                        <span :class="this.skeletonName">
+                            {{this.lastName}}
+                        </span>
+                    </h1>
+                    <h2>
+                        <span :class="this.skeletonId">
+                            {{id}}
+                        </span>
+                    </h2>
+                    </div>
+                </f7-col>
+            </f7-row>
+            
+
+            
         </f7-card-content>
     </f7-card>
     
@@ -38,33 +49,25 @@
     h1 {
         font-size: 25px;
         font-weight: 300;
-        text-align: center;
         line-height: 13px;
     }
 
      h2 {
         font-size: 20px;
         font-weight: 100;
-        text-align: center;
         line-height: 13px;
     }
 
      .profile-img {
-        width: 100px;
-        height: 100px;
+        width: 100%;
         border: 3px solid whitesmoke;
-        margin-top: -80px;
-        display: block;
-        z-index: 1;
-        position: sticky;
-        margin-left: auto;
-        margin-right: auto;
         background-size: cover;
         background-position: center;
     }
 
-    img {
-        z-index: 10 !important;
+    .test{
+        margin-top: 12%;
+        margin-left: 10%;
     }
 
     

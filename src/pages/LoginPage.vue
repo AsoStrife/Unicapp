@@ -77,7 +77,7 @@
                 isLoading: false,
                 username: '',
                 password: '',
-                selectedUniversity: 6, //-1,
+                selectedUniversity: null, //-1,
                 popupSettings: {
                     openIn: 'popup', 
                     searchbar: true, 
