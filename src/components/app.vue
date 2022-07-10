@@ -20,8 +20,8 @@
                 <!--<f7-list-item :title="$t('message.panelList.settings')" link="/settings/" panel-close></f7-list-item>-->
                 <f7-list-item divider :title="$t('message.panelList.handle')" v-if="this.showCareers"></f7-list-item>
 
+                <f7-list-item :title="$t('message.panelList.settings')" link="/settings/" panel-close></f7-list-item>
                 <f7-list-item :title="$t('message.panelList.info')" link="/info/" panel-close></f7-list-item>
-
                 <f7-list-item :title="$t('message.panelList.careers')" link="/careers/" panel-close v-if="this.showCareers"></f7-list-item>
                 <f7-list-item :title="$t('message.panelList.logout')" link="/logout/" panel-close v-if="this.showCareers"></f7-list-item>
             </f7-list>
@@ -114,6 +114,10 @@
                     if (device.capacitor) {
                         capacitorApp.init(f7);
                     }
+                    
+                    if(store.getDarkTheme())
+                        document.getElementById('body').className = "dark"
+
                     // Call F7 APIs here
                 });
             });

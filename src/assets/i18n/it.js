@@ -41,7 +41,8 @@ const it =  {
         },
         settings: {
             title: 'Impostazioni', 
-            listTitle: 'Seleziona lingua'
+            selectLanguage: 'Seleziona lingua',
+            darkTheme: "Tema scuro"
         }, 
         careers: {
             title: "Seleziona la tua carriera", 

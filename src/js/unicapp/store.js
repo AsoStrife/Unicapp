@@ -30,6 +30,11 @@ store.getProfilePic = () => {
     return localStorage.getItem(constants.localstorage.profilePic) !== 'null' ? localStorage.getItem(constants.localstorage.profilePic) : null
 }
 
+store.getDarkTheme = () => {
+    return localStorage.getItem(constants.localstorage.darkTheme) !== null ? localStorage.getItem(constants.localstorage.darkTheme) === "true" : false
+}
+
+
 //
 // Settter
 // 
@@ -61,6 +66,10 @@ store.setProfilePic = (profilePic) => {
     localStorage.setItem(constants.localstorage.profilePic, profilePic)
 }
 
+store.setDarkTheme = (darkTheme) => {
+    typeof darkTheme == "boolean" ? localStorage.setItem(constants.localstorage.darkTheme, darkTheme) : localStorage.setItem(constants.localstorage.darkTheme, false)
+}
+
 //
 // Cleaner
 // 
@@ -88,6 +97,10 @@ store.clearProfilePic = () => {
     localStorage.setItem(constants.localstorage.profilePic, null)
 }
 
+store.clearDarkTheme = () => {
+    localStorage.setItem(constants.localstorage.profilePic, null)
+}
+
 store.clearAll = () => {
     store.clearCredentials()
     store.clearUser()
@@ -95,6 +108,7 @@ store.clearAll = () => {
     store.clearSelectedCareer()
     store.clearUniversity()
     store.clearProfilePic()
+    store.clearDarkTheme()
 }
 
 

@@ -26,7 +26,8 @@ let constants = {
         "careers": 'careers',
         "selectedCareer": 'selectedCareer',
         "selectedUniversity": 'selectedUniversity',
-        "profilePic": "profilePic"
+        "profilePic": "profilePic",
+        "darkTheme": "darkTheme"
     },
     "api": {
         "middlewareUrlDebug": "http://127.0.0.1:8000/",
