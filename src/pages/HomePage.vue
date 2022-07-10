@@ -55,8 +55,8 @@
             async loadData(){
                 return new Promise( (resolve, reject) => {
                     api.people().then(data => {
-                        this.firstName = utils.toProperCase(data?.nome) 
-                        this.lastName = utils.toProperCase(data?.cognome)
+                        this.firstName = utils.general.toProperCase(data?.nome) 
+                        this.lastName = utils.general.toProperCase(data?.cognome)
 
                         this.email = data?.email != "" ? data?.email : null
                         this.universityEmail = data?.emailAte != "" ? data?.emailAte : null
@@ -85,7 +85,7 @@
             setAddress(data){
                 let address = ""
 
-                address = data?.comuResDes + ", " + utils.toProperCase(data?.viaRes) + " " + data?.numCivRes
+                address = data?.comuResDes + ", " + utils.general.toProperCase(data?.viaRes) + " " + data?.numCivRes
                 return address
             },
             async refresh(done) {

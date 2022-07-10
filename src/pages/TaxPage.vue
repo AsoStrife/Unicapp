@@ -28,14 +28,14 @@
                             </template>
                         </f7-list-item>
 
-                        <f7-list-item :title="$t('message.tax.expiration')" :after="this.utils.removeTimeFromString(this.tax?.scadenzaAddebito)">
+                        <f7-list-item :title="$t('message.tax.expiration')" :after="this.utils.general.removeTimeFromString(this.tax?.scadenzaAddebito)">
                             <template #media>
                                 <f7-icon md="material:date_range" ios="f7:calendar"></f7-icon>
                             </template>
                         </f7-list-item>
 
 
-                        <f7-list-item :title="$t('message.tax.paymentDate')" :after="this.utils.removeTimeFromString(this.tax?.dataPagamento)">
+                        <f7-list-item :title="$t('message.tax.paymentDate')" :after="this.utils.general.removeTimeFromString(this.tax?.dataPagamento)">
                             <template #media>
                                 <f7-icon md="material:event" ios="f7:calendar"></f7-icon>
                             </template>

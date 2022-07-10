@@ -33,7 +33,7 @@
         data() {
             return {
                 careers: store.getCareers().map(career => {
-                    career.cdsDes = utils.toProperCase(career.cdsDes)
+                    career.cdsDes = utils.general.toProperCase(career.cdsDes)
                     return career
                 })
             };

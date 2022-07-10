@@ -14,14 +14,15 @@
                 <f7-list-item :title="$t('message.panelList.booklet')" link="/booklet/" panel-close v-if="this.showLoggedMenu"></f7-list-item>
                 <f7-list-item :title="$t('message.panelList.taxes')" link="/taxes/" panel-close v-if="this.showLoggedMenu"></f7-list-item>
                 <f7-list-item :title="$t('message.panelList.tests')" link="/tests/" panel-close v-if="this.showLoggedMenu"></f7-list-item>
-                
                 <f7-list-item :title="$t('message.panelList.avgCalculator')" link="/average_calculator/" panel-close v-if="this.showLoggedMenu"></f7-list-item>
                 
                 <!--<f7-list-item :title="$t('message.panelList.settings')" link="/settings/" panel-close></f7-list-item>-->
                 <f7-list-item divider :title="$t('message.panelList.handle')" v-if="this.showCareers"></f7-list-item>
-
                 <f7-list-item :title="$t('message.panelList.settings')" link="/settings/" panel-close></f7-list-item>
                 <f7-list-item :title="$t('message.panelList.info')" link="/info/" panel-close></f7-list-item>
+
+
+                <f7-list-item divider :title="$t('message.panelList.session')" v-if="this.showCareers"></f7-list-item>
                 <f7-list-item :title="$t('message.panelList.careers')" link="/careers/" panel-close v-if="this.showCareers"></f7-list-item>
                 <f7-list-item :title="$t('message.panelList.logout')" link="/logout/" panel-close v-if="this.showCareers"></f7-list-item>
             </f7-list>

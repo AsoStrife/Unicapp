@@ -34,7 +34,8 @@ const it =  {
             avgCalculator: "Calcolatore Media",
             tests: "Appelli",
             yourProfile: "Il tuo profilo Universitario",
-            handle: "Gestisci"
+            handle: "Gestisci",
+            session: "Sessione"
         },
         panelHeader: {
             stuID: "Matricola"

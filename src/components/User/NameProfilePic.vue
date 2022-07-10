@@ -1,6 +1,7 @@
 <template>
 
     <f7-card>
+        <f7-card-header class="bg-primary"></f7-card-header>
         <f7-card-content>
             <f7-row>
                 
@@ -11,7 +12,7 @@
                 </f7-col>
 
                 <f7-col width="70">
-                    <div class="test">
+                    <div class="name-container">
                     <h1> 
                         <span :class="this.skeletonName" class="mr-1">
                             {{this.firstName}}
@@ -39,11 +40,10 @@
 
 <style scoped>
     .card-header {
-        height: 10vw;
         background-color: #4776e6;
         background-position: center;
         color: #fff;
-        height: 80px;
+        height: 30px;
     }
 
     h1 {
@@ -65,7 +65,7 @@
         background-position: center;
     }
 
-    .test{
+    .name-container{
         margin-top: 12%;
         margin-left: 10%;
     }

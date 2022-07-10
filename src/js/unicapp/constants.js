@@ -3,22 +3,28 @@ let constants = {
     "app": {
         "name": "Unicapp", 
         "version": "4.0.0", 
-        "author": "Webenterprises", 
-        "locale": "it", 
-        "fallbackLocale": "it",
+        "author": "Webenterprises",
         "debug": false,
-        "supportedLanguages": [ 
-            {
-                'lang': 'it', 
-                'name': 'Italiano'
-            }
-        ]
     },
     "urls": {
         "andreacorriga": "https://andreacorriga.com", 
         "ig_andreacorriga": "https://instagram.com/AsoStrife",
         "ig_unicapp": "https://instagram.com/unicapp_official",
         "fb_unicapp": "https://facebook.com/unicapp.official"
+    },
+    "i18n": {
+        "default": "it", 
+        "fallback": "it",
+        "supportedLanguages": [ 
+            {
+                'lang': 'it', 
+                'name': 'Italiano'
+            },
+            {
+                'lang': 'en', 
+                'name': 'English'
+            }
+        ]
     },
     "localstorage": {
         "credentials": "credentials",
@@ -27,7 +33,8 @@ let constants = {
         "selectedCareer": 'selectedCareer',
         "selectedUniversity": 'selectedUniversity',
         "profilePic": "profilePic",
-        "darkTheme": "darkTheme"
+        "darkTheme": "darkTheme",
+        "currentI18n": "currentI18n"
     },
     "api": {
         "middlewareUrlDebug": "http://127.0.0.1:8000/",

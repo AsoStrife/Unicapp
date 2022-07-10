@@ -34,6 +34,10 @@ store.getDarkTheme = () => {
     return localStorage.getItem(constants.localstorage.darkTheme) !== null ? localStorage.getItem(constants.localstorage.darkTheme) === "true" : false
 }
 
+store.getCurrentI18n = () => {
+    return localStorage.getItem(constants.localstorage.currentI18n) !== null ? localStorage.getItem(constants.localstorage.currentI18n) : constants.i18n.default
+}
+
 
 //
 // Settter
@@ -70,6 +74,10 @@ store.setDarkTheme = (darkTheme) => {
     typeof darkTheme == "boolean" ? localStorage.setItem(constants.localstorage.darkTheme, darkTheme) : localStorage.setItem(constants.localstorage.darkTheme, false)
 }
 
+store.setCurrentI18n = (i18n) => {
+    localStorage.setItem(constants.localstorage.currentI18n, i18n)
+}
+
 //
 // Cleaner
 // 
@@ -101,6 +109,11 @@ store.clearDarkTheme = () => {
     localStorage.setItem(constants.localstorage.profilePic, null)
 }
 
+store.clearCurrentI18n = () => {
+    localStorage.setItem(constants.localstorage.currentI18n, null)
+}
+
+
 store.clearAll = () => {
     store.clearCredentials()
     store.clearUser()
@@ -109,6 +122,7 @@ store.clearAll = () => {
     store.clearUniversity()
     store.clearProfilePic()
     store.clearDarkTheme()
+    store.clearCurrentI18n()
 }
 
 

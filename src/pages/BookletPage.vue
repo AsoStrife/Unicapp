@@ -22,7 +22,7 @@
                                 <h3 class="text-success" v-html="this.utils.exam.getGrade(item)"></h3>                          
                             </div>
                             <div class="item-inner">
-                                <div class="item-title">{{this.utils.toProperCase(item.adDes)}}</div>
+                                <div class="item-title">{{this.utils.general.toProperCase(item.adDes)}}</div>
                                 <div class="item-after">{{item.peso}} {{$t('message.booklet.cfu')}}</div>
                             </div>
                         </a>

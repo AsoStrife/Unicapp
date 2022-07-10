@@ -28,7 +28,7 @@
                             </template>
                         </f7-list-item>
 
-                        <f7-list-item :title="$t('message.bookletExam.confirmationDate')" :after="this.utils.removeTimeFromString(this.exam?.esito?.dataEsa)">
+                        <f7-list-item :title="$t('message.bookletExam.confirmationDate')" :after="this.utils.general.removeTimeFromString(this.exam?.esito?.dataEsa)">
                             <template #media>
                                 <f7-icon md="material:event" ios="f7:calendar"></f7-icon>
                             </template>

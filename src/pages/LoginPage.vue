@@ -108,8 +108,8 @@
                         idAb: response.user.idAb,
                         persId: response.user.persId,
                         codFis: response.user.codFis,
-                        firstName: utils.toProperCase(response.user.firstName),
-                        lastName: utils.toProperCase(response.user.lastName), 
+                        firstName: utils.general.toProperCase(response.user.firstName),
+                        lastName: utils.general.toProperCase(response.user.lastName), 
                         
                     }
                     

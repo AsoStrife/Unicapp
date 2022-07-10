@@ -4,7 +4,7 @@
         <f7-row>
             <f7-col>
                 <f7-block>
-                    <h1>{{utils.toProperCase(this.text)}}</h1>
+                    <h1>{{utils.general.toProperCase(this.text)}}</h1>
                 </f7-block>
             </f7-col>
         </f7-row>

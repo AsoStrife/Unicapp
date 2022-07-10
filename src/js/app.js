@@ -1,8 +1,9 @@
 // Import Vue
-import { createApp } from 'vue';
-import { createI18n } from 'vue-i18n';
-import i18n from './i18n';
-import constants from './unicapp/constants'; 
+import { createApp } from 'vue'
+import { createI18n } from 'vue-i18n'
+import i18n from './i18n'
+import constants from './unicapp/constants'
+import store from './unicapp/store'
 
 // Import Framework7
 import Framework7 from 'framework7/lite-bundle';
@@ -28,8 +29,8 @@ Framework7.use(Framework7Vue);
 const app = createApp(App);
 // Use i18n
 app.use(createI18n({
-    locale: constants.app.locale,
-    fallbackLocale: constants.app.fallbackLocale,
+    locale: store.getCurrentI18n(),
+    fallbackLocale: constants.i18n.fallback,
     messages: i18n
 }));
 
