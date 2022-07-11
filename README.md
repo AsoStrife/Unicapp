@@ -1,5 +1,7 @@
 # Unicapp
 
+![](https://github.com/AsoStrife/Unicapp/blob/04d521d33385baca46e3b95a87c66e2ba8251296/resources/demo-app.jpg?raw=true)
+
 [TOC]
 
 Unicapp is an unofficial app for Esse3 Platform for Universities Students.
