@@ -2,7 +2,19 @@
 
 ![](https://github.com/AsoStrife/Unicapp/blob/04d521d33385baca46e3b95a87c66e2ba8251296/resources/demo-app.jpg?raw=true)
 
-[TOC]
+- [Unicapp](#unicapp)
+  * [Install Dependencies](#install-dependencies)
+  * [NPM Scripts](#npm-scripts)
+  * [Set the app](#set-the-app)
+  * [i18n](#i18n)
+  * [Vite](#vite)
+  * [Capacitor](#capacitor)
+  * [Assets](#assets)
+  * [Capacitor Assets](#capacitor-assets)
+  * [Documentation & Resources](#documentation---resources)
+  * [Supported Universities](#supported-universities)
+  * [Contacts](#contacts)
+
 
 Unicapp is an unofficial app for Esse3 Platform for Universities Students.
 
