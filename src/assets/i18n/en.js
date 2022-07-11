@@ -20,7 +20,8 @@ const en =  {
             loginButton: 'Login',
             loginWrong: 'The authentication failed.',
             university: "Select University",
-            searchUniversity: "Search your University"
+            searchUniversity: "Search your University",
+            changeSettings: "Change settings"
         },
         panelList: {
             home: 'Home',

@@ -29,6 +29,7 @@
                         clear-button
                         :value="username"
                         @input="username = $event.target.value"
+                        autocomplete="false"
                     >
                     </f7-list-input>
 
@@ -42,6 +43,7 @@
                         clear-button
                         :value="password"
                         @input="password = $event.target.value"
+                        autocomplete="false"
                     >
                     </f7-list-input>
 
@@ -50,8 +52,12 @@
             <f7-block>
                 <f7-button fill preloader :loading="this.isLoading" 
                     @click="login" 
-                    :disabled="this.isLoading || isEmpty(this.username) || isEmpty(this.password)"> {{$t('message.login.loginButton')}} 
+                    :disabled="this.isLoading || isEmpty(this.username) || isEmpty(this.password) || isEmpty(this.selectedUniversity)"> {{$t('message.login.loginButton')}} 
                 </f7-button>
+            </f7-block>
+
+            <f7-block class="text-align-center">
+                <a href="/settings/">{{$t('message.login.changeSettings')}}</a>
             </f7-block>
         </f7-page-content>
     </f7-page>

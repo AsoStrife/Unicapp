@@ -1,13 +1,14 @@
 <template>
 
-    <div class="div-header" v-if="this.user">
-    
-        <img :src="this.profilePic" class="img-circle profile-img" v-if="this.profilePic ? true : false"/>
-    
-        <h1>{{this.user?.firstName}} {{this.user?.lastName}}</h1>
+    <div class="div-header">
+        <div v-if="this.user">
+            <img :src="this.profilePic" class="img-circle profile-img" v-if="this.profilePic ? true : false"/>
+        
+            <h1>{{this.user?.firstName}} {{this.user?.lastName}}</h1>
 
-        <h2>{{this.selectedUniversity?.description}}</h2>
-        <h3>{{$t('message.panelHeader.stuID')}}: {{this.selectedCareer?.matricola}}</h3>
+            <h2>{{this.selectedUniversity?.description}}</h2>
+            <h3 v-if="this.selectedCareer?.matricola">{{$t('message.panelHeader.stuID')}}: {{this.selectedCareer?.matricola}}</h3>
+        </div>
     </div>
 </template>
 

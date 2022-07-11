@@ -12,7 +12,7 @@
                     <f7-list>
                         
                         <f7-list-item :title="$t('message.test.chairman')" 
-                            :after="utils.toProperCase(exam?.presidenteNome) + ' ' + utils.toProperCase(exam?.presidenteCognome)">
+                            :after="utils.general.toProperCase(exam?.presidenteNome) + ' ' + utils.general.toProperCase(exam?.presidenteCognome)">
                             <template #media>
                                 <f7-icon md="material:person" ios="f7:person"></f7-icon>
                             </template>
@@ -24,19 +24,19 @@
                             </template>
                         </f7-list-item>
 
-                        <f7-list-item :title="$t('message.test.dateExam')" :after="this.utils.removeTimeFromString(exam?.dataInizioApp)">
+                        <f7-list-item :title="$t('message.test.dateExam')" :after="this.utils.general.removeTimeFromString(exam?.dataInizioApp)">
                             <template #media>
                                 <f7-icon md="material:event" ios="f7:calendar"></f7-icon>
                             </template>
                         </f7-list-item>
 
-                        <f7-list-item :title="$t('message.test.dateStartSub')" :after="this.utils.removeTimeFromString(exam?.dataInizioIscr)">
+                        <f7-list-item :title="$t('message.test.dateStartSub')" :after="this.utils.general.removeTimeFromString(exam?.dataInizioIscr)">
                             <template #media>
                                 <f7-icon md="material:date_range" ios="f7:calendar"></f7-icon>
                             </template>
                         </f7-list-item>
 
-                        <f7-list-item :title="$t('message.test.dateEndSub')" :after="this.utils.removeTimeFromString(exam?.dataFineIscr)">
+                        <f7-list-item :title="$t('message.test.dateEndSub')" :after="this.utils.general.removeTimeFromString(exam?.dataFineIscr)">
                             <template #media>
                                 <f7-icon md="material:date_range" ios="f7:calendar"></f7-icon>
                             </template>

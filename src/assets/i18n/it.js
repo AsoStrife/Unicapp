@@ -20,7 +20,8 @@ const it =  {
             loginButton: 'Accedi',
             loginWrong: 'L\'autenticazione non è andata a buon fine.',
             university: "Seleziona l'Università",
-            searchUniversity: "Cerca la tua Università"
+            searchUniversity: "Cerca la tua Università",
+            changeSettings: "Modifica le impostazioni"
         },
         panelList: {
             home: 'Home',
