@@ -88,7 +88,8 @@
                     openIn: 'popup', 
                     searchbar: true, 
                     searchbarPlaceholder: this.$t('message.login.searchUniversity'), 
-                    popupCloseLinkText: this.$t('message.general.close')
+                    popupCloseLinkText: this.$t('message.general.close'),
+                    closeOnSelect: true
                 },
                 universities: universities, //.filter(x => x.swagger_url != ''),
                 isLogged: store.getCredentials == null ? false : true
