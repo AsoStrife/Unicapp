@@ -4,7 +4,7 @@ let constants = {
         "name": "Unicapp", 
         "version": "4.0.0", 
         "author": "Webenterprises",
-        "debug": false,
+        "debug": true,
     },
     "urls": {
         "andreacorriga": "https://andreacorriga.com", 
@@ -52,6 +52,9 @@ let constants = {
             "taxes": "%s1" + "tasse-service-v1/addebiti-studente?stuId=%s2", //stuId
             "tests": "%s1" + "libretto-service-v2/libretti/%s2/appelli?q=APPELLI_PRENOTABILI_E_FUTURI", //matId
             "isTestBooked": "%s1" + "libretto-service-v2/libretti/%s2/righe/%s3/prenotazioni", //matId, adsceId (controlla che un esame sia prenotato)
+        }, 
+        "unicapp": {
+            "universities": "universities"
         }
     },
     "defaultValues": {

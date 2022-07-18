@@ -3,12 +3,49 @@ import axios from 'axios'
 import universities from './universities'
 import constants from './constants'
 
-const middlewareUrl = constants.api.debug ? constants.api.middlewareUrlDebug : constants.api.middlewareUrlRemote
-const middlewareUrlPhoto = constants.api.debug ? constants.api.middlewareUrlPhotoDebug : constants.api.middlewareUrlPhotoRemote
+const middlewareUrl = constants.app.debug ? constants.api.middlewareUrlDebug : constants.api.middlewareUrlRemote
+const middlewareUrlPhoto = constants.app.debug ? constants.api.middlewareUrlPhotoDebug : constants.api.middlewareUrlPhotoRemote
 
 const api = {}
 
+/**
+ * 
+ * @param {*} username 
+ * @param {*} password 
+ * @returns Object for base auth + Api-Url for Middleware Request
+*/
+api.headers = (apiUrl) => {
+    const credentials = store.getCredentials()
+    
+    return {
+        headers: {
+            'Api-Url': apiUrl
+        },
+        auth: {
+            username: credentials?.username,
+            password: credentials?.password
+      }
+    }
+}
 
+/***
+ * @link https://stackoverflow.com/questions/7790811/how-do-i-put-variables-inside-javascript-strings
+ * @example parameterizedString("my name is %s1 and surname is %s2", "John", "Doe");
+ * @return "my name is John and surname is Doe"
+ *
+ * @firstArgument {String} like "my name is %s1 and surname is %s2"
+ * @otherArguments {String | Number}
+ * @returns {String}
+*/
+api.parse = (...args) => {
+    const str = args[0]
+    const params = args.filter((arg, index) => index !== 0)
+    if (!str) return ""
+    return str.replace(/%s[0-9]+/g, matchedStr => {
+        const variableIndex = matchedStr.replace("%s", "") - 1;
+        return params[variableIndex];
+    })
+}
 /**
  * Return the api url for the selected university
  * @param {*} endpoint 
@@ -27,6 +64,32 @@ api.getUrl = (...params) => {
     params.unshift(endpoint, universityApiBaseUrl) // add other parameters
 
     return api.parse.apply(null, params)
+}
+
+/**
+ * 
+ * @param {*} endpoint 
+ * @returns 
+ */
+api.getUnicappUrl = (endpoint) => {
+    return middlewareUrl + constants.api.unicapp[endpoint]
+}
+
+/**
+ * 
+ * @returns List of supported Universities
+ */
+api.universities = () => {
+    return new Promise( (resolve, reject) => {
+        axios.get(api.getUnicappUrl('universities'))
+        .then(async function (response) {
+            resolve(response.data)
+        })
+        .catch(function (error) {
+            console.error(error)
+            reject(error)
+        })
+    })
 }
 
 /**
@@ -217,44 +280,5 @@ api.taxes = async() => {
     })
 }
 
-
-/**
- * 
- * @param {*} username 
- * @param {*} password 
- * @returns Object for base auth + Api-Url for Middleware Request
-*/
-api.headers = (apiUrl) => {
-    const credentials = store.getCredentials()
-    
-    return {
-        headers: {
-            'Api-Url': apiUrl
-        },
-        auth: {
-            username: credentials?.username,
-            password: credentials?.password
-      }
-    }
-}
-
-/***
- * @link https://stackoverflow.com/questions/7790811/how-do-i-put-variables-inside-javascript-strings
- * @example parameterizedString("my name is %s1 and surname is %s2", "John", "Doe");
- * @return "my name is John and surname is Doe"
- *
- * @firstArgument {String} like "my name is %s1 and surname is %s2"
- * @otherArguments {String | Number}
- * @returns {String}
-*/
-api.parse = (...args) => {
-    const str = args[0]
-    const params = args.filter((arg, index) => index !== 0)
-    if (!str) return ""
-    return str.replace(/%s[0-9]+/g, matchedStr => {
-        const variableIndex = matchedStr.replace("%s", "") - 1;
-        return params[variableIndex];
-    })
-}
 
 export default api

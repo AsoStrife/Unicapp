@@ -35,7 +35,7 @@ store.getDarkTheme = () => {
 }
 
 store.getCurrentI18n = () => {
-    return localStorage.getItem(constants.localstorage.currentI18n) !== null ? localStorage.getItem(constants.localstorage.currentI18n) : constants.i18n.default
+    return localStorage.getItem(constants.localstorage.currentI18n) !== 'null' ? localStorage.getItem(constants.localstorage.currentI18n) : constants.i18n.default
 }
 
 

@@ -66,10 +66,10 @@
 <script>
     import { f7 } from 'framework7-vue'
     import Navbar from '../components/Navbar.vue'
-    import universities from '../js/unicapp/universities'
     import api from '../js/unicapp/api'
     import store from '../js/unicapp/store'
     import utils from '../js/unicapp/utils'
+    import universities from '../js/unicapp/universities'
 
     export default {
         name: 'Login',
@@ -91,12 +91,12 @@
                     popupCloseLinkText: this.$t('message.general.close'),
                     closeOnSelect: true
                 },
-                universities: universities, //.filter(x => x.swagger_url != ''),
+                universities: [],
                 isLogged: store.getCredentials == null ? false : true
             }
         },
         mounted(){
-
+            this.getUniversities()
         },
         methods: {
             async login() {
@@ -145,6 +145,16 @@
             },
             isEmpty(str) {
                 return (!str || str.length === 0);
+            },
+            async getUniversities() {
+                try{
+                    this.universities = await api.universities()
+                }
+                catch(e){
+                    // Use local universities
+                    console.error(e)
+                    this.universities = universities
+                }
             }
         }
     }
