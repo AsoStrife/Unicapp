@@ -29,7 +29,7 @@ Framework7.use(Framework7Vue);
 const app = createApp(App);
 // Use i18n
 app.use(createI18n({
-    locale: store.getCurrentI18n(),
+    locale: store.getCurrentI18n() ? store.getCurrentI18n() : constants.i18n.fallback,
     fallbackLocale: constants.i18n.fallback,
     messages: i18n
 }));

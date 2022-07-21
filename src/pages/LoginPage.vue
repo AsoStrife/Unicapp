@@ -103,8 +103,7 @@
                 self = this
 
                 this.isLoading = true;
-
-                store.setSelectedUniversity(this.selectedUniversity)
+                store.setSelectedUniversity(this.universities[this.selectedUniversity])
                 store.setCredentials(this.username, this.password)
                 
                 try{
@@ -151,9 +150,7 @@
                     this.universities = await api.universities()
                 }
                 catch(e){
-                    // Use local universities
                     console.error(e)
-                    this.universities = universities
                 }
             }
         }

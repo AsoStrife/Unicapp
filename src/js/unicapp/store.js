@@ -1,5 +1,4 @@
 import constants from "./constants"
-import universities from "./universities"
 
 const store = {}
 
@@ -58,8 +57,8 @@ store.setSelectedCareer = (selectedCareer) => {
     localStorage.setItem(constants.localstorage.selectedCareer, JSON.stringify(selectedCareer))
 }
 
-store.setSelectedUniversity = (selectedUniversity = 0) => {
-    localStorage.setItem(constants.localstorage.selectedUniversity, JSON.stringify(universities[selectedUniversity]))
+store.setSelectedUniversity = (selectedUniversity) => {
+    localStorage.setItem(constants.localstorage.selectedUniversity, JSON.stringify(selectedUniversity))
 }
 
 store.setCareers = (careers) => {

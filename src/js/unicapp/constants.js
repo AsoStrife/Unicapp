@@ -4,7 +4,7 @@ let constants = {
         "name": "Unicapp", 
         "version": "4.0.0", 
         "author": "Webenterprises",
-        "debug": true,
+        "debug": false,
     },
     "urls": {
         "andreacorriga": "https://andreacorriga.com", 

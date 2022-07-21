@@ -55,7 +55,7 @@ api.getUrl = (...params) => {
     store.getSelectedUniversity()
 
     const selectedUniversity = store.getSelectedUniversity()
-    const universityApiBaseUrl = selectedUniversity?.url
+    const universityApiBaseUrl = selectedUniversity?.api_url
 
     const urls = constants.api.esse3
     const endpoint = urls[params[0]]
