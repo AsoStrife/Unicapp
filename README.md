@@ -124,14 +124,14 @@ Esse3 platform has been adopted by many Athenaeums, so Unicapp can handle the fo
 - Università degli Studi di Brescia
 - Università Campus Bio-Medico di Roma
 - Università di Camerino
-- Università degli Studi di Cagliari
+- [V] Università degli Studi di Cagliari
 - Università degli Studi di Firenze
-- Università degli Studi Guglielmo Marconi
+- [V] Università degli Studi Guglielmo Marconi
 - Università degli Studi di Messina
 - Università degli Studi di Milano-Bicocca
 - Università degli Studi dell\'Insubria
 - Università degli Studi di Perugia
-- Università di Pisa
+- [V] Università di Pisa
 - Università di Parma
 - Università degli Studi di Pavia
 - Università degli Studi della Repubblica di San Marino

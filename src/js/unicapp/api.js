@@ -1,6 +1,5 @@
 import store from './store'
 import axios from 'axios'
-import universities from './universities'
 import constants from './constants'
 
 const middlewareUrl = constants.app.debug ? constants.api.middlewareUrlDebug : constants.api.middlewareUrlRemote
@@ -16,10 +15,12 @@ const api = {}
 */
 api.headers = (apiUrl) => {
     const credentials = store.getCredentials()
-    
+    const selectedUniversity = store.getSelectedUniversity()
+
     return {
         headers: {
-            'Api-Url': apiUrl
+            'Api-Url': apiUrl,
+            'University': selectedUniversity?.name
         },
         auth: {
             username: credentials?.username,
