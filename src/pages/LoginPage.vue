@@ -21,10 +21,9 @@
                 
                 <f7-list class="mt-0" no-hairlines-md>
                     <f7-list-input
-                        outline
                         :label="$t('message.login.usernameLabel')"
                         :placeholder="$t('message.login.emailPlaceholder')"
-                        floating-label
+                    
                         type="text"
                         clear-button
                         :value="username"
@@ -32,20 +31,15 @@
                         autocomplete="false"
                     >
                     </f7-list-input>
-
-                    <f7-list-input
-                        outline
+                    
+                    <PasswordInput 
                         :label="$t('message.login.passwordLabel')"
-                        :placeholder="$t('message.login.passwordPlaceholder')"
-                        floating-label
-                        type="password"
-                        autococomplete="false"
-                        clear-button
-                        :value="password"
+                        :value="password" 
+                        :placeholder="$t('message.login.passwordPlaceholder')" 
                         @input="password = $event.target.value"
                         autocomplete="false"
-                    >
-                    </f7-list-input>
+                        />
+                    
 
                 </f7-list>
             </form>
@@ -70,11 +64,13 @@
     import store from '../js/unicapp/store'
     import utils from '../js/unicapp/utils'
     import universities from '../js/unicapp/universities'
+    import PasswordInput from '../components/PasswordInput.vue';
 
     export default {
         name: 'Login',
         components: {
-            Navbar
+            Navbar,
+            PasswordInput
         },
         setup(){
         },

@@ -141,7 +141,7 @@ Esse3 platform has been adopted by many Athenaeums, so Unicapp can handle the fo
 - Università degli Studi di Udine
 - Università degli Studi di Urbino Carlo Bo
 - Università degli Studi dell\'Aquila
-- Università Ca\' Foscari Venezia
+- [V] Università Ca\' Foscari Venezia
 - Università Politecnica delle Marche
 
 ## Contacts
