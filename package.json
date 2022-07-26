@@ -21,6 +21,7 @@
     "Samsung >= 12"
   ],
   "dependencies": {
+    "@capacitor-firebase/analytics": "^0.5.0",
     "@capacitor/android": "^3.5.1",
     "@capacitor/app": "^1.1.1",
     "@capacitor/browser": "^1.0.7",
@@ -31,6 +32,7 @@
     "@capacitor/status-bar": "^1.0.8",
     "axios": "^0.27.2",
     "dom7": "^4.0.4",
+    "firebase": "^9.9.1",
     "framework7": "^7.0.2",
     "framework7-icons": "^5.0.5",
     "framework7-vue": "^7.0.2",

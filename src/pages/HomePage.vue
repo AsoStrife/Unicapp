@@ -49,6 +49,7 @@
             var self = this
             f7ready( async() => {
                 this.loadData()
+                self.$firebase.setCurrentScreen("HomePage")
             })
         },
         methods: {

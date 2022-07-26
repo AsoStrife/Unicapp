@@ -4,7 +4,17 @@ let constants = {
         "name": "Unicapp", 
         "version": "4.0.0", 
         "author": "Webenterprises",
+        "package": "com.moapps.unicapp", 
         "debug": false,
+    },
+    "firebase": {
+        "apiKey": "",
+        "authDomain": "",
+        "projectId": "",
+        "storageBucket": "",
+        "messagingSenderId": "",
+        "appId": "",
+        "measurementId": ""
     },
     "urls": {
         "andreacorriga": "https://andreacorriga.com", 
