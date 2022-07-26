@@ -27,13 +27,23 @@ firebase.setUserProperty = async (key, value) => {
     })
 }
 
-firebase.logEvent = async (name, params) => {
-    FirebaseAnalytics.logEvent({
-        name: name,
-        params: { 
-            method: paramas 
-        }
-    })
+firebase.logEvent = async (name, params = undefined) => {
+    if(params == undefined){
+        FirebaseAnalytics.logEvent({
+            name: name,
+            app_id: constants.app.package,
+            app_version: constants.app.version
+        })
+    }
+    else{
+        FirebaseAnalytics.logEvent({
+            name: name,
+            params: { 
+                method: paramas 
+            }
+        })
+    }
+    
 }
 
 firebase.setEnabled = async () => {

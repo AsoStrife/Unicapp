@@ -104,7 +104,7 @@
     import universities from '../js/unicapp/universities'
 
     export default {
-        name: "Info",
+        name: "InfoPage",
         data() {
             return {
                 constants: constants,
@@ -113,8 +113,11 @@
         },
         methods: {},
         mounted() {
+            var self = this
+
             f7ready(() => {
-            });
+                self.$firebase.setCurrentScreen("InfoPage")
+            })
         },
         components: { 
             Navbar

@@ -57,7 +57,7 @@
     import utils from '../js/unicapp/utils'
 
     export default {
-        name: "Booklet",
+        name: "BookletPage",
         props: {
             f7router: Object,
         },
@@ -90,7 +90,11 @@
             }
         },
         mounted() {
+            var self = this
+
             f7ready(() => {
+                self.$firebase.setCurrentScreen("BookletPage")
+
                 this.loadData()
             })
         },

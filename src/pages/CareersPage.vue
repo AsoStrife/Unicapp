@@ -29,7 +29,7 @@
     import utils from '../js/unicapp/utils'
 
     export default {
-        name: "Careers",
+        name: "CareersPage",
         data() {
             return {
                 careers: store.getCareers().map(career => {
@@ -49,8 +49,11 @@
         props: {
         },
         mounted() {
+            var self = this
+
             f7ready(() => {
-            });
+                self.$firebase.setCurrentScreen("CareersPage")
+            })
         },
         components: { 
             Navbar

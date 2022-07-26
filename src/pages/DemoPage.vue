@@ -34,14 +34,17 @@
     import PersonalData from '../components/User/PersonalData.vue';
 
     export default {
-        name: "Demo",
+        name: "DemoPage",
         data() {
             return {};
         },
         methods: {},
         mounted() {
-            f7ready(() => {
-            });
+            var self = this
+            
+            f7ready(async() => {
+                self.$firebase.setCurrentScreen("DemoPage")
+            })
         },
         components: { 
             Navbar,

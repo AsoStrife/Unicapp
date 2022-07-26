@@ -56,7 +56,7 @@
     import Alert from '../components/Alert.vue'
 
     export default {
-        name: "Taxes",
+        name: "TaxesPages",
         props: {
             f7router: Object,
         },
@@ -90,7 +90,10 @@
 
         },
         mounted() {
+            var self = this
             f7ready(() => {
+                self.$firebase.setCurrentScreen("TaxesPages")
+
                 this.loadData()
             })
         },

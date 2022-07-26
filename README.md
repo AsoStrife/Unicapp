@@ -105,6 +105,41 @@ cordova-res android --skip-config --copy
 
 Check out [official cordova-res documentation](https://github.com/ionic-team/cordova-res) for more usage examples.
 
+## Firebase Analytics
+
+Firebase should be already install in the package. 
+
+```
+npm install firebase --save firebase
+npm install @capacitor-firebase/analytics firebase
+npx cap sync
+```
+
+Inside the `constant.js` add the `firebase` keys values from your Firebase  application.
+
+```
+"firebase": {
+    "apiKey": "",
+    "authDomain": "",
+    "projectId": "",
+    "storageBucket": "",
+    "messagingSenderId": "",
+    "appId": "",
+    "measurementId": ""
+}
+```
+
+ Inside `./src/js/unicapp/firebase.js` there are the available methods. It can be used inside every component with the following syntax: 
+
+`this.$firebase.setCurrentScreen("HomePage")`
+
+### Monitored activities
+
+These are the current monitored Firebase Activities. 
+
+- When the user navigate throught pages with `setCurrentScreen("")` api;
+- When user perform a login or logout with `logEvent({})` api.s
+
 ## Documentation & Resources
 
 * [Framework7 Core Documentation](https://framework7.io/docs/)
@@ -113,6 +148,8 @@ Check out [official cordova-res documentation](https://github.com/ionic-team/cor
 
 * [Framework7 Icons Reference](https://framework7.io/icons/)
 * [Community Forum](https://forum.framework7.io)
+* [Firebase plugins for Capacitor](https://github.com/capawesome-team/capacitor-firebase)
+* [Firebase Analytics for Capacitor](https://github.com/capawesome-team/capacitor-firebase/tree/main/packages/analytics)
 
 ## Supported Universities
 

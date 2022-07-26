@@ -19,14 +19,17 @@
 
 
     export default {
-        name: "Empty",
+        name: "EmptyPage",
         data() {
-            return {};
+            return {}
         },
         methods: {},
         mounted() {
+            var self = this
+
             f7ready(() => {
-            });
+                self.$firebase.setCurrentScreen("EmptyPage")
+            })
         },
         components: { 
             Navbar

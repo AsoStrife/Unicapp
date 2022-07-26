@@ -75,7 +75,10 @@
             
         },
         mounted() {
+            var self = this
             f7ready(() => {
+                self.$firebase.setCurrentScreen("TestPage")
+
                 /*api.isTestBooked(this.exam?.adsceId).then(response => {
                     console.log("Exam", this.exam)
                     console.log("Response", response)

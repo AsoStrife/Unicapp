@@ -58,7 +58,7 @@
 </template>
 
 <script>
-    import { f7 } from 'framework7-vue'
+    import { f7, f7ready } from 'framework7-vue'
     import Navbar from '../components/Navbar.vue'
     import api from '../js/unicapp/api'
     import store from '../js/unicapp/store'
@@ -67,7 +67,7 @@
     import PasswordInput from '../components/PasswordInput.vue';
 
     export default {
-        name: 'Login',
+        name: 'LoginPage',
         components: {
             Navbar,
             PasswordInput
@@ -77,8 +77,8 @@
         data() {
             return {
                 isLoading: false,
-                username: '',
-                password: '',
+                username: 'a.corriga1',
+                password: 'Unica2019',
                 selectedUniversity: null, //-1,
                 popupSettings: {
                     openIn: 'popup', 
@@ -92,7 +92,12 @@
             }
         },
         mounted(){
-            this.getUniversities()
+            var self = this
+
+            f7ready( async() => {
+                this.getUniversities()
+                self.$firebase.setCurrentScreen("LoginPage")
+            })
         },
         methods: {
             async login() {
@@ -119,6 +124,8 @@
                     store.setCareers(response.user.trattiCarriera)
                     
                     self.isLoading = false
+
+                    self.$firebase.logEvent("login")
 
                     f7.views.main.router.navigate('/careers/')
                     f7.emit('login')

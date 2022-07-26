@@ -1,6 +1,6 @@
 <template>
 
-    <f7-page name="TaxePage" :page-content="false">   
+    <f7-page name="TaxPage" :page-content="false">   
 
         <Navbar />
 
@@ -56,7 +56,7 @@
     import utils from '../js/unicapp/utils'
 
     export default {
-        name: "Tax",
+        name: "TaxPage",
         props: {
             tax: {
                 default: {}
@@ -70,7 +70,10 @@
         methods: {
         },
         mounted() {
+            var self = this
+            
             f7ready(() => {
+                self.$firebase.setCurrentScreen("TaxPage")
             })
         },
         components: { 

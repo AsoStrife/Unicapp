@@ -35,7 +35,7 @@
     import constants from '../js/unicapp/constants'
 
     export default {
-        name: "AverageCalculator",
+        name: "AverageCalculatorPage",
         data() {
             return {
                 newExams: [], 
@@ -94,8 +94,9 @@
         mounted() {
             var self = this
 
-
             f7ready(async () => {
+                self.$firebase.setCurrentScreen("AverageCalculatorPage")
+
                 await this.loadInitialValues()
 
                 f7.on('addExamCalculator', function(data){

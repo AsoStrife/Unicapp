@@ -43,7 +43,7 @@
     import constants from '../js/unicapp/constants'
 
     export default {
-        name: "Settings",
+        name: "SettingsPage",
         data() {
             return {
                 isChecked: store.getDarkTheme(),
@@ -59,8 +59,11 @@
             }
         },
         mounted() {
+            var self = this
+            
             f7ready(() => {
                 var toggle = f7.toggle.get('.toggle')
+                self.$firebase.setCurrentScreen("SettingsPage")
             })
             
             this.$watch(

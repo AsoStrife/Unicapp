@@ -17,7 +17,7 @@
 
 
 <script>
-    import { f7ready, f7 } from 'framework7-vue'
+    import { f7, f7ready } from 'framework7-vue'
     import Navbar from '../components/Navbar.vue'
     import Alert from '../components/Alert.vue'
     import Ratings from '../components/User/Ratings.vue'
@@ -29,7 +29,7 @@
     import utils from '../js/unicapp/utils'
 
     export default {
-        name: "Home",
+        name: "HomePage",
         data() {
             return {
                 weightedAvg: constants.defaultValues.weightedAvg,
@@ -47,9 +47,10 @@
         },
         mounted() {
             var self = this
-            f7ready( async() => {
-                this.loadData()
+
+            f7ready(async() => {
                 self.$firebase.setCurrentScreen("HomePage")
+                this.loadData()
             })
         },
         methods: {

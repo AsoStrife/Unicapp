@@ -49,7 +49,7 @@
     import TitleDetailPage from '../components/TitleDetailPage.vue'
 
     export default {
-        name: "BookletExam",
+        name: "BookletExamPage",
         props: {
             exam: {
                 default: {}
@@ -63,8 +63,11 @@
         methods: {
         },
         mounted() {
+            var self = this
+            
             f7ready(() => {
-            });
+                self.$firebase.setCurrentScreen("BookletExamPage")
+            })
         },
         components: { 
             Navbar,

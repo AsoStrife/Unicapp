@@ -24,7 +24,7 @@
 
                 <f7-list-item divider :title="$t('message.panelList.session')" v-if="this.showCareers"></f7-list-item>
                 <f7-list-item :title="$t('message.panelList.careers')" link="/careers/" panel-close v-if="this.showCareers"></f7-list-item>
-                <f7-list-item :title="$t('message.panelList.logout')" link="/logout/" panel-close v-if="this.showCareers"></f7-list-item>
+                <f7-list-item :title="$t('message.panelList.logout')"  link="" panel-close v-if="this.showCareers" @click="handleFirebaseLogout"></f7-list-item> <!--link="/logout/"-->
             </f7-list>
         </f7-page>
     </f7-panel>
@@ -51,6 +51,7 @@
     import PanelHeader from './PanelHeader.vue'
 
     import store from '../js/unicapp/store'
+    import constants from '../js/unicapp/constants'
 
     export default {
         data() {
@@ -84,15 +85,19 @@
                 this.showLogin =  (store.getCredentials() == null && store.getSelectedCareer() == null),
                 this.showCareers = (store.getCredentials() != null),
                 this.showLoggedMenu =  (store.getCredentials() != null && store.getSelectedCareer() != null)
+            },
+            async handleFirebaseLogout(){
+                this.$firebase.logEvent("logout")
+                f7.views.main.router.navigate('/logout/')
             }
         },
         setup() {
             const device = getDevice();
             // Framework7 Parameters
             const f7params = {
-                name: 'Unicapp', // App name
+                name: constants.app.name, // App name
                 theme: 'auto', // Automatic theme detection
-                id: 'com.moapps.unicapp', // App bundle ID
+                id: constants.app.package, // App bundle ID
                 // App routes
                 routes: routes,
                 // Input settings
@@ -120,8 +125,8 @@
                         document.getElementById('body').className = "dark"
 
                     // Call F7 APIs here
-                });
-            });
+                })
+            })
 
             return {
                 f7params,
