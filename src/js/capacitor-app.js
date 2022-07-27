@@ -18,62 +18,66 @@ var capacitorApp = {
   In case there is a current view with navigation history, it will go back instead.
   */
   handleAndroidBackButton: function () {
-    var f7 = capacitorApp.f7;
-    const $ = f7.$;
-    if (f7.device.electron || !window.Capacitor || !window.Capacitor.Plugins.App) return;
-    window.Capacitor.Plugins.App.addListener('backButton', function () {
-      if ($('.actions-modal.modal-in').length) {
-        f7.actions.close('.actions-modal.modal-in');
-        return;
-      }
-      if ($('.dialog.modal-in').length) {
-        f7.dialog.close('.dialog.modal-in');
-        return;
-      }
-      if ($('.sheet-modal.modal-in').length) {
-        f7.sheet.close('.sheet-modal.modal-in');
-        return;
-      }
-      if ($('.popover.modal-in').length) {
-        f7.popover.close('.popover.modal-in');
-        return;
-      }
-      if ($('.popup.modal-in').length) {
-        if ($('.popup.modal-in>.view').length) {
-          const currentView = f7.views.get('.popup.modal-in>.view');
-          if (currentView && currentView.router && currentView.router.history.length > 1) {
+        var f7 = capacitorApp.f7;
+        const $ = f7.$;
+        if (f7.device.electron || !window.Capacitor || !window.Capacitor.Plugins.App) return;
+        window.Capacitor.Plugins.App.addListener('backButton', function () {
+        if ($('.actions-modal.modal-in').length) {
+            f7.actions.close('.actions-modal.modal-in');
+            return;
+        }
+        if ($('.dialog.modal-in').length) {
+            f7.dialog.close('.dialog.modal-in');
+            return;
+        }
+        if ($('.sheet-modal.modal-in').length) {
+            f7.sheet.close('.sheet-modal.modal-in');
+            return;
+        }
+        if ($('.popover.modal-in').length) {
+            f7.popover.close('.popover.modal-in');
+            return;
+        }
+        if ($('.popup.modal-in').length) {
+            if ($('.popup.modal-in>.view').length) {
+            const currentView = f7.views.get('.popup.modal-in>.view');
+            if (currentView && currentView.router && currentView.router.history.length > 1) {
+                currentView.router.back();
+                return;
+            }
+            }
+            f7.popup.close('.popup.modal-in');
+            return;
+        }
+        if ($('.login-screen.modal-in').length) {
+            f7.loginScreen.close('.login-screen.modal-in');
+            return;
+        }
+
+        if ($('.page-current .searchbar-enabled').length) {
+            f7.searchbar.disable('.page-current .searchbar-enabled');
+            return;
+        }
+
+        if ($('.page-current .card-expandable.card-opened').length) {
+            f7.card.close('.page-current .card-expandable.card-opened');
+            return;
+        }
+
+        const currentView = f7.views.current;
+        if (currentView && currentView.router && currentView.router.history.length > 1) {
             currentView.router.back();
             return;
-          }
         }
-        f7.popup.close('.popup.modal-in');
-        return;
-      }
-      if ($('.login-screen.modal-in').length) {
-        f7.loginScreen.close('.login-screen.modal-in');
-        return;
-      }
 
-      if ($('.page-current .searchbar-enabled').length) {
-        f7.searchbar.disable('.page-current .searchbar-enabled');
-        return;
-      }
+        if(currentView.router.history.length <= 1){
+            navigator.app.exitApp()
+        }
 
-      if ($('.page-current .card-expandable.card-opened').length) {
-        f7.card.close('.page-current .card-expandable.card-opened');
-        return;
-      }
-
-      const currentView = f7.views.current;
-      if (currentView && currentView.router && currentView.router.history.length > 1) {
-        currentView.router.back();
-        return;
-      }
-
-      if ($('.panel.panel-in').length) {
-        f7.panel.close('.panel.panel-in');
-        return;
-      }
+        if ($('.panel.panel-in').length) {
+            f7.panel.close('.panel.panel-in');
+            return;
+        }
     }, false);
   },
   /*

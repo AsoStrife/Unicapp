@@ -95,7 +95,10 @@
             var self = this
 
             f7ready( async() => {
-                this.getUniversities()
+                f7.preloader.show()
+                await this.getUniversities()
+                f7.preloader.hide()
+                
                 self.$firebase.setCurrentScreen("LoginPage")
             })
         },
@@ -126,9 +129,13 @@
                     self.isLoading = false
 
                     self.$firebase.logEvent("login")
-
-                    f7.views.main.router.navigate('/careers/')
                     f7.emit('login')
+
+                    f7.views.main.router.navigate('/careers/', {
+                        reloadAll: true
+                    })
+
+                    
                 }
                 catch(e){
                     self.isLoading = false
