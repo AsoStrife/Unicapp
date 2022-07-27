@@ -77,8 +77,8 @@
         data() {
             return {
                 isLoading: false,
-                username: 'a.corriga1',
-                password: 'Unica2019',
+                username: '',
+                password: '',
                 selectedUniversity: null, //-1,
                 popupSettings: {
                     openIn: 'popup', 
