@@ -96,6 +96,8 @@
             }
         },
         mounted() {
+            var self = this
+            
             f7ready(() => {
                 self.$firebase.setCurrentScreen("TestsPage")
                 this.loadData()
