@@ -1,0 +1,26 @@
+{
+  "cwd": "C:\\Users\\andre\\Documents\\GitHub\\Unicapp",
+  "type": [
+    "capacitor"
+  ],
+  "name": "Unicapp",
+  "framework": "vue",
+  "template": "blank",
+  "bundler": "vite",
+  "cssPreProcessor": false,
+  "theming": {
+    "customColor": true,
+    "color": "#4776e6",
+    "darkTheme": false,
+    "iconFonts": true,
+    "fillBars": true
+  },
+  "customBuild": false,
+  "pkg": "com.moapps.unicapp",
+  "capacitor": {
+    "platforms": [
+      "ios",
+      "android"
+    ]
+  }
+}
