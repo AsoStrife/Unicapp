@@ -13,6 +13,7 @@
   * [Capacitor Assets](#capacitor-assets)
   * [Documentation & Resources](#documentation---resources)
   * [Supported Universities](#supported-universities)
+  * [Store](#store)
   * [Contacts](#contacts)
 
 
@@ -181,6 +182,9 @@ Esse3 platform has been adopted by many Athenaeums, so Unicapp can handle the fo
 - [V] Università Ca\' Foscari Venezia
 - Università Politecnica delle Marche
 
+## Store 
+- [Google Play Store](https://play.google.com/store/apps/details?id=com.moapps.unicapp)
+- [Apple Store](https://apps.apple.com/us/app/unicapp/id1448510832)
 ## Contacts
 
 * E-mail : me@andreacorriga.com
