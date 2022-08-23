@@ -7,26 +7,29 @@
                 
                 <f7-col width="30">
                     <div :class="this.skeletonProfilePic">
-                        <img :src="this.profilePic" class="img-circle profile-img" />
+                        <div class="img-circle profile-img"
+                            :style="backgroundStyle">
+                        </div>
+                        
                     </div>
                 </f7-col>
 
                 <f7-col width="70">
                     <div class="name-container">
-                    <h1> 
-                        <span :class="this.skeletonName" class="mr-1">
-                            {{this.firstName}}
-                        </span>
-                        
-                        <span :class="this.skeletonName">
-                            {{this.lastName}}
-                        </span>
-                    </h1>
-                    <h2>
-                        <span :class="this.skeletonId">
-                            {{id}}
-                        </span>
-                    </h2>
+                        <h1> 
+                            <span :class="this.skeletonName" class="mr-1">
+                                {{this.firstName}}
+                            </span>
+                            
+                            <span :class="this.skeletonName">
+                                {{this.lastName}}
+                            </span>
+                        </h1>
+                        <h2>
+                            <span :class="this.skeletonId">
+                                {{id}}
+                            </span>
+                        </h2>
                     </div>
                 </f7-col>
             </f7-row>
@@ -49,7 +52,7 @@
     h1 {
         font-size: 25px;
         font-weight: 300;
-        line-height: 13px;
+        line-height: 30px;
     }
 
      h2 {
@@ -58,15 +61,7 @@
         line-height: 13px;
     }
 
-     .profile-img {
-        width: 100%;
-        border: 3px solid whitesmoke;
-        background-size: cover;
-        background-position: center;
-    }
-
     .name-container{
-        margin-top: 12%;
         margin-left: 10%;
     }
 
@@ -98,7 +93,8 @@
                 
                 defaultValues: constants.defaultValues,
                 selectedCareer: store.getSelectedCareer(),
-                id: constants.defaultValues.id
+                id: constants.defaultValues.id,
+                backgroundStyle: `background-image: url(${this.profilePic})`
             }
         },
         methods: {
@@ -122,6 +118,7 @@
 
                     if(this.profilePic != this.defaultValues.profilePic)
                         this.skeletonProfilePic = ""
+                        this.backgroundStyle = `background-image: url(${this.profilePic})`
                 },
                 {
                     immediate: true,

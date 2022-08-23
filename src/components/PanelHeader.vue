@@ -2,8 +2,10 @@
 
     <div class="div-header">
         <div v-if="this.user">
-            <img :src="this.profilePic" class="img-circle profile-img" v-if="this.profilePic ? true : false"/>
-        
+            <div class="img-circle profile-img"
+                :style="backgroundStyle">
+            </div>
+
             <h1>{{this.user?.firstName}} {{this.user?.lastName}}</h1>
 
             <h2>{{this.selectedUniversity?.description}}</h2>
@@ -71,10 +73,12 @@
         name: "PanelHeader",
         data() {
             return {
-                profilePic:store.getProfilePic(),
+                profilePic: store.getProfilePic(),
                 user: store.getUser(),
                 selectedCareer: store.getSelectedCareer(),
                 selectedUniversity: store.getSelectedUniversity(),
+                backgroundStyle: ``
+
             }
         },
         methods: {
@@ -83,10 +87,13 @@
                 this.user = store.getUser()
                 this.selectedCareer = store.getSelectedCareer()
                 this.selectedUniversity = store.getSelectedUniversity()
+                this.backgroundStyle = `background-image: url(${this.profilePic})`
             }
         },
         mounted() {
             f7ready(() => {
+                this.backgroundStyle = `background-image: url(${this.profilePic})`
+
                 f7.on('login', (data) => {
                     this.setValues()
                 })

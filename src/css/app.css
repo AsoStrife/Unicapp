@@ -70,9 +70,18 @@
 * Imgs 
 */
 .img-circle {
+    width: 100%;
+    aspect-ratio : 1 / 1;
     -webkit-border-radius: 150px;
     -moz-border-radius: 150px;
     border-radius: 150px;
+}
+
+.profile-img {
+    border: 3px solid whitesmoke;
+    background-size: cover;
+    background-position: center;
+    
 }
 
 /**
