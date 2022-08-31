@@ -6,7 +6,7 @@
 
         <f7-page-content>
             
-            <div class="text-align-center mt-5"><img src="/logo/unicapp-circle-124x124.png" alt="" /></div>
+            <div class="text-align-center mt-5"> <img src="/logo/unicapp-circle-124x124.png" alt="" class="img-circle-login"/></div>
 
             <form>
                 <f7-list class="mb-0">
@@ -56,7 +56,13 @@
         </f7-page-content>
     </f7-page>
 </template>
-
+<style scoped>
+    .img-circle-login{
+        -webkit-border-radius: 150px;
+        -moz-border-radius: 150px;
+        border-radius: 150px;
+    }
+</style>
 <script>
     import { f7, f7ready } from 'framework7-vue'
     import Navbar from '../components/Navbar.vue'

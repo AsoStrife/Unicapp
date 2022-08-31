@@ -10,7 +10,7 @@
             <f7-card>
                 <f7-card-content>
                     <f7-list>
-                        <f7-list-item :title="$t('message.bookletExam.grade')" :after="this.utils.exam.getGrade(this.exam)">
+                        <f7-list-item :title="$t('message.bookletExam.grade')" :after="this.utils.exam.getGrade(this.exam, false)">
                             <template #media>
                                 <f7-icon md="material:assignment_turned_in" ios="f7:doc_checkmark"></f7-icon>
                             </template>

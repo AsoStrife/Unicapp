@@ -1,20 +1,22 @@
+import firebase from './constants/firebase'
+
 let constants = {
     
     "app": {
         "name": "Unicapp", 
-        "version": "4.0.1", 
+        "version": "4.0.2", 
         "author": "Webenterprises",
         "package": "com.moapps.unicapp", 
         "debug": false,
     },
     "firebase": {
-        "apiKey": "",
-        "authDomain": "",
-        "projectId": "",
-        "storageBucket": "",
-        "messagingSenderId": "",
-        "appId": "",
-        "measurementId": ""
+        "apiKey": firebase.apiKey,
+        "authDomain": firebase.authDomain,
+        "projectId": firebase.projectId,
+        "storageBucket": firebase.storageBucket,
+        "messagingSenderId": firebase.messagingSenderId,
+        "appId": firebase.appId,
+        "measurementId": firebase.measurementId
     },
     "urls": {
         "andreacorriga": "https://andreacorriga.com", 

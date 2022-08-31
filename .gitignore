@@ -53,3 +53,4 @@ resources/windows/splash
 www/
 android/
 ios/
+src/js/unicapp/constants/firebase.js
