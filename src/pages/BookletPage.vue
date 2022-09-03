@@ -81,6 +81,15 @@
 
                         resolve(true)
                     })
+                    .catch(error => {
+                        console.log(error)
+                        f7.toast.create({
+                            text: this.$t('message.general.error'),
+                            closeTimeout: 3000,
+                            destroyOnClose: true,
+                            position: 'bottom',
+                        }).open()
+                    })
                 })
                 
             },

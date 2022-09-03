@@ -2,7 +2,7 @@
 
     <f7-page name="TaxPage" :page-content="false">   
 
-        <Navbar />
+        <Navbar :backLink="true"/>
 
         <f7-page-content>
             <TitleDetailPage :bg="this.utils.tax.getStatusBg(this.tax)" :text="this.tax.tassaDes" />
@@ -10,32 +10,36 @@
             <f7-card>
                 <f7-card-content>
                     <f7-list>
-                        <f7-list-item :title="$t('message.tax.invoice')" :after="this.tax?.fattId">
+                        <f7-list-item :title="$t('message.tax.invoice')" v-if="this.tax?.fattId != ''"
+                            :after="this.tax?.fattId">
                             <template #media>
                                 <f7-icon md="material:event" ios="f7:calendar"></f7-icon>
                             </template>
                         </f7-list-item>
 
-                        <f7-list-item :title="$t('message.tax.amount')" :after="this.tax?.importoPag + $t('message.general.euro')">
+                        <f7-list-item :title="$t('message.tax.amount')" :after="(this.tax?.importoPag != null ? this.tax?.importoPag  : this.tax?.dovuto) + $t('message.general.euro')">
                             <template #media>
                                 <f7-icon md="material:event" ios="f7:calendar"></f7-icon>
                             </template>
                         </f7-list-item>
 
-                        <f7-list-item :title="$t('message.tax.mav')" :after="this.tax?.numeroMav">
+                        <f7-list-item :title="$t('message.tax.mav')" v-if="this.tax?.numeroMav != ''"
+                            :after="this.tax?.numeroMav">
                             <template #media>
                                 <f7-icon md="material:school" ios="f7:hexagon"></f7-icon>
                             </template>
                         </f7-list-item>
 
-                        <f7-list-item :title="$t('message.tax.expiration')" :after="this.utils.general.removeTimeFromString(this.tax?.scadenzaAddebito)">
+                        <f7-list-item :title="$t('message.tax.expiration')" v-if="this.tax?.scadenzaAddebito != ''"
+                            :after="this.utils.general.removeTimeFromString(this.tax?.scadenzaAddebito)">
                             <template #media>
                                 <f7-icon md="material:date_range" ios="f7:calendar"></f7-icon>
                             </template>
                         </f7-list-item>
 
 
-                        <f7-list-item :title="$t('message.tax.paymentDate')" :after="this.utils.general.removeTimeFromString(this.tax?.dataPagamento)">
+                        <f7-list-item :title="$t('message.tax.paymentDate')" v-if="this.tax?.dataPagamento != ''"
+                            :after="this.utils.general.removeTimeFromString(this.tax?.dataPagamento)">
                             <template #media>
                                 <f7-icon md="material:event" ios="f7:calendar"></f7-icon>
                             </template>
@@ -44,6 +48,17 @@
                     </f7-list>
                 </f7-card-content>
             </f7-card>
+
+            <f7-block v-if="this.tax?.tassaDes != ''">
+                <f7-block-title>{{$t('message.tax.description')}}:</f7-block-title>
+                {{this.tax?.tassaDes}}
+            </f7-block>       
+
+            <f7-block v-if="this.tax?.note != '' || this.tax?.notaCalcolo != ''">
+                <f7-block-title>{{$t('message.tax.notes')}}:</f7-block-title>
+                <p>{{this.tax?.note}}</p>
+                {{this.tax?.notaCalcolo}}
+            </f7-block>
         </f7-page-content>
 
     </f7-page>
@@ -73,6 +88,7 @@
             var self = this
             
             f7ready(() => {
+                console.log(self.tax)
                 self.$firebase.setCurrentScreen("TaxPage")
             })
         },

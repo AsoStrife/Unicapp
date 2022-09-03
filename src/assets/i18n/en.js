@@ -83,7 +83,9 @@ const en =  {
             amount: "Amount",
             paymentDate: "Payment date",
             invoice: "Invoice",
-            mav: "MAV"
+            mav: "MAV",
+            description: "Description", 
+            notes: "Notes"
         },
         avgCalculator: {
             title: "Mean calculator",

@@ -65,6 +65,11 @@
                         this.mobile = data?.cellulare != "" ? data?.cellulare : null
                         this.address = this.setAddress(data) != "" ? this.setAddress(data) : null
                     })
+                    .catch(error => {
+                        
+                        
+                        
+                    })
 
                     api.photo().then(data => {
                         store.setProfilePic(data)

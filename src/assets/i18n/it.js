@@ -83,7 +83,9 @@ const it =  {
             amount: "Importo",
             paymentDate: "Data pagamento",
             invoice: "Fattura n°",
-            mav: "MAV"
+            mav: "MAV",
+            description: "Descrizione", 
+            notes: "Note"
         },
         avgCalculator: {
             title: "Calcolatore media",

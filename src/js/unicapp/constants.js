@@ -4,10 +4,10 @@ let constants = {
     
     "app": {
         "name": "Unicapp", 
-        "version": "4.0.2", 
+        "version": "4.0.3", 
         "author": "Webenterprises",
         "package": "com.moapps.unicapp", 
-        "debug": false,
+        "debug": true,
     },
     "firebase": {
         "apiKey": firebase.apiKey,
@@ -98,6 +98,9 @@ let constants = {
     },
     "tests": {
         "bookable": "Prenotazioni Aperte"
+    }, 
+    "esse3Errors": {
+        "securityFailed": "Security failed: il profilo IMMATRICOLATI_IN_IPOTESI non è tra quelli abilitati"
     }
     
 }

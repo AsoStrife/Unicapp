@@ -15,14 +15,14 @@
             
             <div class="list" v-if="this.taxes.length > 0">
                 <ul>
-                    <li v-for="(item, key) in this.taxes" :key="key">
-                        <a @click="this.f7router.navigate('/tax/', {props: {tax: item}})" class="item-link item-content">
+                    <li v-for="(tax, key) in this.taxes" :key="key">
+                        <a @click="this.f7router.navigate('/tax/', {props: {tax: tax}})" class="item-link item-content">
                             <div class="item-media">
-                                <h3 class="text-success" v-html="this.utils.tax.getStatus(item)"></h3>
+                                <h3 class="text-success" v-html="this.utils.tax.getStatus(tax)"></h3>
                             </div>
                             <div class="item-inner">
-                                <div class="item-title">{{item.tassaDes}} {{item.combDes}}</div>
-                                <div class="item-after">{{item.importoPag}} {{$t('message.general.euro')}}</div>
+                                <div class="item-title">{{tax.tassaDes}} {{tax.combDes}}</div>
+                                <div class="item-after">{{(tax?.importoPag != null ? tax?.importoPag  : tax?.dovuto)}}{{$t('message.general.euro')}}</div>
                             </div>
                         </a>
                     </li>
