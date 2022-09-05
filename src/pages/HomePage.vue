@@ -65,10 +65,8 @@
                         this.mobile = data?.cellulare != "" ? data?.cellulare : null
                         this.address = this.setAddress(data) != "" ? this.setAddress(data) : null
                     })
-                    .catch(error => {
-                        
-                        
-                        
+                    .catch(e => {
+                        self.$errorHandling.handle(e)
                     })
 
                     api.photo().then(data => {
@@ -85,7 +83,7 @@
 
                             resolve(true)
                         })
-                    })   
+                    })
                 })
                 
             },

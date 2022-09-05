@@ -80,6 +80,9 @@
 
                         resolve(true)
                     })
+                    .catch(e => {
+                        self.$errorHandling.handle(e)
+                    })
                 })
             },
             async refresh(done) {

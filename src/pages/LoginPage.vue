@@ -146,14 +146,7 @@
                 catch(e){
                     self.isLoading = false
                     
-                    f7.toast.create({
-                        text: self.$t('message.login.loginWrong'),
-                        closeTimeout: 3000,
-                        destroyOnClose: true,
-                        position: 'bottom',
-                    }).open()
-
-                    console.error(e)
+                    self.$errorHandling.handle(e)
                     store.clearAll()
                 }
                 

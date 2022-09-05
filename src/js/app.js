@@ -23,7 +23,8 @@ import '../css/margin.css'
 import App from '../components/app.vue'
 
 // Import Firebase Plugin
-import Firebase from '../js/unicapp/firebase'
+import Firebase from './unicapp/VuePlugin/firebase'
+import ErrorHandling from './unicapp/VuePlugin/errorHandling'
 
 // Init Framework7-Vue Plugin
 Framework7.use(Framework7Vue)
@@ -39,6 +40,9 @@ app.use(createI18n({
 
 // Use firebase plugins
 app.use(Firebase)
+
+// Error Handling
+app.use(ErrorHandling)
 
 // Register Framework7 Vue components
 registerComponents(app)

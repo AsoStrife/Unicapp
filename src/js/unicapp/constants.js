@@ -100,6 +100,7 @@ let constants = {
         "bookable": "Prenotazioni Aperte"
     }, 
     "esse3Errors": {
+        "loginError": "Errore sulla login: credenziali (user_id e/o password) non valide",
         "securityFailed": "Security failed: il profilo IMMATRICOLATI_IN_IPOTESI non è tra quelli abilitati"
     }
     
