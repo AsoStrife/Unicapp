@@ -7,7 +7,7 @@
                 
                 <f7-col width="30">
                     <div :class="this.skeletonProfilePic">
-                        <div class="img-circle profile-img"
+                        <div class="img-circle profile-img" v-if="this.profilePic"
                             :style="backgroundStyle">
                         </div>
                         

@@ -2,7 +2,7 @@
 
     <div class="div-header">
         <div v-if="this.user">
-            <div class="img-circle profile-img"
+            <div class="img-circle profile-img" v-if="this.profilePic"
                 :style="backgroundStyle">
             </div>
 
