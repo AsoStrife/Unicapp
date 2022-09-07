@@ -17,7 +17,7 @@
                             </template>
                         </f7-list-item>
 
-                        <f7-list-item :title="$t('message.tax.amount')" :after="(this.tax?.importoPag != null ? this.tax?.importoPag  : this.tax?.dovuto) + $t('message.general.euro')">
+                        <f7-list-item :title="$t('message.tax.amount')" :after="(this.tax?.importoVoce) + $t('message.general.euro')">
                             <template #media>
                                 <f7-icon md="material:event" ios="f7:calendar"></f7-icon>
                             </template>

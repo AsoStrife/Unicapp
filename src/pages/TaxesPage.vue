@@ -22,7 +22,7 @@
                             </div>
                             <div class="item-inner">
                                 <div class="item-title">{{tax.tassaDes}} {{tax.combDes}}</div>
-                                <div class="item-after">{{(tax?.importoPag != null ? tax?.importoPag  : tax?.dovuto)}}{{$t('message.general.euro')}}</div>
+                                <div class="item-after">{{tax?.importoVoce}}{{$t('message.general.euro')}}</div>
                             </div>
                         </a>
                     </li>
@@ -72,7 +72,8 @@
             loadData(){
                 return new Promise( (resolve, reject) => {
                     api.taxes().then(response => {
-                        this.taxes = response
+                        console.log(response)
+                        this.taxes = response.filter(tax => tax.fattId != 0)
                         this.skeleton = false
 
                         if(this.taxes.length == 0)
