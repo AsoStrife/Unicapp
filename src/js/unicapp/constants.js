@@ -7,7 +7,7 @@ let constants = {
         "version": "4.0.3", 
         "author": "Webenterprises",
         "package": "com.moapps.unicapp", 
-        "debug": true,
+        "debug": false,
     },
     "firebase": {
         "apiKey": firebase.apiKey,

@@ -88,7 +88,6 @@
             var self = this
             
             f7ready(() => {
-                console.log(self.tax)
                 self.$firebase.setCurrentScreen("TaxPage")
             })
         },

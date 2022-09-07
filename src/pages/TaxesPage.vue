@@ -72,7 +72,6 @@
             loadData(){
                 return new Promise( (resolve, reject) => {
                     api.taxes().then(response => {
-                        console.log(response)
                         this.taxes = response.filter(tax => tax.fattId != 0)
                         this.skeleton = false
 
