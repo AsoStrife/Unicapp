@@ -1,41 +1,46 @@
 import { f7, f7ready } from 'framework7-vue'
 import constants from '../constants'
-import { useI18n } from "vue-i18n"
+
+// Import App Component
+import { ref, onMounted } from 'vue'
 
 
 let errorHandling = {}
 
-errorHandling.handle = (error) => {
+errorHandling.handle = (error, $i18n) => {
     console.error(error)
-
     f7ready(() => {
-        let str = error?.response?.data?.retErrMsg
-
-        switch(str){
+        switch(error?.response?.data?.retErrMsg){
             case constants.esse3Errors.securityFailed: 
                 securityFailed(constants.esse3Errors.securityFailed)
                 break
             case constants.esse3Errors.loginError: 
-            loginError(constants.esse3Errors.loginError)
+                loginError($i18n)
                 break
             default: 
-                general()
+                general($i18n)
         }
     })
 }
 
-let general = () => {
+let general = ($i18n) => {
+    if($i18n == null)
+        return
+
     f7.toast.create({
-        text: useI18n().t('message.general.error'),
+        text: $i18n?.t('message.general.error'),
         closeTimeout: 3000,
         destroyOnClose: true,
         position: 'bottom',
     }).open()
 }
 
-let loginError = () => {
+let loginError = ($i18n) => {
+    if($i18n == null)
+        return
+
     f7.toast.create({
-        text: useI18n().t('message.login.loginWrong'),
+        text: $i18n?.t('message.login.loginWrong'),
         closeTimeout: 3000,
         destroyOnClose: true,
         position: 'bottom',

@@ -82,7 +82,7 @@
                         resolve(true)
                     })
                     .catch(e => {
-                        this.$errorHandling.handle(e)
+                        this.$errorHandling.handle(e, this.$i18n)
                     })
                 })
                 

@@ -146,7 +146,7 @@
                 catch(e){
                     self.isLoading = false
                     
-                    self.$errorHandling.handle(e)
+                    self.$errorHandling.handle(e, self.$i18n)
                     store.clearAll()
                 }
                 

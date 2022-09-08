@@ -88,7 +88,7 @@
 
                 })   
                 .catch(e => {
-                    self.$errorHandling.handle(e)
+                    self.$errorHandling.handle(e, self.$i18n)
                 })                 
             
             },
