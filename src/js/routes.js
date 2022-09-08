@@ -18,6 +18,8 @@ import AverageCalculatorPage from '../pages/AverageCalculatorPage.vue'
 import InfoPage from '../pages/InfoPage.vue'
 import SettingsPage from '../pages/SettingsPage.vue'
 
+import ErrorPage from '../pages/ErrorPage.vue'
+
 import store from './unicapp/store'
 
 var routes = [
@@ -112,7 +114,12 @@ var routes = [
             f7.emit('logout')
             resolve('/login/', {reloadAll: true })
         }
+    },
+    {
+        name: 'Error',
+        path: '/error/',
+        component: ErrorPage
     }
-];
+]
 
 export default routes;

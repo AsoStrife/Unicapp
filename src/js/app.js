@@ -23,22 +23,26 @@ import '../css/margin.css'
 import App from '../components/app.vue'
 
 // Import Firebase Plugin
-import Firebase from '../js/unicapp/firebase'
+import Firebase from './unicapp/VuePlugin/firebase'
+import ErrorHandling from './unicapp/VuePlugin/errorHandling'
 
 // Init Framework7-Vue Plugin
 Framework7.use(Framework7Vue)
 
 // Init App
-const app = createApp(App);
+const app = createApp(App)
 // Use i18n
 app.use(createI18n({
     locale: store.getCurrentI18n() ? store.getCurrentI18n() : constants.i18n.fallback,
     fallbackLocale: constants.i18n.fallback,
     messages: i18n
-}));
+}))
 
 // Use firebase plugins
 app.use(Firebase)
+
+// Error Handling
+app.use(ErrorHandling)
 
 // Register Framework7 Vue components
 registerComponents(app)

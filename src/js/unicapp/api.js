@@ -87,7 +87,6 @@ api.universities = () => {
             resolve(response.data)
         })
         .catch(function (error) {
-            console.error(error)
             reject(error)
         })
     })
@@ -106,7 +105,6 @@ api.login = (username, password) => {
             resolve(response.data)
         })
         .catch(function (error) {
-            console.error(error)
             reject(error)
         })
     })
@@ -125,7 +123,6 @@ api.careers = async() => {
             resolve(response.data)
         })
         .catch(function (error) {
-            console.error(error)
             reject(error)
         })
     })
@@ -142,7 +139,6 @@ api.people = async() => {
             resolve(response.data[0])
         })
         .catch(function (error) {
-            console.error(error)
             reject(error)
         })
     })
@@ -161,7 +157,6 @@ api.photo = async() => {
             resolve(response.data.img)
         })
         .catch(function (error) {
-            console.error(error)
             reject(error)
         })
     })
@@ -180,7 +175,6 @@ api.bookletVotesAvg = async() => {
             resolve(response.data)
         })
         .catch(function (error) {
-            console.error(error)
             reject(error)
         })
     })
@@ -199,7 +193,6 @@ api.booklet = async() => {
             resolve(response.data)
         })
         .catch(function (error) {
-            console.error(error)
             reject(error)
         })
     })
@@ -218,7 +211,6 @@ api.bookletStats = async() => {
             resolve(response.data)
         })
         .catch(function (error) {
-            console.error(error)
             reject(error)
         })
     })
@@ -237,7 +229,6 @@ api.taxes = async() => {
             resolve(response.data)
         })
         .catch(function (error) {
-            console.error(error)
             reject(error)
         })
     })
@@ -256,7 +247,6 @@ api.taxes = async() => {
             resolve(response.data)
         })
         .catch(function (error) {
-            console.error(error)
             reject(error)
         })
     })
@@ -275,7 +265,6 @@ api.taxes = async() => {
             resolve(response.data)
         })
         .catch(function (error) {
-            console.error(error)
             reject(error)
         })
     })

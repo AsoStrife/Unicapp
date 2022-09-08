@@ -65,6 +65,9 @@
                         this.mobile = data?.cellulare != "" ? data?.cellulare : null
                         this.address = this.setAddress(data) != "" ? this.setAddress(data) : null
                     })
+                    .catch(e => {
+                        this.$errorHandling.handle(e, this.$i18n)
+                    })
 
                     api.photo().then(data => {
                         store.setProfilePic(data)
@@ -80,7 +83,10 @@
 
                             resolve(true)
                         })
-                    })   
+                    })
+                    .catch(e => {
+                        this.$errorHandling.handle(e, this.$i18n)
+                    })
                 })
                 
             },

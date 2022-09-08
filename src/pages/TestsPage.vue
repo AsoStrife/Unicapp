@@ -75,20 +75,22 @@
         },
         methods: {
             loadData(){
-                return new Promise( (resolve, reject) => {
-                    api.tests().then(response => {
-                        this.exams = response
-                        this.skeleton = false
+                self = this
+                api.tests().then(response => {
+                    this.exams = response
+                    this.skeleton = false
 
-                        if(this.exams.length == 0)
-                            this.isEmpty = true
-                        else
-                            // Sort per ordine alfabetico + data appello
-                            this.exams = response.sort((a, b) => a.adDes.localeCompare(b.adDes) && a.dataInizioApp.localeCompare(b.dataInizioApp))
+                    if(this.exams.length == 0)
+                        this.isEmpty = true
+                    else
+                        // Sort per ordine alfabetico + data appello
+                        this.exams = response.sort((a, b) => a.adDes.localeCompare(b.adDes) && a.dataInizioApp.localeCompare(b.dataInizioApp))
 
-                        resolve(true)
-                    })                    
-                })
+                })   
+                .catch(e => {
+                    self.$errorHandling.handle(e, self.$i18n)
+                })                 
+            
             },
             async refresh(done) {
                 await this.loadData()

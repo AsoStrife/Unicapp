@@ -2,7 +2,7 @@
 
     <f7-page name="BookletExamPage" :page-content="false">
         
-        <Navbar />
+        <Navbar :backLink="true"/>
 
         <f7-page-content>
             <TitleDetailPage :bg="this.utils.exam.getBgGrade(this.exam)" :text="this.exam.adDes" />

@@ -1,4 +1,4 @@
-import constants from "./constants"
+import constants from "../constants"
 import { FirebaseAnalytics } from '@capacitor-firebase/analytics'
 import { initializeApp } from "firebase/app";
 import { getAnalytics } from "firebase/analytics";
