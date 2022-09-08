@@ -72,12 +72,7 @@
                     this.isFabVisible = true
                 }
                 catch(e){
-                    f7.toast.create({
-                        text: self.$t('message.general.error'),
-                        closeTimeout: 3000,
-                        destroyOnClose: true,
-                        position: 'bottom',
-                    }).open()
+                    this.$errorHandling.handle(e)
                 }
             },
             calculateNewAvg() {

@@ -66,13 +66,16 @@
                         this.address = this.setAddress(data) != "" ? this.setAddress(data) : null
                     })
                     .catch(e => {
-                        self.$errorHandling.handle(e)
+                        this.$errorHandling.handle(e)
                     })
 
                     api.photo().then(data => {
                         store.setProfilePic(data)
                         this.profilePic = data
                         f7.emit('photoApiDone')
+                    })
+                    .catch(e => {
+                        this.$errorHandling.handle(e)
                     })
 
                     // Nested to avoid UI glitch with skeleton
@@ -83,6 +86,9 @@
 
                             resolve(true)
                         })
+                    })
+                    .catch(e => {
+                        this.$errorHandling.handle(e)
                     })
                 })
                 

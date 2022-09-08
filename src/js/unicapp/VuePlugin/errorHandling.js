@@ -1,10 +1,12 @@
 import { f7, f7ready } from 'framework7-vue'
 import constants from '../constants'
+import { useI18n } from "vue-i18n"
+
 
 let errorHandling = {}
 
 errorHandling.handle = (error) => {
-    console.log(error)
+    console.error(error)
 
     f7ready(() => {
         let str = error?.response?.data?.retErrMsg
@@ -24,7 +26,7 @@ errorHandling.handle = (error) => {
 
 let general = () => {
     f7.toast.create({
-        text: self.$t('message.general.error'),
+        text: useI18n().t('message.general.error'),
         closeTimeout: 3000,
         destroyOnClose: true,
         position: 'bottom',
@@ -33,7 +35,7 @@ let general = () => {
 
 let loginError = () => {
     f7.toast.create({
-        text: self.$t('message.login.loginWrong'),
+        text: useI18n().t('message.login.loginWrong'),
         closeTimeout: 3000,
         destroyOnClose: true,
         position: 'bottom',
