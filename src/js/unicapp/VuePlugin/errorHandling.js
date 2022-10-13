@@ -12,7 +12,7 @@ errorHandling.handle = (error, $i18n) => {
     f7ready(() => {
         switch(error?.response?.data?.retErrMsg){
             case constants.esse3Errors.securityFailed: 
-                securityFailed(constants.esse3Errors.securityFailed)
+                securityFailed($i18n)
                 break
             case constants.esse3Errors.loginError: 
                 loginError($i18n)
@@ -47,11 +47,14 @@ let loginError = ($i18n) => {
     }).open()
 }
 
-let securityFailed = (str) => {
+let securityFailed = ($i18n) => {
+    if($i18n == null)
+        return
+
     f7.views.main.router.navigate('/error/', {
         reloadAll: true,
         props: {
-            errorMsg: str
+            errorMsg: $i18n?.t('message.error.securityFailed')
         }
     })
 }

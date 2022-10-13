@@ -9,6 +9,9 @@ const en =  {
             confirm: "Confirm", 
             ok: "Ok"
         },
+        error: {
+            securityFailed: 'Your profile comes up as "matriculated in assumptions" so you are not authorized to use the app. It\'s not up to you, the profile will have to be activated by the secretary\'s office.'
+        },
         login: {
             title: 'Login',
             emailLabel: 'Email', 

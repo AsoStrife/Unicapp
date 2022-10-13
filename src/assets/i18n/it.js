@@ -9,6 +9,9 @@ const it =  {
             confirm: "Conferma", 
             ok: "Ok"
         },
+        error: {
+            securityFailed: 'Il tuo profilo risulta essere "immatricolati in ipotesi" e di conseguenze sei autorizzato ad utilizzare l\'app. Non dipende da te, il profilo dovrà essere attivato dalla segreteria.'
+        },
         login: {
             title: 'Effettua l\'accesso',
             emailLabel: 'Email', 

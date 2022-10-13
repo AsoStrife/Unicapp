@@ -4,7 +4,7 @@ let constants = {
     
     "app": {
         "name": "Unicapp", 
-        "version": "4.0.3", 
+        "version": "4.0.4", 
         "author": "Webenterprises",
         "package": "com.moapps.unicapp", 
         "debug": false,

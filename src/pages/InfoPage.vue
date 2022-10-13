@@ -47,7 +47,7 @@
                                 :external="true"
                                 target="_blank">
                                 <template #media>
-                                    <img src="/andrea-corriga-asostrife-profile-image.png" width="50" class="img-circle"/>
+                                    <img src="/andrea-corriga-asostrife-profile-image.png" width="50" class="img-circle img-50px"/>
                                 </template>
                             </f7-list-item>
                             <f7-list-item 
@@ -57,7 +57,7 @@
                                 :external="true"
                                 target="_blank">
                                 <template #media>
-                                    <img src="/logo/unicapp-circle-512x512.png" width="50" class="img-circle"/>
+                                    <img src="/logo/unicapp-circle-512x512.png" width="50" class="img-circle img-50px"/>
                                 </template>
                             </f7-list-item>
                             <f7-list-item 
@@ -67,7 +67,7 @@
                                 :external="true"
                                 target="_blank">
                                 <template #media>
-                                    <img src="/logo/unicapp-circle-512x512.png" width="50" class="img-circle"/>
+                                    <img src="/logo/unicapp-circle-512x512.png" width="50" class="img-circle img-50px"/>
                                 </template>
                             </f7-list-item>
                         </f7-list>
