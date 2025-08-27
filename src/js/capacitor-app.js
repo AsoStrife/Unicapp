@@ -1,3 +1,5 @@
+import { StatusBar, Style } from '@capacitor/status-bar';
+
 var capacitorApp = {
   f7: null,
   /*
@@ -118,6 +120,22 @@ var capacitorApp = {
       }
     }, true);
   },
+  /*
+  Configure native StatusBar so content doesn't overlap it on Android
+  and ensure proper colors/styles.
+  */
+  handleStatusBar: async function () {
+    try {
+      if (!window.Capacitor) return;
+      // Do not let WebView draw under the StatusBar
+      await StatusBar.setOverlaysWebView({ overlay: false });
+      // Match the app brand color and ensure light content on Android
+      await StatusBar.setBackgroundColor({ color: '#3d66c6' });
+      await StatusBar.setStyle({ style: Style.Light });
+    } catch (e) {
+      // No-op if not available
+    }
+  },
   init: function (f7) {
     // Save f7 instance
     capacitorApp.f7 = f7;
@@ -130,6 +148,9 @@ var capacitorApp = {
 
     // Handle Keyboard
     capacitorApp.handleKeyboard();
+
+  // Handle StatusBar (avoid overlap and set colors)
+  capacitorApp.handleStatusBar();
   },
 };
 

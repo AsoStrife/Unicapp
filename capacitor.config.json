@@ -7,6 +7,11 @@
   "plugins": {
     "SplashScreen": {
       "launchShowDuration": 0
+    },
+    "StatusBar": {
+      "overlaysWebView": false,
+      "style": "LIGHT",
+      "backgroundColor": "#3d66c6"
     }
   },
   "cordova": {}

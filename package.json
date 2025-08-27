@@ -21,18 +21,17 @@
     "Samsung >= 12"
   ],
   "dependencies": {
-    "@capacitor-firebase/analytics": "^0.5.0",
-    "@capacitor/android": "^3.5.1",
-    "@capacitor/app": "^1.1.1",
-    "@capacitor/browser": "^1.0.7",
-    "@capacitor/core": "^3.5.1",
-    "@capacitor/ios": "^3.5.1",
-    "@capacitor/keyboard": "^1.2.2",
-    "@capacitor/splash-screen": "^1.2.2",
-    "@capacitor/status-bar": "^1.0.8",
+    "@capacitor-firebase/analytics": "^7.3.0",
+    "@capacitor/android": "^7.4.3",
+    "@capacitor/app": "^7.0.2",
+    "@capacitor/browser": "^7.0.2",
+    "@capacitor/core": "^7.4.3",
+    "@capacitor/keyboard": "^7.0.2",
+    "@capacitor/splash-screen": "^7.0.2",
+    "@capacitor/status-bar": "^7.0.2",
     "axios": "^0.27.2",
     "dom7": "^4.0.4",
-    "firebase": "^9.9.1",
+    "firebase": "^11.10.0",
     "framework7": "^7.0.2",
     "framework7-icons": "^5.0.5",
     "framework7-vue": "^7.0.2",
@@ -43,13 +42,13 @@
     "vue-i18n": "^9.1.10"
   },
   "devDependencies": {
-    "@capacitor/cli": "^3.5.1",
+    "@capacitor/cli": "^7.4.3",
     "@vitejs/plugin-vue": "^2.3.2",
     "@vue/compiler-sfc": "^3.2.33",
     "cordova-res": "^0.15.4",
     "cpy-cli": "^4.1.0",
-    "cross-env": "^7.0.3",
-    "postcss-preset-env": "^7.5.0",
-    "vite": "^2.9.8"
+    "cross-env": "^10.0.0",
+    "postcss-preset-env": "^10.3.0",
+    "vite": "^7.1.3"
   }
 }
