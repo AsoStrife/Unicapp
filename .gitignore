@@ -48,9 +48,5 @@ resources/ios/splash
 resources/windows/icon
 resources/windows/splash
 
-
 # Production build
 www/
-android/
-ios/
-src/js/unicapp/constants/firebase.js

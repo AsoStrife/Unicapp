@@ -1,7 +1,8 @@
 {
-  "cwd": "C:\\Users\\andre\\Documents\\GitHub\\Unicapp",
+  "cwd": "C:\\Users\\andre\\Documents\\GitHub\\AsoStrife\\Unicapp",
   "type": [
-    "capacitor"
+    "capacitor",
+    "web"
   ],
   "name": "Unicapp",
   "framework": "vue",
@@ -11,15 +12,13 @@
   "theming": {
     "customColor": true,
     "color": "#4776e6",
-    "darkTheme": false,
-    "iconFonts": true,
-    "fillBars": true
+    "darkMode": false,
+    "iconFonts": true
   },
   "customBuild": false,
-  "pkg": "com.moapps.unicapp",
+  "pkg": "io.framework7.myapp",
   "capacitor": {
     "platforms": [
-      "ios",
       "android"
     ]
   }

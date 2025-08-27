@@ -6,7 +6,7 @@
 
         <f7-page-content>
             
-            <div class="text-align-center mt-5"> <img src="/logo/unicapp-circle-124x124.png" alt="" class="img-circle-login"/></div>
+            <div class="text-align-center mt-5"> <img src="/img/logo/unicapp-circle-124x124.png" alt="" class="img-circle-login"/></div>
 
             <form>
                 <f7-list class="mb-0">

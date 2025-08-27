@@ -1,5 +1,5 @@
 {
-  "appId": "com.moapps.unicapp",
+  "appId": "io.framework7.myapp",
   "appName": "Unicapp",
   "bundledWebRuntime": false,
   "npmClient": "npm",

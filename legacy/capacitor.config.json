@@ -1,0 +1,13 @@
+{
+  "appId": "com.moapps.unicapp",
+  "appName": "Unicapp",
+  "bundledWebRuntime": false,
+  "npmClient": "npm",
+  "webDir": "www",
+  "plugins": {
+    "SplashScreen": {
+      "launchShowDuration": 0
+    }
+  },
+  "cordova": {}
+}
